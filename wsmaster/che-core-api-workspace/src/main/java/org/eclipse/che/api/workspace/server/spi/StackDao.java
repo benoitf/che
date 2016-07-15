@@ -85,10 +85,12 @@ public interface StackDao {
      *         when {@code update} is null
      * @throws NotFoundException
      *         when stack with {@code update.getId()} doesn't exist
+     * @throws ConflictException
+     *         when stack with such name already exists
      * @throws ServerException
      *         when any error occurs
      */
-    StackImpl update(StackImpl update) throws NotFoundException, ServerException;
+    StackImpl update(StackImpl update) throws NotFoundException, ConflictException, ServerException;
 
     /**
      * Searches for stacks which which have read permissions for specified user and contains all of specified {@code tags}.
@@ -111,5 +113,5 @@ public interface StackDao {
      * @throws IllegalArgumentException
      *         when {@code skipCount} or {@code maxItems} is negative
      */
-    List<StackImpl> searchStacks(String user, @Nullable List<String> tags, int skipCount, int maxItems) throws ServerException;
+    List<StackImpl> searchStacks(@Nullable String user, @Nullable List<String> tags, int skipCount, int maxItems) throws ServerException;
 }

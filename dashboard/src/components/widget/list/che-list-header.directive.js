@@ -20,10 +20,28 @@ export class CheListHeader {
    * Default constructor that is using resource
    * @ngInject for Dependency injection
    */
-  constructor () {
-    this.restrict='E';
-    this.replace= true;
-    this.transclude= true;
+  constructor() {
+    this.restrict = 'E';
+    this.replace = true;
+    this.transclude = true;
     this.templateUrl = 'components/widget/list/che-list-header.html';
+
+    // scope values
+    this.scope = {
+      placeholder: '@chePlaceholder',
+      valueModel: '=cheSearchModel'
+    };
+  }
+
+  link($scope, element) {
+    $scope.$watch('isShown', (isShown) => {
+      if (isShown) {
+        element.addClass('search-component-flex');
+        element.find('input').focus();
+      } else {
+        $scope.valueModel = '';
+        element.removeClass('search-component-flex');
+      }
+    });
   }
 }

@@ -40,10 +40,10 @@ export class WorkspaceStatusIndicator {
     let emptyCircleOnStopped = attr.cheEmptyCircle;
 
     return '<span ng-switch="status" class="workspace-status-indicator">' +
-      '<span ng-switch-when="STOPPED" class="fa ' + (emptyCircleOnStopped ? 'fa-circle-o' : 'fa-circle') + ' workspace-status-stopped"></span>' +
+      '<span ng-switch-when="STARTING" class="fa ' + (emptyCircleOnStopped ? 'fa-circle-o' : 'fa-circle') + ' workspace-status-stopped"></span>' +
       '<span ng-switch-when="PAUSED" class="fa fa-pause workspace-status-paused"></span>' +
       '<span ng-switch-when="RUNNING" class="fa fa-circle workspace-status-running"></span>' +
-      '<span ng-switch-when="STARTING" class="workspace-status-spinner">' +
+      '<span ng-switch-when="STOPPED" class="workspace-status-spinner">' +
       '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div></div>' +
       '</span>' +
       '<span ng-switch-when="STOPPING" class="workspace-status-spinner">' +

@@ -1,5 +1,19 @@
-<md-item class="che-list-header noselect">
-  <md-item-content>
-    <ng-transclude class="che-list-header-content"></ng-transclude>
-  </md-item-content>
-</md-item>
+<div class="che-list-header">
+  <div class="che-list-search" ng-init="isShown=false">
+    <div flex layout="row">
+      <md-icon md-font-icon="fa fa-search" class="search-icon"  ng-click="isShown=true"
+               ng-class="{'che-toolbar-control-button' : !isShown}"></md-icon>
+      <div flex layout="row" ng-class="{'move-out': isShown, 'move-in': !isShown}"
+           class="search-component">
+        <input class="search-input" type="text" ng-trim="false"
+               data-ng-model="valueModel" placeholder="{{placeholder}}">
+        <md-icon md-font-icon="fa fa-close" ng-click="isShown=false" ng-show="isShown"></md-icon>
+      </div>
+    </div>
+  </div>
+  <md-item class="noselect">
+    <md-item-content>
+      <ng-transclude class="che-list-header-content"></ng-transclude>
+    </md-item-content>
+  </md-item>
+</div>

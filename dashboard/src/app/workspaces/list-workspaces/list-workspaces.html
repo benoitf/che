@@ -13,9 +13,7 @@
 <che-toolbar che-title="All Workspaces {{listWorkspacesCtrl.userWorkspaces.length ? '('+listWorkspacesCtrl.userWorkspaces.length+')' : ''}}"
              che-add-button-name="New Workspace"
              che-add-button-href="#/create-workspace"
-             che-dropdown-menu="listWorkspacesCtrl.menuOptions"
-             che-search-placeholder="Search for workspaces..."
-             che-search-model="listWorkspacesCtrl.workspaceFilter.config.name"></che-toolbar>
+             che-dropdown-menu="listWorkspacesCtrl.menuOptions"></che-toolbar>
 <md-content md-scroll-y flex layout="column" md-theme="maincontent-theme">
   <md-progress-linear md-mode="indeterminate" class="workspaces-list-progress"
                       ng-show="listWorkspacesCtrl.isInfoLoading"></md-progress-linear>
@@ -29,7 +27,8 @@
                       ng-show="(listWorkspacesCtrl.userWorkspaces | filter:listWorkspacesCtrl.workspaceFilter).length === 0">
         <span class="workspace-list-empty">- No workspaces found</span>
       </che-list-title>
-      <che-list-header flex>
+      <che-list-header che-search-placeholder="Search"
+                       che-search-model="listWorkspacesCtrl.workspaceFilter.config.name">
         <div flex="100"
              layout="row"
              layout-align="start stretch"
@@ -46,15 +45,15 @@
           <div flex hide-xs layout-gt-xs="row"
                layout-align="start start"
                class="workspace-item-details">
-            <che-list-header-column flex-gt-xs="33"
+            <che-list-header-column flex-gt-xs="50"
                                     che-sort-value='listWorkspacesCtrl.workspaceOrderBy'
                                     che-sort-item='config.name'
                                     che-column-title='Name'></che-list-header-column>
-            <che-list-header-column flex-gt-xs="33"
+            <che-list-header-column flex-gt-xs="25"
                                     che-sort-value='listWorkspacesCtrl.workspaceOrderBy'
                                     che-sort-item='config.environments[0].machineConfigs[0].limits.ram'
                                     che-column-title='RAM'></che-list-header-column>
-            <che-list-header-column flex-gt-xs="33"
+            <che-list-header-column flex-gt-xs="25"
                                     che-column-title='Actions'></che-list-header-column>
           </div>
         </div>

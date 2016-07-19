@@ -48,7 +48,7 @@ import static javax.persistence.CascadeType.ALL;
 @Entity(name = "Stack")
 @NamedQueries(
         @NamedQuery(name = "Stack.search",
-                    query = "SELECT DISTINCT(stack) " +
+                    query = "SELECT stack " +
                             "FROM Stack stack " +
                             "WHERE (" +
                             "              'search' = ANY(SELECT pa FROM stack.publicActions pa)" +

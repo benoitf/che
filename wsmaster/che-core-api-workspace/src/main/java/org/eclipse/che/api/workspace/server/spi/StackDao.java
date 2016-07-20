@@ -93,9 +93,19 @@ public interface StackDao {
     StackImpl update(StackImpl update) throws NotFoundException, ConflictException, ServerException;
 
     /**
-     * Searches for stacks which which have read permissions for specified user and contains all of specified {@code tags}.
-     * Not specified {@code tags} will not take part of search
-     * <b>Note: only stack which contains permission <i>public: search<i/> take part of the search</b>
+     * Returns those stacks which match the following statements:
+     * <ul>
+     * <li>If neither {@code user} no {@code tags} are specified(null values passed to the method)
+     * then all the stacks which contain 'search' action in
+     * {@link StackImpl#getPublicActions() public actions} are returned</li>
+     * <li>If {@code user} is specified then all the stacks which contain 'search'
+     * action in stack public actions(like defined by previous list item)
+     * or those which specify 'search' action in access control entry
+     * for given {@code user} are returned</li>
+     * <li>Finally, if {@code tags} are specified then the stacks which match 2 rules above,
+     * will be filtered by the {@code tags}, stack should contain all of the {@code tags} to be
+     * in a result list.</li>
+     * </ul>
      *
      * @param user
      *         user id for permission checking

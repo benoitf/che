@@ -10,23 +10,27 @@
  *******************************************************************************/
 package org.eclipse.che.ide.extension.machine.client.machine;
 
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.web.bindery.event.shared.EventBus;
 
-import org.eclipse.che.ide.api.machine.MachineManager;
 import org.eclipse.che.api.machine.shared.dto.MachineConfigDto;
 import org.eclipse.che.api.machine.shared.dto.MachineDto;
 import org.eclipse.che.api.machine.shared.dto.event.MachineStatusEvent;
-import org.eclipse.che.ide.api.workspace.event.WorkspaceStartedEvent;
-import org.eclipse.che.api.workspace.shared.dto.WorkspaceDto;
+import org.eclipse.che.api.promises.client.Operation;
+import org.eclipse.che.api.promises.client.Promise;
+import org.eclipse.che.api.promises.client.PromiseError;
 import org.eclipse.che.ide.api.app.AppContext;
+import org.eclipse.che.ide.api.machine.MachineServiceClient;
 import org.eclipse.che.ide.api.notification.NotificationManager;
 import org.eclipse.che.ide.api.notification.StatusNotification;
+import org.eclipse.che.ide.api.workspace.event.EnvironmentStatusChangedEvent;
+import org.eclipse.che.ide.api.workspace.event.WorkspaceStartedEvent;
 import org.eclipse.che.ide.extension.machine.client.MachineLocalizationConstant;
 import org.eclipse.che.ide.extension.machine.client.perspective.widgets.machine.panel.MachinePanelPresenter;
 import org.eclipse.che.ide.rest.DtoUnmarshallerFactory;
+import org.eclipse.che.ide.ui.loaders.initialization.InitialLoadingInfo;
 import org.eclipse.che.ide.websocket.MessageBus;
 import org.eclipse.che.ide.websocket.MessageBusProvider;
-import org.eclipse.che.ide.websocket.events.MessageHandler;
 import org.eclipse.che.ide.websocket.rest.Unmarshallable;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,14 +42,13 @@ import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.eclipse.che.ide.api.notification.StatusNotification.Status.PROGRESS;
-import static org.mockito.Matchers.anyObject;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.eq;
+import static org.eclipse.che.api.machine.shared.dto.event.MachineStatusEvent.EventType.CREATING;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Dmitry Shnurenko
@@ -53,23 +56,25 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class MachineStateNotifierTest {
 
-    private static final String SOME_TEXT = "someText";
+    private static final String SOME_TEXT    = "someText";
+    private static final String MACHINE_NAME = "machineName";
+    private static final String MACHINE_ID   = "machineId";
+
+    private EventBus eventBus = new SimpleEventBus();
 
     //constructor mocks
     @Mock
-    private MessageBusProvider          messageBusProvider;
-    @Mock
-    private EventBus                    eventBus;
-    @Mock
-    private AppContext                  appContext;
-    @Mock
-    private DtoUnmarshallerFactory      dtoUnmarshallerFactory;
+    private InitialLoadingInfo initialLoadingInfo;
     @Mock
     private NotificationManager         notificationManager;
     @Mock
     private MachineLocalizationConstant locale;
     @Mock
-    private MachinePanelPresenter       machinePanelPresenter;
+    private MachineServiceClient        machineServiceClient;
+
+
+
+
 
     //additional mocks
     @Mock
@@ -85,61 +90,83 @@ public class MachineStateNotifierTest {
     @Mock
     private WorkspaceStartedEvent              event;
 
+
+    @Mock
+    private EnvironmentStatusChangedEvent environmentStatusChangedEvent;
+
     @Captor
-    private ArgumentCaptor<StatusNotification>      notificationCaptor;
+    private ArgumentCaptor<StatusNotification>            notificationCaptor;
     @Captor
     private ArgumentCaptor<WorkspaceStartedEvent.Handler> startWorkspaceHandlerCaptor;
+
+    @Mock
+    private Promise<MachineDto> machinePromise;
+
+    @Captor
+    private ArgumentCaptor<Operation<MachineDto>> machineCaptor;
+
+    @Captor
+    private ArgumentCaptor<MachineStateEvent> machineStateEventCaptor;
 
     @InjectMocks
     private MachineStatusNotifier stateNotifier;
 
     @Before
     public void setUp() {
-        when(dtoUnmarshallerFactory.newWSUnmarshaller(MachineStatusEvent.class)).thenReturn(unmarshaller);
+//        when(dtoUnmarshallerFactory.newWSUnmarshaller(MachineStatusEvent.class)).thenReturn(unmarshaller);
+//
+//        when(locale.notificationCreatingMachine(SOME_TEXT)).thenReturn(SOME_TEXT);
+//        when(locale.notificationDestroyingMachine(SOME_TEXT)).thenReturn(SOME_TEXT);
+//
+//        when(messageBusProvider.getMessageBus()).thenReturn(messageBus);
+//
+//        when(machine.getConfig()).thenReturn(machineConfig);
+//
+//        verify(eventBus).addHandler(eq(WorkspaceStartedEvent.TYPE), startWorkspaceHandlerCaptor.capture());
+//        startWorkspaceHandlerCaptor.getValue().onWorkspaceStarted(event);
 
-        when(locale.notificationCreatingMachine(SOME_TEXT)).thenReturn(SOME_TEXT);
-        when(locale.notificationDestroyingMachine(SOME_TEXT)).thenReturn(SOME_TEXT);
+        MachineStatusNotifier statusNotifier = new MachineStatusNotifier(eventBus, );
 
-        when(messageBusProvider.getMessageBus()).thenReturn(messageBus);
-
-        when(machine.getConfig()).thenReturn(machineConfig);
-
-        verify(eventBus).addHandler(eq(WorkspaceStartedEvent.TYPE), startWorkspaceHandlerCaptor.capture());
-        startWorkspaceHandlerCaptor.getValue().onWorkspaceStarted(event);
+        when(environmentStatusChangedEvent.getMachineId()).thenReturn(MACHINE_ID);
+        when(environmentStatusChangedEvent.getMachineName()).thenReturn(MACHINE_NAME);
+        when(machineServiceClient.getMachine(MACHINE_ID)).thenReturn(machinePromise);
+        when(machinePromise.then(Matchers.<Operation<MachineDto>>anyObject())).thenReturn(machinePromise);
+        when(machinePromise.catchError(Matchers.<Operation<PromiseError>>anyObject())).thenReturn(machinePromise);
     }
 
     @Test
-    public void machineShouldBeTrackedWhenMachineStateIsCreating() throws Exception {
-        WorkspaceDto workspace = mock(WorkspaceDto.class);
-        when(appContext.getWorkspace()).thenReturn(workspace);
-        when(workspace.getId()).thenReturn(SOME_TEXT);
-        when(machineConfig.getName()).thenReturn(SOME_TEXT);
-        when(notificationManager.notify(anyString(), eq(PROGRESS), anyObject())).thenReturn(notification);
-        stateNotifier.trackMachine(machine, MachineManager.MachineOperationType.START);
+    public void shouldNotifyWhenDevMachineStateIsCreating() throws Exception {
+        MachineDto machineDto = mock(MachineDto.class);
+        MachineConfigDto machineConfigDto = mock(MachineConfigDto.class);
+        when(machineDto.getConfig()).thenReturn(machineConfigDto);
+        when(machineConfigDto.isDev()).thenReturn(false);
 
-        verify(notification).setTitle(eq(SOME_TEXT));
+        when(environmentStatusChangedEvent.getEventType()).thenReturn(CREATING);
+        stateNotifier.onEnvironmentStatusChanged(environmentStatusChangedEvent);
 
-        verify(locale).notificationCreatingMachine(SOME_TEXT);
-        verify(locale, never()).notificationDestroyingMachine(SOME_TEXT);
+        verify(machinePromise).then(machineCaptor.capture());
+        machineCaptor.getValue().apply(machineDto);
 
-        verify(messageBus).subscribe(anyString(), Matchers.<MessageHandler>anyObject());
-    }
+        eventBus.addHandler(MachineStateEvent.TYPE, new MachineStateEvent.Handler() {
+            @Override
+            public void onMachineCreating(MachineStateEvent event) {
+                event.getMachine();
+            }
 
-    @Test
-    public void machineShouldBeTrackedWhenMachineStateIsDestroying() throws Exception {
-        WorkspaceDto workspace = mock(WorkspaceDto.class);
-        when(appContext.getWorkspace()).thenReturn(workspace);
-        when(workspace.getId()).thenReturn(SOME_TEXT);
-        when(machineConfig.getName()).thenReturn(SOME_TEXT);
-        when(notificationManager.notify(anyString(), eq(PROGRESS), anyObject())).thenReturn(notification);
-        stateNotifier.trackMachine(machine, MachineManager.MachineOperationType.DESTROY);
+            @Override
+            public void onMachineRunning(MachineStateEvent event) {
 
-        verify(notification).setTitle(eq(SOME_TEXT));
+            }
 
-        verify(locale).notificationDestroyingMachine(SOME_TEXT);
-        verify(locale, never()).notificationCreatingMachine(SOME_TEXT);
+            @Override
+            public void onMachineDestroyed(MachineStateEvent event) {
 
-        verify(messageBus).subscribe(anyString(), Matchers.<MessageHandler>anyObject());
+            }
+        });
+//        verify(eventBus).fireEvent(machineStateEventCaptor.capture());
+//        MachineStateEvent machineStateEvent = machineStateEventCaptor.getValue();
+
+//        assertTrue();
     }
 
 }

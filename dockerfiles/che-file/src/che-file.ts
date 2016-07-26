@@ -14,6 +14,8 @@
 // imports
 import {RemoteIp} from './remoteip';
 import {RecipeBuilder} from './recipebuilder';
+import {Workspace} from './workspace';
+import {WorkspaceDto} from './dto/workspacedto';
 
 
 // grab default hostname from the remote ip component
@@ -53,7 +55,107 @@ var chePropertiesFile = path.resolve(confFolder, 'che.properties');
 var mode;
 var args = process.argv.slice(2);
 
-analyzeArgs(args);
+
+var WebSocketClient = require('websocket').client;
+
+var client = new WebSocketClient();
+
+client.on('connectFailed', function(error) {
+  console.log('Connect Error: ' + error.toString());
+});
+
+client.on('connect', function(connection) {
+  console.log('WebSocket Client Connected');
+
+
+
+  connection.on('error', function(error) {
+    console.log("Connection Error: " + error.toString());
+  });
+  connection.on('close', function() {
+    console.log('echo-protocol Connection Closed');
+  });
+  connection.on('message', (message) => {
+    console.log('receive message =', message);
+    if (message.type === 'utf8') {
+      console.log("Received: '" + message.utf8Data + "'");
+
+      var parseMessage = JSON.parse(message.utf8Data);
+      var body = JSON.parse(parseMessage.body);
+      console.log('receiving body =', body);
+      console.log('receiving body.eventType =', body.eventType);
+      if ('RUNNING' === body.eventType) {
+        console.log('receiving running event so close events');
+        connection.close();
+      }
+
+    }
+  });
+
+  function initSubscribeChannel() {
+    console.log('we are connected ?', connection.connected);
+
+    //'{"uuid":"7627ac4f-3eb1-445f-f9f5-154893cbe095","method":"POST","path":null,"headers":[{"name":"x-everrest-websocket-message-type","value":"subscribe-channel"}],"body":"{\"channel\":\"workspace:workspaceeejdvodseabeluj4\"}"}');
+    if (connection.connected) {
+      //var data = {"uuid":"fdd70fc1-210c-41c1-bc8d-f18816e4a8dd","method":"POST","path":null,"headers":[{"name":"x-everrest-websocket-message-type","value":"ping"}]};
+      //connection.sendUTF(JSON.stringify(data));
+      var data3 ={"uuid":"d68267b7-a205-4436-d34e-f9b6590684c6","method":"POST","path":null,"headers":[{"name":"x-everrest-websocket-message-type","value":"subscribe-channel"}],"body":"{\"channel\":\"workspace:workspaceeejdvodseabeluj4\"}"};
+      connection.sendUTF(JSON.stringify(data3));
+
+
+
+
+
+      console.log('in sendNumber');
+
+      /*var number = Math.round(Math.random() * 0xFFFFFF);
+      connection.sendUTF(number.toString());*/
+
+    } else {
+      setTimeout(initSubscribeChannel, 1000);
+
+    }
+
+  }
+  initSubscribeChannel();
+});
+
+client.connect('ws://192.168.65.2:8080/wsmaster/api/ws/workspaceeejdvodseabeluj4');
+
+//
+//
+//
+//var workspace : Workspace = new Workspace(che.hostname, 8080);
+//// Create the workspace
+//var promise: Promise<WorkspaceDto> = workspace.createWorkspace('florent-test', 'FROM codenvy/ubuntu_jdk8');
+//promise.then( workspaceDto => {
+//
+//  // start it
+//  var startWorkspacePromise: Promise<WorkspaceDto> = workspace.startWorkspace(workspaceDto.getId());
+//  startWorkspacePromise.then( workspaceDto => {
+//    console.log('successfully started', workspaceDto);
+//    // now display the content
+//
+//
+//
+//
+//
+//  }, error => {
+//    console.log('error starting workspace', error)
+//  });
+//
+//},  r =>
+//{
+//  console.log('response failure is ', r.toString());
+//});
+
+
+console.log('waiting....');
+
+
+
+
+//analyzeArgs(args);
 
 function analyzeArgs(args) {
   if (args.length == 0) {

@@ -6,6 +6,9 @@ $ build.sh
 (or look at the content of this script)
 ````
 
+# Typescript
+# install typings: tsd install <name-of-module> --save
+
 
 # Run
 

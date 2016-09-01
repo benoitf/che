@@ -165,9 +165,11 @@ public class ComposeMachineProviderImpl implements ComposeMachineInstanceProvide
         allMachinesSystemVolumes = removeEmptyAndNullValues(allMachinesSystemVolumes);
         devMachineSystemVolumes = removeEmptyAndNullValues(devMachineSystemVolumes);
 
-        Set<String> volumes = new HashSet<>();
-        devMachineSystemVolumes.forEach((volume) -> Arrays.asList(volume.split(";")).stream().forEach((entry) -> volumes.add(entry)));
-        devMachineSystemVolumes = volumes;
+        devMachineSystemVolumes = devMachineSystemVolumes.stream()
+                                                         .map(line -> line.split(";"))
+                                                         .flatMap(Arrays::stream)
+                                                         .distinct()
+                                                         .collect(Collectors.toSet());
 
         if (SystemInfo.isWindows()) {
             allMachinesSystemVolumes = escapePaths(allMachinesSystemVolumes);

@@ -31,8 +31,5 @@ public class DockerTerminalModule extends AbstractModule {
                                                                           Names.named("machine.docker.machine_servers"));
         machineServers.addBinding().toProvider(TerminalServerConfProvider.class);
 
-        Multibinder<String> volumesMultibinder =
-                Multibinder.newSetBinder(binder(), String.class, Names.named("machine.docker.machine_volumes"));
-        volumesMultibinder.addBinding().toProvider(org.eclipse.che.plugin.docker.machine.ext.provider.TerminalVolumeProvider.class);
     }
 }

@@ -1,0 +1,62 @@
+<md-progress-linear md-mode="indeterminate" ng-show="diagnosticsController.isLoading"></md-progress-linear>
+<div ng-show="!diagnosticsController.isLoading">
+  <md-content class="diagnostics-content">
+
+    <che-button-default che-button-title="Start diagnostics"
+                        che-button-icon="fa fa-play-circle-o"
+                        ng-click="diagnosticsController.start()"
+                        ng-if="!diagnosticsController.isTesting"
+    ></che-button-default>
+
+    <che-list flex ng-if="diagnosticsController.items && diagnosticsController.items.length > 0">
+      <che-list-item
+        ng-repeat="item in diagnosticsController.items"
+        ng-mouseover="hover=true"
+        ng-mouseout="hover=false">
+        <div flex="100"
+             layout="column"
+             layout-align="start stretch"
+             class="che-list-item-row">
+          <div flex
+               layout-xs="row" layout-gt-xs="row"
+               layout-align-gt-xs="start start"
+               layout-align-xs="start start"
+               class="che-list-item-details">
+            <div class="che-list-item-name">
+              <i class="fa fa-circle-o check-item-icon check-item-icon-ready" ng-if="diagnosticsController.isReady(item)"></i>
+              <div class="check-spinner">
+                <div class="spinner" ng-if="diagnosticsController.isInProgress(item)">
+                  <div class="rect1"></div>
+                  <div class="rect2"></div>
+                  <div class="rect3"></div>
+                </div>
+              </div>
+              <i class="fa fa-check-circle-o check-item-icon check-item-icon-ok" ng-if="diagnosticsController.isOk(item)"></i>
+              <i class="fa fa-times-circle-o check-item-icon check-item-icon-fail" ng-if="diagnosticsController.isFailure(item)"></i>
+              <i class="fa fa-times-circle-o check-item-icon check-item-icon-ko" ng-if="diagnosticsController.isError(item)"></i>
+              <i class="fa fa-stop-circle-o check-item-icon check-item-icon-ko" ng-if="diagnosticsController.isAbort(item)"></i>
+            </div>
+            <div flex-gt-xs="70">
+              {{item.title}} : {{item.message}}
+            </div>
+          </div>
+          <div flex layout-xs="row" layout-gt-xs="row"
+               layout-align-gt-xs="start start"
+               layout-align-xs="start start"
+               class="che-list-item-details">
+            <che-logs-output ng-if="item.content"
+                             che-title="Log"
+                             che-text="item.content"
+                             che-scrollback="100"
+                             che-refresh-time="500"></che-logs-output>
+            <!--
+            <div class="diagnostics-output" che-auto-scroll ng-if="item.content">{{item.content}}</div>-->
+          </div>
+        </div>
+      </che-list-item>
+    </che-list>
+
+
+
+  </md-content>
+</div>

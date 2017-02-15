@@ -18,11 +18,17 @@
  */
 export class CheWebsocket {
 
+  private bus : MessageBus;
+  private wsBaseUrl : string;
+  private remoteBus : MessageBus;
+  private $interval : ng.IIntervalService;
+  private $websocket : any;
+
   /**
    * Default constructor that is using resource
    * @ngInject for Dependency injection
    */
-  constructor ($websocket, $location, $interval, proxySettings, userDashboardConfig) {
+  constructor ($websocket, $location, $interval : ng.IIntervalService, proxySettings, userDashboardConfig) {
 
     this.$websocket = $websocket;
     this.$interval = $interval;
@@ -32,7 +38,7 @@ export class CheWebsocket {
 
     if (inDevMode) {
       // it handle then http and https
-        wsUrl = proxySettings.replace('http', 'ws') + '/api/ws';
+      wsUrl = proxySettings.replace('http', 'ws') + '/api/ws';
     } else {
 
       var wsProtocol;
@@ -49,13 +55,16 @@ export class CheWebsocket {
     this.remoteBus = null;
   }
 
+  get wsUrl(): string {
+    return this.wsBaseUrl;
+  }
 
   getExistingBus(datastream) {
     return new MessageBus(datastream, this.$interval);
   }
 
 
-  getBus() {
+  getBus() : MessageBus {
     if (!this.bus) {
       // needs to initialize
       this.bus = new MessageBus(this.$websocket(this.wsBaseUrl), this.$interval);
@@ -146,7 +155,7 @@ class MessageBuilder {
 
 }
 
-class MessageBus { // jshint ignore:line
+export class MessageBus { // jshint ignore:line
 
   constructor(datastream, $interval) {
     this.datastream = datastream;
@@ -250,7 +259,7 @@ class MessageBus { // jshint ignore:line
     if (existingSubscribers > 1) {
       // only remove callback
       for(let i = 0; i < existingSubscribers.length; i++) {
-          delete existingSubscribers[i];
+        delete existingSubscribers[i];
       }
     } else {
       // only one element, remove and send server message
@@ -277,6 +286,8 @@ class MessageBus { // jshint ignore:line
     // get headers
     var headers = jsonMessage.headers;
 
+    console.log('receive message ', jsonMessage, 'and headers', headers);
+
     var channelHeader;
     // found channel headers
     for(let i = 0; i < headers.length; i++) {
@@ -285,6 +296,11 @@ class MessageBus { // jshint ignore:line
         channelHeader = header;
         continue;
       }
+    }
+
+    // handle case when we don't have channel but a raw message
+    if (!channelHeader && headers.length == 1 && headers[0].name === 'x-everrest-websocket-message-type') {
+      channelHeader = headers[0];
     }
 
 

@@ -15,6 +15,11 @@ import {AdministrationController} from './administration.controller';
 import {DockerRegistryList} from './docker-registry/docker-registry-list/docker-registry-list.directive';
 import {DockerRegistryListController} from './docker-registry/docker-registry-list/docker-registry-list.controller';
 import {EditRegistryController} from './docker-registry/docker-registry-list/edit-registry/edit-registry.controller';
+import {Diagnostics} from "./diagnostics/diagnostics.directive";
+import {DiagnosticsController} from "./diagnostics/diagnostics.controller";
+import {DiagnosticsWebsocketWsMaster} from "./diagnostics/test/diagnostics-websocket-wsmaster.factory";
+import {DiagnosticsWorkspaceStartCheck} from "./diagnostics/test/diagnostics-workspace-start-check.factory";
+import {DiagnosticsRunningWorkspaceCheck} from "./diagnostics/test/diagnostics-workspace-check-workspace.factory";
 
 
 export class AdministrationConfig {
@@ -24,6 +29,13 @@ export class AdministrationConfig {
 
     register.directive('dockerRegistryList', DockerRegistryList);
     register.controller('DockerRegistryListController', DockerRegistryListController);
+
+    register.factory('diagnosticsWebsocketWsMaster', DiagnosticsWebsocketWsMaster);
+    register.factory('diagnosticsWorkspaceStartCheck', DiagnosticsWorkspaceStartCheck);
+    register.factory('diagnosticsRunningWorkspaceCheck', DiagnosticsRunningWorkspaceCheck);
+    
+    register.directive('diagnostics', Diagnostics);
+    register.controller('DiagnosticsController', DiagnosticsController);
 
     register.controller('EditRegistryController', EditRegistryController);
 

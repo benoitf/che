@@ -10,10 +10,13 @@
  */
 package org.eclipse.che.ide.api.editor.document;
 
+import jsinterop.annotations.JsIgnore;
+import jsinterop.annotations.JsType;
 import org.eclipse.che.ide.api.editor.text.LinearRange;
 import org.eclipse.che.ide.api.editor.text.TextPosition;
 import org.eclipse.che.ide.api.editor.text.TextRange;
 
+@JsType
 public interface ReadOnlyDocument {
 
   /**
@@ -91,6 +94,7 @@ public interface ReadOnlyDocument {
    * @param range the range
    * @return the range content
    */
+  @JsIgnore
   String getContentRange(TextRange range);
 
   /**

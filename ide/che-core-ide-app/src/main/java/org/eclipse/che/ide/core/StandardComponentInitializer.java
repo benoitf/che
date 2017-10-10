@@ -41,6 +41,8 @@ import static org.eclipse.che.ide.api.constraints.Constraints.LAST;
 import static org.eclipse.che.ide.part.editor.recent.RecentFileStore.RECENT_GROUP_ID;
 import static org.eclipse.che.ide.projecttype.BlankProjectWizardRegistrar.BLANK_CATEGORY;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -95,8 +97,12 @@ import org.eclipse.che.ide.api.action.ActionManager;
 import org.eclipse.che.ide.api.action.DefaultActionGroup;
 import org.eclipse.che.ide.api.action.IdeActions;
 import org.eclipse.che.ide.api.constraints.Constraints;
+import org.eclipse.che.ide.api.editor.EditorAgent;
+import org.eclipse.che.ide.api.editor.EditorPartPresenter;
 import org.eclipse.che.ide.api.editor.EditorRegistry;
+import org.eclipse.che.ide.api.editor.document.Document;
 import org.eclipse.che.ide.api.editor.texteditor.EditorResources;
+import org.eclipse.che.ide.api.editor.texteditor.TextEditor;
 import org.eclipse.che.ide.api.filetypes.FileType;
 import org.eclipse.che.ide.api.filetypes.FileTypeRegistry;
 import org.eclipse.che.ide.api.icon.Icon;
@@ -197,6 +203,8 @@ public class StandardComponentInitializer {
   @Inject private KeyBindingAgent keyBinding;
 
   @Inject private ActionManager actionManager;
+
+  @Inject private EditorAgent editorAgent;
 
   @Inject private SaveAction saveAction;
 
@@ -583,6 +591,37 @@ public class StandardComponentInitializer {
     editGroup.addSeparator();
     editGroup.add(revealResourceAction);
 
+
+
+    DefaultActionGroup pluginGroup = new DefaultActionGroup("Plug-In", true, actionManager);
+    actionManager.registerAction("pluginGroup", pluginGroup);
+    final DefaultActionGroup mainMenu =
+        (DefaultActionGroup) actionManager.getAction(GROUP_MAIN_MENU);
+    mainMenu.add(pluginGroup);
+    Action pluginAction =
+        new Action("Inject", "Inject and start Plug-Ins") {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+            GWT.log("Injecting script from current tab editor...");
+
+            EditorPartPresenter editorPartPresenter = editorAgent.getActiveEditor();
+            if (editorPartPresenter instanceof TextEditor) {
+              TextEditor textEditor = (TextEditor) editorPartPresenter;
+              Document document = textEditor.getDocument();
+              String content = document.getContents();
+              ScriptInjector.fromString(content)
+                  .setRemoveTag(true)
+                  .setWindow(ScriptInjector.TOP_WINDOW)
+                  .inject();
+              GWT.log("Script injected and started");
+            }
+          }
+        };
+    actionManager.registerAction("startPlugins", pluginAction);
+    pluginGroup.add(pluginAction);
+
+
+
     // Assistant (New Menu)
     DefaultActionGroup assistantGroup =
         (DefaultActionGroup) actionManager.getAction(GROUP_ASSISTANT);
@@ -820,8 +859,6 @@ public class StandardComponentInitializer {
       // will appears and contains all of them as sub-menu
       final DefaultActionGroup windowMenu = new DefaultActionGroup("Window", true, actionManager);
       actionManager.registerAction("Window", windowMenu);
-      final DefaultActionGroup mainMenu =
-          (DefaultActionGroup) actionManager.getAction(GROUP_MAIN_MENU);
       mainMenu.add(windowMenu);
       for (Perspective perspective : perspectives.values()) {
         final Action action =

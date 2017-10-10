@@ -58,6 +58,11 @@
                 <version>${version.jsr305.plugin}</version>
             </dependency>
             <dependency>
+                <groupId>com.google.jsinterop</groupId>
+                <artifactId>jsinterop-annotations</artifactId>
+                <version>1.0.1</version>
+            </dependency>
+            <dependency>
                 <groupId>org.eclipse.che</groupId>
                 <artifactId>assembly-factory-war</artifactId>
                 <version>${che.version}</version>

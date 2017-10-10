@@ -372,6 +372,7 @@
                 <configuration>
                     <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
                     <extraJvmArgs>${gwt.compiler.extraJvmArgs}</extraJvmArgs>
+                    <generateJsInteropExports>true</generateJsInteropExports>
                     <modules>
                         <module>org.eclipse.che.ide.IDE</module>
                     </modules>

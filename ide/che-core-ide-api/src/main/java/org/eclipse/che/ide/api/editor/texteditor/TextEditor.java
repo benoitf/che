@@ -12,6 +12,7 @@ package org.eclipse.che.ide.api.editor.texteditor;
 
 import javax.validation.constraints.NotNull;
 import org.eclipse.che.commons.annotation.Nullable;
+import jsinterop.annotations.JsType;
 import org.eclipse.che.ide.api.editor.EditorPartPresenter;
 import org.eclipse.che.ide.api.editor.document.Document;
 import org.eclipse.che.ide.api.editor.editorconfig.EditorUpdateAction;
@@ -24,6 +25,7 @@ import org.eclipse.che.ide.api.editor.text.TextPosition;
 import org.eclipse.che.ide.api.editor.text.TextRange;
 
 /** Public view on the editor component. */
+@JsType
 public interface TextEditor extends EditorPartPresenter {
 
   /**

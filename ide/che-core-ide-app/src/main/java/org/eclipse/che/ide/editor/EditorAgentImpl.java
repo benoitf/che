@@ -62,6 +62,8 @@ import org.eclipse.che.ide.api.event.SelectionChangedEvent;
 import org.eclipse.che.ide.api.event.SelectionChangedHandler;
 import org.eclipse.che.ide.api.event.WindowActionEvent;
 import org.eclipse.che.ide.api.event.WindowActionHandler;
+import org.eclipse.che.ide.api.export.GWTPluginManager;
+import org.eclipse.che.ide.api.export.Window;
 import org.eclipse.che.ide.api.filetypes.FileType;
 import org.eclipse.che.ide.api.filetypes.FileTypeRegistry;
 import org.eclipse.che.ide.api.notification.NotificationManager;
@@ -149,6 +151,9 @@ public class EditorAgentImpl
     eventBus.addHandler(SelectionChangedEvent.TYPE, this);
     eventBus.addHandler(WindowActionEvent.TYPE, this);
     eventBus.addHandler(WorkspaceStoppedEvent.TYPE, this);
+    // export
+    Window.setEditorAgent(this);
+    new GWTPluginManager();
   }
 
   @Override

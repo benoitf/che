@@ -25,6 +25,7 @@ import org.eclipse.che.api.promises.client.Promise;
 import org.eclipse.che.api.promises.client.PromiseProvider;
 import org.eclipse.che.ide.api.component.StateComponent;
 import org.eclipse.che.ide.api.constraints.Constraints;
+import org.eclipse.che.ide.api.export.Panels;
 import org.eclipse.che.ide.api.mvp.Presenter;
 import org.eclipse.che.ide.api.parts.PartPresenter;
 import org.eclipse.che.ide.api.parts.PartStack;
@@ -86,6 +87,7 @@ public class WorkspacePresenter
     perspectiveManagerProvider.get().addListener(this);
 
     onPerspectiveChanged();
+    Panels.setWorkspaceAgent(this);
   }
 
   /** {@inheritDoc} */

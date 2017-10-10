@@ -109,10 +109,10 @@ public class PartStackViewImpl extends ResizeComposite
   @Override
   public void removeTab(@NotNull PartPresenter presenter) {
     TabItem tab = tabs.get(presenter);
-
-    tabsPanel.remove(tab.getView());
+    if (tab != null) {
+      tabsPanel.remove(tab.getView());
+    }
     contentPanel.remove(presenter.getView());
-
     tabs.remove(presenter);
   }
 

@@ -34,6 +34,7 @@ import org.eclipse.che.ide.api.action.DefaultActionGroup;
 import org.eclipse.che.ide.api.action.IdeActions;
 import org.eclipse.che.ide.api.action.Presentation;
 import org.eclipse.che.ide.api.action.PromisableAction;
+import org.eclipse.che.ide.api.export.Actions;
 import org.eclipse.che.ide.api.parts.PerspectiveManager;
 import org.eclipse.che.ide.ui.toolbar.PresentationFactory;
 import org.eclipse.che.ide.util.Pair;
@@ -65,6 +66,7 @@ public class ActionManagerImpl implements ActionManager {
     this.myId2Index = new HashMap<>();
     this.myAction2Id = new HashMap<>();
     registerDefaultActionGroups();
+    Actions.setActionManager(this);
   }
 
   private void registerDefaultActionGroups() {
@@ -159,6 +161,7 @@ public class ActionManagerImpl implements ActionManager {
 
     DefaultActionGroup rightStatusPanelGroup = new DefaultActionGroup(this);
     registerAction(IdeActions.GROUP_RIGHT_STATUS_PANEL, rightStatusPanelGroup);
+
   }
 
   private static void reportActionError(final String pluginId, final String message) {

@@ -12,6 +12,8 @@ package org.eclipse.che.ide.api.action;
 
 import java.util.List;
 import java.util.Map;
+import jsinterop.annotations.JsIgnore;
+import jsinterop.annotations.JsType;
 import org.eclipse.che.api.promises.client.Promise;
 import org.eclipse.che.ide.api.extension.SDK;
 import org.eclipse.che.ide.util.Pair;
@@ -24,6 +26,7 @@ import org.eclipse.che.ide.util.Pair;
  * @see Action
  */
 @SDK(title = "ide.api.ui.action")
+@JsType
 public interface ActionManager {
 
   /**
@@ -62,6 +65,7 @@ public interface ActionManager {
    *     the correct place under the "Plugins" node in the "Keymap" settings pane and similar
    *     dialogs.
    */
+  @JsIgnore
   void registerAction(String actionId, Action action, String extensionId);
 
   /**

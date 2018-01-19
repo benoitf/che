@@ -13,6 +13,8 @@ import {CheAPI} from '../../components/api/che-api.factory';
 import {CheWorkspace} from '../../components/api/workspace/che-workspace.factory';
 import {RouteHistory} from '../../components/routing/route-history.service';
 import {CheUIElementsInjectorService} from '../../components/service/injector/che-ui-elements-injector.service';
+import {CheJsonRpcMasterApi} from "../../components/api/json-rpc/che-json-rpc-master-api";
+import {CheJsonRpcApi} from "../../components/api/json-rpc/che-json-rpc-api.factory";
 
 /**
  * This class is handling the service for viewing the IDE
@@ -40,6 +42,13 @@ class IdeSvc {
 
   ideAction: string;
 
+  private jsonRpcMasterApi: CheJsonRpcMasterApi;
+  private cheJsonRpcApi: CheJsonRpcApi;
+  private outputByMachine: any;
+  private statusByMachine: Map<string, string>;
+  private workspaceStatus : string;
+  private subscribers : Map<string, boolean>;
+
   /**
    * Default constructor that is using resource
    * @ngInject for Dependency injection
@@ -47,7 +56,7 @@ class IdeSvc {
   constructor($location: ng.ILocationService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService,
               $q: ng.IQService, $rootScope: ng.IRootScopeService, $sce: ng.ISCEService, $timeout: ng.ITimeoutService,
               cheAPI: CheAPI, cheWorkspace: CheWorkspace, lodash: any, proxySettings: any, routeHistory: RouteHistory,
-              userDashboardConfig: any, cheUIElementsInjectorService: CheUIElementsInjectorService) {
+              cheJsonRpcApi: CheJsonRpcApi, userDashboardConfig: any, cheUIElementsInjectorService: CheUIElementsInjectorService) {
     this.$location = $location;
     this.$log = $log;
     this.$mdDialog = $mdDialog;
@@ -62,11 +71,15 @@ class IdeSvc {
     this.routeHistory = routeHistory;
     this.userDashboardConfig = userDashboardConfig;
     this.cheUIElementsInjectorService = cheUIElementsInjectorService;
-
+    this.cheJsonRpcApi = cheJsonRpcApi;
     this.ideParams = new Map();
 
     this.lastWorkspace = null;
     this.openedWorkspace = null;
+    this.outputByMachine = {};
+    this.statusByMachine = new Map();
+    this.workspaceStatus = "";
+    this.subscribers = new Map();
   }
 
   displayIDE(): void {
@@ -136,38 +149,97 @@ class IdeSvc {
     (this.$rootScope as any).hideNavbar = false;
 
     this.updateRecentWorkspace(workspaceId);
-
-    let inDevMode = this.userDashboardConfig.developmentMode;
-    let randVal = Math.floor((Math.random() * 1000000) + 1);
-    let appendUrl = '?uid=' + randVal;
-
     let workspace = this.cheWorkspace.getWorkspaceById(workspaceId);
-    this.openedWorkspace = workspace;
 
-    let ideUrlLink = workspace.links.ide;
+    this.statusByMachine.clear();
+    this.outputByMachine = {};
+    let machineStatusHandler = (message: any) => {
+      console.log('machine status', message);
+      this.statusByMachine.set(message.machineName, message.eventType);
+
+    };
+
+
+    let machineOutputHandler = (message: any) => {
+      console.log('machine output', message);
+
+
+      if (!this.outputByMachine[message.machineName]) {
+        this.outputByMachine[message.machineName] =  [];
+
+      }
+      this.outputByMachine[message.machineName].push(message.text);
+
+      console.log("output machine = ", this.outputByMachine);
+
+    };
+    let workspaceStatusHandler = (message: any) => {
+      console.log('workspace status', message);
+      this.workspaceStatus = message.status;
+    };
+
+    this.jsonRpcMasterApi = this.cheJsonRpcApi.getJsonRpcMasterApi(this.cheAPI.getWorkspace().getJsonRpcApiLocation());
+
+    // register subscribers only if not present
+    if (!this.subscribers.has(workspaceId)) {
+      this.subscribers.set(workspaceId, true);
+      console.log("subscribe on workspace id", workspaceId);
+      this.jsonRpcMasterApi.subscribeEnvironmentStatus(workspaceId, machineStatusHandler);
+      this.jsonRpcMasterApi.subscribeEnvironmentOutput(workspaceId, machineOutputHandler);
+      this.jsonRpcMasterApi.subscribeWorkspaceStatus(workspaceId, workspaceStatusHandler);
+    }
+
+
+    if (workspace.status === 'STARTING') {
+        this.cheWorkspace.fetchStatusChange(workspace.id, 'RUNNING').then(() => {
+          this.openIdeAfterRunning(workspaceId);
+        });
+    } else if (workspace.status === 'RUNNING') {
+
+    this.cheWorkspace.fetchWorkspaceDetails(workspaceId).then(() => {
+      this.openIdeAfterRunning(workspaceId);
+    });
+
+    } else {
+
+
+
+
+        // start it before
+      let promiseStart: ng.IPromise<any> = this.startIde(workspace);
+      promiseStart.then(() => {
+        this.openIdeAfterRunning(workspaceId);
+      }, (error: any) => {
+        console.log("got error", error);
+      });
+    }
+
 
     if (this.ideAction != null) {
-      appendUrl = appendUrl + '&action=' + this.ideAction;
-
       // reset action
       this.ideAction = null;
     }
 
     if (this.ideParams) {
-      for (let [key, val] of this.ideParams) {
-        appendUrl = appendUrl + '&' + key + '=' + val;
-      }
       this.ideParams.clear();
     }
+  }
+
+  private openIdeAfterRunning(workspaceId: string): void {
+    // ok it's started
+    let workspaceRuntime = this.cheWorkspace.getWorkspaceById(workspaceId);
+
+    let theiaUrl = workspaceRuntime.runtime.machines.theia.servers.theia.url;
 
     // perform remove of iframes in parent node. It's needed to avoid any script execution (canceled requests) on iframe source changes.
     let iframeParent = angular.element('#ide-application-frame');
     iframeParent.find('iframe').remove();
+    let inDevMode = this.userDashboardConfig.developmentMode;
 
     if (inDevMode) {
-      (this.$rootScope as any).ideIframeLink = this.$sce.trustAsResourceUrl(ideUrlLink + appendUrl);
+      (this.$rootScope as any).ideIframeLink = this.$sce.trustAsResourceUrl(theiaUrl);
     } else {
-      (this.$rootScope as any).ideIframeLink = ideUrlLink + appendUrl;
+      (this.$rootScope as any).ideIframeLink = theiaUrl;
     }
 
     // iframe element for IDE application:
@@ -175,10 +247,10 @@ class IdeSvc {
     this.cheUIElementsInjectorService.injectAdditionalElement(iframeParent, iframeElement);
 
     let defer = this.$q.defer();
-    if (workspace.status === 'RUNNING') {
+    if (workspaceRuntime.status === 'RUNNING') {
       defer.resolve();
     } else {
-      this.cheWorkspace.fetchStatusChange(workspace.id, 'STARTING').then(() => {
+      this.cheWorkspace.fetchStatusChange(workspaceRuntime.id, 'STARTING').then(() => {
         defer.resolve();
       }, (error: any) => {
         defer.reject(error);
@@ -186,9 +258,11 @@ class IdeSvc {
       });
     }
     defer.promise.then(() => {
+      this.displayIDE();
       // update list of recent workspaces
       this.cheWorkspace.fetchWorkspaces();
     });
+
   }
 
   /**

@@ -102,10 +102,12 @@ export class System {
    * @returns {Promise<string>}
    */
   shutdown(systemStateDto: org.eclipse.che.api.system.shared.dto.SystemStateDto, callStop: boolean) : Promise<org.eclipse.che.api.system.shared.dto.SystemStateDto> {
-    let callbackSubscriber : SystemStopEventPromiseMessageBusSubscriber;
+    let callbackSubscriber: SystemStopEventPromiseMessageBusSubscriber;
+
+
     return this.getMessageBus(systemStateDto).then((messageBus: MessageBus) => {
       callbackSubscriber = new SystemStopEventPromiseMessageBusSubscriber(messageBus);
-      let channelToListen : string;
+      let channelToListen: string;
       systemStateDto.getLinks().forEach(stateLink => {
         if ('system.state.channel' === stateLink.getRel()) {
           channelToListen = stateLink.getParameters()[0].getDefaultValue();
@@ -113,21 +115,30 @@ export class System {
       });
       return messageBus.subscribeAsync(channelToListen, callbackSubscriber);
     }).then((subscribed: string) => {
-      if (callStop) {
-        let jsonRequest: HttpJsonRequest = new DefaultHttpJsonRequest(this.authData, null, '/api/system/stop', 204).setMethod('POST');
-        return jsonRequest.request().then((jsonResponse: HttpJsonResponse) => {
-          return;
-        }).then(() => {
-          return callbackSubscriber.promise;
-        }).then(() => {
-          return this.getState();
-        });
-      } else {
-        return callbackSubscriber.promise.then(() => {
-          return this.getState();
-        });
-      }
+
+      let promise = new Promise<org.eclipse.che.api.system.shared.dto.SystemStateDto>((resolve, reject) => {
+        setTimeout(resolve(), 2000);
+      });
+
+      return promise.then(() => {
+        if (callStop) {
+          let jsonRequest: HttpJsonRequest = new DefaultHttpJsonRequest(this.authData, null, '/api/system/stop', 204).setMethod('POST');
+          return jsonRequest.request().then((jsonResponse: HttpJsonResponse) => {
+            return;
+          }).then(() => {
+            return callbackSubscriber.promise;
+          }).then(() => {
+            return this.getState();
+          });
+        } else {
+          return callbackSubscriber.promise.then(() => {
+            return this.getState();
+          });
+        }
+      });
     });
+
+
   }
 
 }

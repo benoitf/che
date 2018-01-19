@@ -15,6 +15,18 @@
   <div class="ide-page-loader"
        layout="column" layout-align="center center">
     <div ng-hide="ideCtrl.selectedWorkspaceExists">Workspace doesn't exist, unable to open IDE.</div>
+
+    <div>Workspace status: {{ideCtrl.ideSvc.workspaceStatus}}</div>
+
+    <ul>
+      <li ng-repeat='(key, value) in ideCtrl.ideSvc.outputByMachine'>
+        <span>Machine: {{key}}, status : {{ideCtrl.ideSvc.statusByMachine.get(key)}}</span>
+
+        <div ng-repeat="line in value track by $index">{{line}}</div>
+      </li>
+    </ul>
+
+
     <div class="ide-frame-loader" ng-show="ideCtrl.selectedWorkspaceExists" />
   </div>
 </div>

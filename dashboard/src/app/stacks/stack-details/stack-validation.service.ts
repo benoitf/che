@@ -139,23 +139,6 @@ export class StackValidationService {
         errors = errors.concat(machineValidation.errors);
       }
     });
-    // add dev machine validation
-    let wsAgent = 'org.eclipse.che.ws-agent';
-    let devMachines: string[] = [];
-    keys.forEach((key: string) => {
-      let machine: che.IEnvironmentMachine = environment.machines[key];
-      if (machine.installers && machine.installers.indexOf(wsAgent) > -1) {
-        devMachines.push(key);
-      }
-    });
-    if (devMachines.length !== 1) {
-      let error = `Exactly one of machines should contain '${wsAgent}' in agent's list.`;
-      if (devMachines.length === 0) {
-        error = 'Can\'t find development machine. ' + error;
-      }
-      isValid = false;
-      errors.push(error);
-    }
     // add recipe validation
     let recipeValidation = this.getRecipeValidation(environment.recipe);
     if (!recipeValidation.isValid) {

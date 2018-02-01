@@ -1,9 +1,9 @@
 [
   {
-    "id": "java-theia",
+    "id": "java-theia-docker",
     "creator": "ide",
-    "name": "Java Theia",
-    "description": "Java + Theia in a sidecar container",
+    "name": "Java Theia (docker)",
+    "description": "Java + Theia in a sidecar container (docker)",
     "scope": "general",
     "tags": [
       "Java 1.8, Theia"
@@ -78,7 +78,88 @@
           },
           "recipe": {
             "type": "compose",
-            "content": "services:\n theia:\n  image: theiaide/theia\n  mem_limit: 1073741824\n dev-machine:\n  image: eclipse/ubuntu_jdk8\n  mem_limit: 2147483648\n  depends_on:\n    - theia",
+            "content": "services:\n theia:\n  image: theiaide/theia\n  entrypoint:\n  - yarn\n  - theia\n  - start\n  - /projects\n  - --hostname=0.0.0.0\n  mem_limit: 1073741824\n dev-machine:\n  image: eclipse/ubuntu_jdk8\n  mem_limit: 2147483648\n  depends_on:\n    - theia",
+            "contentType": "application/x-yaml"
+          }
+        }
+      },
+      "defaultEnv": "default",
+      "name": "theia-workspace",
+      "projects": [],
+      "commands": [
+        {
+          "commandLine": "echo 'hello' && ls -la $HOME/'",
+          "name": "test command",
+          "attributes": {},
+          "type": "custom"
+        }
+      ],
+      "links": []
+    },
+    "stackIcon": {
+      "name": "type-java.svg",
+      "mediaType": "image/svg+xml"
+    }
+  },
+  {
+    "id": "java-theia-openshift",
+    "creator": "ide",
+    "name": "Java Theia (openshift)",
+    "description": "Java + Theia in a sidecar container (openshift)",
+    "scope": "general",
+    "tags": [
+      "Java 1.8, Theia"
+    ],
+    "components": [
+      {
+        "name": "JDK",
+        "version": "1.8.0_45"
+      },
+      {
+        "name": "Maven",
+        "version": "3.2.2"
+      }
+    ],
+    "source": {
+      "type": "image",
+      "origin": "eclipse/ubuntu_jdk8"
+    },
+    "workspaceConfig": {
+      "environments": {
+        "default": {
+          "machines": {
+            "ws/theia": {
+              "attributes": {},
+              "servers": {
+                "theia": {
+                  "port": "3000",
+                  "attributes": {},
+                  "protocol": "http"
+                }
+              },
+              "volumes": {
+                "projects": {
+                  "path": "/projects"
+                }
+              },
+              "installers": [],
+              "env": {}
+            },
+            "ws/dev": {
+              "attributes": {},
+              "servers": {},
+              "volumes": {
+                "projects": {
+                  "path": "/projects"
+                }
+              },
+              "installers": [],
+              "env": {}
+            }
+          },
+          "recipe": {
+            "type": "openshift",
+            "content": "---\nkind: List\nitems:\n-\n  apiVersion: v1\n  kind: Pod\n  metadata:\n    name: ws\n  spec:\n    containers:\n      -\n        image: theiaide/theia\n        command:\n          - yarn\n        args:\n          - theia\n          - start\n          - /projects\n          - --hostname=0.0.0.0\n        name: theia\n      -\n        image: eclipse/ubuntu_jdk8\n        name: dev",
             "contentType": "application/x-yaml"
           }
         }
@@ -101,4 +182,5 @@
       "mediaType": "image/svg+xml"
     }
   }
+
 ]

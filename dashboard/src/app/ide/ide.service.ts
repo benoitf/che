@@ -13,8 +13,8 @@ import {CheAPI} from '../../components/api/che-api.factory';
 import {CheWorkspace} from '../../components/api/workspace/che-workspace.factory';
 import {RouteHistory} from '../../components/routing/route-history.service';
 import {CheUIElementsInjectorService} from '../../components/service/injector/che-ui-elements-injector.service';
-import {CheJsonRpcMasterApi} from "../../components/api/json-rpc/che-json-rpc-master-api";
-import {CheJsonRpcApi} from "../../components/api/json-rpc/che-json-rpc-api.factory";
+import {CheJsonRpcMasterApi} from '../../components/api/json-rpc/che-json-rpc-master-api';
+import {CheJsonRpcApi} from '../../components/api/json-rpc/che-json-rpc-api.factory';
 
 /**
  * This class is handling the service for viewing the IDE
@@ -28,6 +28,7 @@ class IdeSvc {
   $rootScope: ng.IRootScopeService;
   $sce: ng.ISCEService;
   $timeout: ng.ITimeoutService;
+  $http : ng.IHttpService;
   cheAPI: CheAPI;
   cheWorkspace: CheWorkspace;
   lodash: any;
@@ -42,24 +43,28 @@ class IdeSvc {
 
   ideAction: string;
 
+  pingIDEURL: number;
+
   private jsonRpcMasterApi: CheJsonRpcMasterApi;
   private cheJsonRpcApi: CheJsonRpcApi;
   private outputByMachine: any;
   private statusByMachine: Map<string, string>;
   private workspaceStatus : string;
   private subscribers : Map<string, boolean>;
+  private hasMachineLog: boolean;
 
   /**
    * Default constructor that is using resource
    * @ngInject for Dependency injection
    */
   constructor($location: ng.ILocationService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService,
-              $q: ng.IQService, $rootScope: ng.IRootScopeService, $sce: ng.ISCEService, $timeout: ng.ITimeoutService,
+              $http: ng.IHttpService, $q: ng.IQService, $rootScope: ng.IRootScopeService, $sce: ng.ISCEService, $timeout: ng.ITimeoutService,
               cheAPI: CheAPI, cheWorkspace: CheWorkspace, lodash: any, proxySettings: any, routeHistory: RouteHistory,
               cheJsonRpcApi: CheJsonRpcApi, userDashboardConfig: any, cheUIElementsInjectorService: CheUIElementsInjectorService) {
     this.$location = $location;
     this.$log = $log;
     this.$mdDialog = $mdDialog;
+    this.$http = $http;
     this.$q = $q;
     this.$rootScope = $rootScope;
     this.$sce = $sce;
@@ -78,7 +83,7 @@ class IdeSvc {
     this.openedWorkspace = null;
     this.outputByMachine = {};
     this.statusByMachine = new Map();
-    this.workspaceStatus = "";
+    this.workspaceStatus = '';
     this.subscribers = new Map();
   }
 
@@ -159,9 +164,16 @@ class IdeSvc {
 
     };
 
+    this.hasMachineLog = false;
 
     let machineOutputHandler = (message: any) => {
       console.log('machine output', message);
+      this.hasMachineLog = true;
+
+
+      if (message.text.contains("Theia app listening on")) {
+        this.openIdeAfterRunning(workspaceId);
+      }
 
 
       if (!this.outputByMachine[message.machineName]) {
@@ -170,12 +182,18 @@ class IdeSvc {
       }
       this.outputByMachine[message.machineName].push(message.text);
 
-      console.log("output machine = ", this.outputByMachine);
+      console.log('output machine = ', this.outputByMachine);
 
     };
     let workspaceStatusHandler = (message: any) => {
       console.log('workspace status', message);
       this.workspaceStatus = message.status;
+
+      // Open IDE if workspace is in running state and no machine log has been retrieved
+      if (this.workspaceStatus === 'RUNNING' && !this.hasMachineLog) {
+        this.openIdeAfterRunning(workspaceId);
+      };
+
     };
 
     this.jsonRpcMasterApi = this.cheJsonRpcApi.getJsonRpcMasterApi(this.cheAPI.getWorkspace().getJsonRpcApiLocation());
@@ -183,7 +201,7 @@ class IdeSvc {
     // register subscribers only if not present
     if (!this.subscribers.has(workspaceId)) {
       this.subscribers.set(workspaceId, true);
-      console.log("subscribe on workspace id", workspaceId);
+      console.log('subscribe on workspace id', workspaceId);
       this.jsonRpcMasterApi.subscribeEnvironmentStatus(workspaceId, machineStatusHandler);
       this.jsonRpcMasterApi.subscribeEnvironmentOutput(workspaceId, machineOutputHandler);
       this.jsonRpcMasterApi.subscribeWorkspaceStatus(workspaceId, workspaceStatusHandler);
@@ -195,23 +213,14 @@ class IdeSvc {
           this.openIdeAfterRunning(workspaceId);
         });
     } else if (workspace.status === 'RUNNING') {
-
     this.cheWorkspace.fetchWorkspaceDetails(workspaceId).then(() => {
       this.openIdeAfterRunning(workspaceId);
     });
 
     } else {
 
-
-
-
         // start it before
-      let promiseStart: ng.IPromise<any> = this.startIde(workspace);
-      promiseStart.then(() => {
-        this.openIdeAfterRunning(workspaceId);
-      }, (error: any) => {
-        console.log("got error", error);
-      });
+      this.startIde(workspace);
     }
 
 
@@ -225,11 +234,39 @@ class IdeSvc {
     }
   }
 
-  private openIdeAfterRunning(workspaceId: string): void {
+  openIdeAfterRunning(workspaceId: string): void {
     // ok it's started
-    let workspaceRuntime = this.cheWorkspace.getWorkspaceById(workspaceId);
+    let workspaceRuntime: any = this.cheWorkspace.getWorkspaceById(workspaceId);
 
-    let theiaUrl = workspaceRuntime.runtime.machines.theia.servers.theia.url;
+
+    let machines: any = workspaceRuntime.runtime.machines;
+    let theiaUrl : string;
+
+    console.log('iterating overs keys of machines', machines, 'from runtime', workspaceRuntime);
+
+    Object.keys(machines).forEach((key,index) => {
+      let servers : any = machines[key].servers;
+
+      console.log('iterate: key is', key, 'and servers are', servers);
+
+      if (servers['theia']) {
+        theiaUrl = servers['theia'].url;
+      }
+    });
+
+    if (!theiaUrl) {
+     this.$timeout(() => {this.openIdeAfterRunning(workspaceId)}, 300);
+    }
+
+    console.log('end of iterating, url is', theiaUrl);
+    this.openIFrame(workspaceRuntime, theiaUrl);
+  }
+
+
+
+
+  openIFrame(workspace: che.IWorkspace, ideUrl: string) : void {
+
 
     // perform remove of iframes in parent node. It's needed to avoid any script execution (canceled requests) on iframe source changes.
     let iframeParent = angular.element('#ide-application-frame');
@@ -237,9 +274,9 @@ class IdeSvc {
     let inDevMode = this.userDashboardConfig.developmentMode;
 
     if (inDevMode) {
-      (this.$rootScope as any).ideIframeLink = this.$sce.trustAsResourceUrl(theiaUrl);
+      (this.$rootScope as any).ideIframeLink = this.$sce.trustAsResourceUrl(ideUrl);
     } else {
-      (this.$rootScope as any).ideIframeLink = theiaUrl;
+      (this.$rootScope as any).ideIframeLink = ideUrl;
     }
 
     // iframe element for IDE application:
@@ -247,10 +284,10 @@ class IdeSvc {
     this.cheUIElementsInjectorService.injectAdditionalElement(iframeParent, iframeElement);
 
     let defer = this.$q.defer();
-    if (workspaceRuntime.status === 'RUNNING') {
+    if (workspace.status === 'RUNNING') {
       defer.resolve();
     } else {
-      this.cheWorkspace.fetchStatusChange(workspaceRuntime.id, 'STARTING').then(() => {
+      this.cheWorkspace.fetchStatusChange(workspace.id, 'STARTING').then(() => {
         defer.resolve();
       }, (error: any) => {
         defer.reject(error);

@@ -57,9 +57,10 @@ export class CheNavBarController {
   private cheService: CheService;
   private isPermissionServiceAvailable: boolean;
 
+  static $inject = ['$mdSidenav', '$scope', '$location', '$route', 'cheAPI', '$window', 'chePermissions', 'cheKeycloak', 'cheService'];  
+
   /**
    * Default constructor
-   * @ngInject for Dependency injection
    */
   constructor($mdSidenav: ng.material.ISidenavService,
               $scope: ng.IScope,

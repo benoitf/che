@@ -111,9 +111,11 @@ export class ListOrganizationMembersController {
    */
   private organizationRoles: che.resource.ICheOrganizationRoles;
 
+  static $inject = ['chePermissions', 'cheUser', 'cheProfile', 'cheOrganization', 'confirmDialogService', '$mdDialog',
+'$q', 'cheNotification', 'lodash', '$location', 'organizationsPermissionService', '$scope', 'cheListHelperFactory', 'resourcesService', '$log'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(chePermissions: che.api.IChePermissions, cheUser: CheUser, cheProfile: CheProfile, cheOrganization: che.api.ICheOrganization,
               confirmDialogService: ConfirmDialogService, $mdDialog: angular.material.IDialogService, $q: ng.IQService, cheNotification: CheNotification,

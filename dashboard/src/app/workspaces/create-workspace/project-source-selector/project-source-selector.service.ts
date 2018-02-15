@@ -42,9 +42,10 @@ export class ProjectSourceSelectorService {
    */
   private activeActionType: ActionType;
 
+  static $inject = ['randomSvc', 'addImportProjectService', 'editProjectService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor(randomSvc: RandomSvc, addImportProjectService: AddImportProjectService, editProjectService: EditProjectService) {
     this.randomSvc = randomSvc;

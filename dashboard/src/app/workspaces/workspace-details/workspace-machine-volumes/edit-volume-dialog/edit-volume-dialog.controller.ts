@@ -29,10 +29,11 @@ export class EditMachineVolumeDialogController {
   private usedNames: Array<string>;
   private updateMachineVolume: (volumeName: string, volumePath: string, volumeOldName?: string) => void;
 
+  static $inject = ['$mdDialog'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
-   */
+  */
   constructor($mdDialog: ng.material.IDialogService) {
     this.$mdDialog = $mdDialog;
 

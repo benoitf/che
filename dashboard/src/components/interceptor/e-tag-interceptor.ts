@@ -20,9 +20,10 @@ export class ETagInterceptor extends HttpInterceptorBase {
 
   etagMap: any;
 
+  static $inject = ['$q'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService) {
     super();

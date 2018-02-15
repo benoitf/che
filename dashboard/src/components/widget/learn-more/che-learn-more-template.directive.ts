@@ -40,9 +40,10 @@ export class CheLearnMoreTemplate implements ng.IDirective {
     compileScope: '=cheScope'
   };
 
+  static $inject = ['$compile', '$mdUtil'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor ($compile: ng.ICompileService, $mdUtil: any) {
     this.$compile = $compile;

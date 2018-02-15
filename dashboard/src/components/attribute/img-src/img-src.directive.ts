@@ -21,9 +21,10 @@ export class ImgSrc implements ng.IDirective {
 
   restrict = 'A';
 
+  static $inject = ['$http', 'userDashboardConfig'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($http: ng.IHttpService, userDashboardConfig: any) {
     this.$http = $http;

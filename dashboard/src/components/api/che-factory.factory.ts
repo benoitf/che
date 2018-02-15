@@ -46,9 +46,10 @@ export class CheFactory {
   private itemsPerPage: number;
   private cheUser: CheUser;
 
+  static $inject = ['$resource', '$q', 'lodash', 'cheUser'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($resource: ng.resource.IResourceService, $q: ng.IQService, lodash: any, cheUser: CheUser) {
     // keep resource

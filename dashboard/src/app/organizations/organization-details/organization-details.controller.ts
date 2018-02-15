@@ -112,9 +112,11 @@ export class OrganizationDetailsController {
 
   private organizationActions: che.resource.ICheOrganizationActions;
 
+  static $inject = ['cheResourcesDistribution', 'chePermissions', 'cheUser', '$route', '$location', '$rootScope', '$scope', 'confirmDialogService',
+'cheNotification', 'lodash', 'cheOrganization', 'organizationsPermissionService', 'resourcesService', 'initData'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor(cheResourcesDistribution: che.api.ICheResourcesDistribution, chePermissions: che.api.IChePermissions,
               cheUser: any, $route: ng.route.IRouteService, $location: ng.ILocationService, $rootScope: che.IRootScopeService,

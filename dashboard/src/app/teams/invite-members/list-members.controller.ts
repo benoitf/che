@@ -60,9 +60,10 @@ export class ListMembersController {
    */
   private owner: string;
 
+  static $inject = ['$mdDialog', 'lodash', 'cheTeam'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: angular.material.IDialogService, lodash: any, cheTeam: che.api.ICheTeam) {
     this.$mdDialog = $mdDialog;

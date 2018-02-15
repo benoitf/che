@@ -53,9 +53,10 @@ export class CheErrorMessages {
 
   cheErrorMessagesService: CheErrorMessagesService;
 
+  static $inject = ['cheErrorMessagesService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor(cheErrorMessagesService: CheErrorMessagesService) {
     this.cheErrorMessagesService = cheErrorMessagesService;

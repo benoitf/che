@@ -26,9 +26,10 @@ export class CreateProjectStackLibraryController {
   private filteredStackIds: Array<string> = [];
   private stacks: Array<che.IStack> = [];
 
+  static $inject = ['$scope', 'cheStack', 'lodash'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope,
               cheStack: CheStack,

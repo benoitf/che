@@ -35,9 +35,10 @@ export class CheStack {
    */
   private $q: ng.IQService;
 
+  static $inject = ['$resource', '$q'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($resource: ng.resource.IResourceService, $q: ng.IQService) {
 

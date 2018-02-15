@@ -65,9 +65,10 @@ export class AddMemberController {
 
   private cheListHelper: che.widget.ICheListHelper;
 
+  static $inject = ['$q', '$mdDialog', 'lodash', 'cheTeam', 'chePermissions', 'cheProfile', 'cheUser', '$log', '$scope', 'cheListHelperFactory'];
+
   /**
    * Default constructor.
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService, $mdDialog: angular.material.IDialogService, lodash: any, cheTeam: che.api.ICheTeam,
               chePermissions: che.api.IChePermissions, cheProfile: CheProfile, cheUser: CheUser, $log: ng.ILogService,

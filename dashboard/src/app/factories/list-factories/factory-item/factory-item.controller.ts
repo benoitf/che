@@ -23,9 +23,10 @@ export class FactoryItemController {
   private lodash: any;
   private factory: che.IFactory;
 
+  static $inject = ['$location', 'cheFactory', 'cheEnvironmentRegistry', 'lodash'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($location: ng.ILocationService,
               cheFactory: CheFactory,

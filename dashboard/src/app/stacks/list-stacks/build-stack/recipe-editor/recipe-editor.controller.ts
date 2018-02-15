@@ -74,9 +74,10 @@ export class RecipeEditorController implements IRecipeEditorControllerScope {
     onLoad: Function
   };
 
+  static $inject = ['$timeout', '$scope'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($timeout: ng.ITimeoutService,
               $scope: ng.IScope) {

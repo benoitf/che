@@ -42,9 +42,9 @@ export class TeamDetailsService {
    */
   private owner: any;
 
+  static $inject = ['$q', 'cheUser', 'cheTeam', '$route'];
 
   /**
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService, cheUser: any, cheTeam: che.api.ICheTeam, $route: ng.route.IRouteService) {
     this.$q = $q;

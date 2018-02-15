@@ -48,9 +48,10 @@ export class WorkspaceMachineConfigController {
   private confirmDialogService: ConfirmDialogService;
   private newImage: string;
 
+  static $inject = ['$mdDialog', '$q', '$scope', '$timeout', 'lodash', 'confirmDialogService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService,
               $q: ng.IQService,

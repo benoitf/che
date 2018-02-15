@@ -39,9 +39,10 @@ export class CheProfile {
   private profileIdMap: Map<string, che.IProfile>;
   private remoteProfileAPI: any;
 
+  static $inject = ['$q', '$resource', '$http'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService, $resource: ng.resource.IResourceService, $http: ng.IHttpService) {
     this.$q = $q;

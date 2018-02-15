@@ -22,9 +22,10 @@ export class CheSelecterCtrl {
   globalSelecterName: string;
   selectedValuesByKey: Map<string, any>;
 
+  static $inject = ['$scope'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($scope: ICheSelecterScope) {
     this.$scope = $scope;

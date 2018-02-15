@@ -36,9 +36,11 @@ export class StackSelectorSvc extends Observable<any> {
    */
   private stackId: string;
 
+
+  static $inject = ['$log', '$q', 'cheStack'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($log: ng.ILogService, $q: ng.IQService, cheStack: CheStack) {
     super();

@@ -37,9 +37,10 @@ export class CheLoaderCrane implements ng.IDirective {
     switchOnIteration: '=?cheSwitchOnIteration'
   };
 
+  static $inject = ['$timeout', '$window'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($timeout: ng.ITimeoutService, $window: ng.IWindowService) {
     this.$timeout = $timeout;

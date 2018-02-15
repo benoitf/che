@@ -38,9 +38,10 @@ export class BuildStackController {
   private cheStack: CheStack;
   private cheWorkspace: CheWorkspace;
 
+  static $inject = ['$mdDialog', '$location', 'cheStack', 'importStackService', 'cheEnvironmentRegistry', 'cheBranding', 'cheWorkspace'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService,
               $location: ng.ILocationService,

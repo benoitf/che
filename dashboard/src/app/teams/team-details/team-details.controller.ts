@@ -100,9 +100,10 @@ export class TeamDetailsController {
 
   private resourceLimits: che.resource.ICheResourceLimits;
 
+  static $inject = ['cheTeam', 'cheResourcesDistribution', 'chePermissions', 'cheUser', '$route', '$location', '$rootScope', '$scope', 'confirmDialogService',
+'cheTeamEventsManager', 'cheNotification', 'lodash', 'teamDetailsService', 'resourcesService'];
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor(cheTeam: che.api.ICheTeam, cheResourcesDistribution: che.api.ICheResourcesDistribution, chePermissions: che.api.IChePermissions,
               cheUser: any, $route: ng.route.IRouteService, $location: ng.ILocationService, $rootScope: che.IRootScopeService,

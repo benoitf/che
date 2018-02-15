@@ -23,9 +23,10 @@ export class KeycloakTokenInterceptor extends HttpInterceptorBase {
   keycloak: any;
   keycloakConfig: any;
 
+  static $inject = ['$log', '$q', 'keycloakAuth'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($log: ng.ILogService,
               $q: ng.IQService,

@@ -72,9 +72,10 @@ export class WorkspaceDetailsProjectsCtrl {
    */
   private projectsOnChange: () => void;
 
+  static $inject = ['cheAPI', '$mdDialog', 'confirmDialogService', '$scope', 'cheListHelperFactory', 'stackSelectorSvc', 'randomSvc', 'createWorkspaceSvc', 'workspaceDetailsService', 'workspaceDetailsProjectsService'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(cheAPI: CheAPI,
               $mdDialog: ng.material.IDialogService,

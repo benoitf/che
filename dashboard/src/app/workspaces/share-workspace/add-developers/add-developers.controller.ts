@@ -39,9 +39,10 @@ export class AddDeveloperController {
    */
   private callbackController: ShareWorkspaceController;
 
+  static $inject = ['$q', '$mdDialog'];
+
   /**
    * Default constructor.
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService, $mdDialog: ng.material.IDialogService) {
     this.$q = $q;

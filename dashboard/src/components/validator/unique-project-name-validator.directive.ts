@@ -26,9 +26,10 @@ export class UniqueProjectNameValidator implements ng.IDirective {
   cheAPI: CheAPI;
   $q: ng.IQService;
 
+  static $inject = ['cheAPI', '$q'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor (cheAPI: CheAPI, $q: ng.IQService) {
     this.cheAPI = cheAPI;

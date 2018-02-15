@@ -29,9 +29,10 @@ export class WorkspaceStatusController {
   private isRequestPending: boolean;
   private workspaceId: string;
 
+  static $inject = ['$rootScope', 'cheWorkspace', 'cheNotification'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($rootScope: ng.IRootScopeService, cheWorkspace: CheWorkspace, cheNotification: CheNotification) {
     this.$rootScope = $rootScope;

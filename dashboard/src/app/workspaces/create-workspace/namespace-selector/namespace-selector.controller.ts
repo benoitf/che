@@ -26,9 +26,10 @@ export class NamespaceSelectorController {
    */
   onNamespaceChange: (data: {namespaceId: string}) => void;
 
+  static $inject = ['namespaceSelectorSvc'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor(namespaceSelectorSvc: NamespaceSelectorSvc) {
     this.namespaceSelectorSvc = namespaceSelectorSvc;

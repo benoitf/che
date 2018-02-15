@@ -52,9 +52,10 @@ export class ChePermissions implements che.api.IChePermissions {
    */
   private remotePermissionsAPI: IPermissionsResource<any>;
 
+  static $inject = ['$q', '$resource'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService, $resource: ng.resource.IResourceService) {
     this.$q = $q;

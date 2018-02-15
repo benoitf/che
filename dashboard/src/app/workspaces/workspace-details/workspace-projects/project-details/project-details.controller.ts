@@ -40,9 +40,10 @@ export class ProjectDetailsController {
   private projectDetails: che.IProjectTemplate;
   private projectDescription: string;
 
+  static $inject = ['$scope', '$log', '$route', '$location', '$timeout', 'cheAPI', 'confirmDialogService', 'cheNotification', 'lodash'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope,
               $log: ng.ILogService,

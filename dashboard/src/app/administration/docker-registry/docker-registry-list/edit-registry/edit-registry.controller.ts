@@ -27,9 +27,10 @@ export class EditRegistryController {
   private chePreferences: ChePreferences;
   private originRegistryUrl: string;
 
+  static $inject = ['$mdDialog', 'chePreferences', 'cheNotification'];
+
   /**
    * Default constructor.
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService, chePreferences: ChePreferences, cheNotification: CheNotification) {
     this.$mdDialog = $mdDialog;

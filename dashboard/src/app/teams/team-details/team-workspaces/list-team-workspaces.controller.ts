@@ -69,9 +69,11 @@ export class ListTeamWorkspacesController {
    */
   private cheListHelper: che.widget.ICheListHelper;
 
+  static $inject = ['cheTeam', 'chePermissions', 'cheUser', 'cheWorkspace', 'cheNotification', 'lodash', '$mdDialog', '$q', 'teamDetailsService',
+'$scope', 'cheListHelperFactory'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(cheTeam: che.api.ICheTeam, chePermissions: che.api.IChePermissions, cheUser: any, cheWorkspace: any,
               cheNotification: any, lodash: any, $mdDialog: angular.material.IDialogService, $q: ng.IQService,

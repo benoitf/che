@@ -42,9 +42,10 @@ export class ListEnvVariablesController {
 
   private confirmDialogService: ConfirmDialogService;
 
+  static $inject = ['$mdDialog', 'lodash', 'confirmDialogService'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService,
               lodash: any,

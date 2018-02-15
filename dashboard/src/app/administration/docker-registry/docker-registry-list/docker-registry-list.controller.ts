@@ -37,11 +37,13 @@ export class DockerRegistryListController {
   private registryOrderBy: string;
   private registryFilter: {username: string};
 
+  static $inject = ['$q', '$log', '$mdDialog', '$document', 'chePreferences', 'cheNotification', 'confirmDialogService', '$scope', 'cheListHelperFactory'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
-  constructor($q: ng.IQService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService, $document: ng.IDocumentService, chePreferences: ChePreferences, cheNotification: CheNotification, confirmDialogService: ConfirmDialogService, $scope: ng.IScope, cheListHelperFactory: che.widget.ICheListHelperFactory) {
+  constructor($q: ng.IQService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService, $document: ng.IDocumentService, 
+    chePreferences: ChePreferences, cheNotification: CheNotification, confirmDialogService: ConfirmDialogService, $scope: ng.IScope, cheListHelperFactory: che.widget.ICheListHelperFactory) {
     this.$q = $q;
     this.$log = $log;
     this.$scope = $scope;

@@ -25,9 +25,10 @@ export class ProjectRepositoryController {
   private isEmptyState: boolean = false;
   private wsagent: CheWorkspaceAgent;
 
+  static $inject = ['$route', 'cheAPI', 'lodash'];
+
   /**
    * Controller for the project local repository and remote repositories details
-   * @ngInject for Dependency injection
    * @author Oleksii Orel
    */
   constructor($route: ng.route.IRouteService,

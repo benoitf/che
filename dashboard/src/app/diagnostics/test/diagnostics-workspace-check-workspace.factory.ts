@@ -55,9 +55,10 @@ export class DiagnosticsRunningWorkspaceCheck {
    */
   private cheBranding: CheBranding;
 
+  static $inject = ['$q', 'lodash', 'cheWebsocket', 'cheWorkspace', '$resource', '$location', 'cheBranding'];
+
   /**
    * Default constructor
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService, lodash: any, cheWebsocket: CheWebsocket, cheWorkspace: CheWorkspace,
               $resource: ng.resource.IResourceService, $location: ng.ILocationService, cheBranding: CheBranding) {

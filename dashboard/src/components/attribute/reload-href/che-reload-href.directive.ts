@@ -35,9 +35,10 @@ export class CheReloadHref implements ng.IDirective {
   $location: ng.ILocationService;
   $route: ng.route.IRouteService;
 
+  static $inject = ['$location', '$route'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($location: ng.ILocationService,
               $route: ng.route.IRouteService) {

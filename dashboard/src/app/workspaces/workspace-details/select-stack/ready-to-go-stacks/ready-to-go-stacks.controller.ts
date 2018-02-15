@@ -31,9 +31,10 @@ export class ReadyToGoStacksController {
   private defaultStack: string;
   private getPrioritySortPosition: any;
 
+  static $inject = ['$scope', 'lodash', 'cheStack', 'cheBranding'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope,
               lodash: any,

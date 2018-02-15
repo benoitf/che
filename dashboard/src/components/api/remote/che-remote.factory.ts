@@ -25,9 +25,10 @@ export class CheRemote {
   private $q: ng.IQService;
   private cheJsonRpcApi: CheJsonRpcApi;
 
+  static $inject = ['$resource', '$q', 'cheJsonRpcApi'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($resource: ng.resource.IResourceService, $q: ng.IQService, cheJsonRpcApi: CheJsonRpcApi) {
     this.$resource = $resource;

@@ -30,11 +30,13 @@ export class CheLearnMoreCtrl {
   currentIndex: number;
   stateIcons: any[];
 
+  static $inject = ['$scope', '$element', '$attrs', '$compile', 'chePreferences'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
-  constructor($scope: ng.IScope, $element: ng.IAugmentedJQuery, $attrs: ICheLearmMoreAttributes, $compile: ng.ICompileService, chePreferences: ChePreferences) {
+  constructor($scope: ng.IScope, $element: ng.IAugmentedJQuery, $attrs: ICheLearmMoreAttributes, $compile: ng.ICompileService,
+     chePreferences: ChePreferences) {
     this.items = [];
 
     this.WIDGET_PREFERENCES_PREFIX = 'learn-widget-';

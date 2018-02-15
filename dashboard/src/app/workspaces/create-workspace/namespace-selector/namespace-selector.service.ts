@@ -55,9 +55,10 @@ export class NamespaceSelectorSvc {
     [namespaceId: string]: string;
   };
 
+  static $inject = ['$location', '$log', '$q', 'cheNamespaceRegistry', 'cheUser'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($location: ng.ILocationService, $log: ng.ILogService, $q: ng.IQService,
               cheNamespaceRegistry: CheNamespaceRegistry, cheUser: CheUser) {

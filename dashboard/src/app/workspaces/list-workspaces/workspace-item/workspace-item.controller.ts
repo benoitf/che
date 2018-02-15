@@ -26,9 +26,10 @@ export class WorkspaceItemCtrl {
 
   workspace: che.IWorkspace;
 
+  static $inject = ['$location', 'lodash', 'cheWorkspace', 'workspacesService'];
+  
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($location: ng.ILocationService,
               lodash: any,

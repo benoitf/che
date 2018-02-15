@@ -82,9 +82,10 @@ export class DiagnosticsWorkspaceStartCheck {
    */
   private cheJsonRpcMasterApi: CheJsonRpcMasterApi;
 
+  static $inject = ['$q', 'lodash', 'cheWorkspace', 'diagnosticsRunningWorkspaceCheck', 'cheBranding', '$location', 'cheJsonRpcApi', 'userDashboardConfig', 'keycloakAuth', 'proxySettings'];
+
   /**
    * Default constructor
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService,
               lodash: any,

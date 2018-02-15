@@ -54,11 +54,13 @@ export class ProjectMetadataController {
    */
   private template: che.IProjectTemplate;
 
+  static $inject = ['$scope', 'projectMetadataService', 'projectSourceSelectorService', 'editProjectService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
-  constructor($scope: ng.IScope, projectMetadataService: ProjectMetadataService, projectSourceSelectorService: ProjectSourceSelectorService, editProjectService: EditProjectService) {
+  constructor($scope: ng.IScope, projectMetadataService: ProjectMetadataService, projectSourceSelectorService: ProjectSourceSelectorService,
+     editProjectService: EditProjectService) {
 
     this.projectMetadataService = projectMetadataService;
     this.projectSourceSelectorService = projectSourceSelectorService;

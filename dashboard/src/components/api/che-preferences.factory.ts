@@ -23,9 +23,10 @@ export class ChePreferences {
   private registries: any[];
   private preferences: any;
 
+  static $inject = ['$resource', '$http', '$window'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($resource: ng.resource.IResourceService,
               $http: ng.IHttpService,

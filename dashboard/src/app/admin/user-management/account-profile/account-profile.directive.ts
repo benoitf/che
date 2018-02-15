@@ -50,9 +50,10 @@ export class AccountProfile implements ng.IDirective {
   jsonCountries: string;
   jsonJobs: string;
 
+  static $inject = ['jsonCountries', 'jsonJobs'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(jsonCountries: string, jsonJobs: string) {
     this.jsonCountries = jsonCountries;

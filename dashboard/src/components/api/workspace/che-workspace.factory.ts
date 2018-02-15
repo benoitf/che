@@ -85,10 +85,10 @@ export class CheWorkspace {
    */
   private workspacePromises: Map<string, ng.IHttpPromise<any>> = new Map();
 
+  static $inject = ['$resource', '$http', '$q', 'cheJsonRpcApi', '$websocket', '$location', 'proxySettings', 'userDashboardConfig', 'lodash', 'cheEnvironmentRegistry', '$log', 'cheBranding', 'keycloakAuth', 'cheEnvironmentManager'];
 
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($resource: ng.resource.IResourceService,
               $http: ng.IHttpService,

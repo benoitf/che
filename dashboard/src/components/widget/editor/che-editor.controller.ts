@@ -68,9 +68,10 @@ export class CheEditorController {
    */
   private cursorPos: ICursorPos = {line: 0, ch: 0};
 
+  static $inject = ['$timeout'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($timeout: ng.ITimeoutService) {
     this.editorOptions = {

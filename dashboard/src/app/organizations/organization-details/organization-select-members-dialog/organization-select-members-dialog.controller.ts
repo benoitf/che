@@ -86,9 +86,10 @@ export class OrganizationSelectMembersDialogController {
    */
   private organizationRoles: che.resource.ICheOrganizationRoles;
 
+  static $inject = ['$q', '$mdDialog', 'lodash', 'cheProfile', 'cheUser', 'resourcesService'];
+  
   /**
    * Default constructor.
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService, $mdDialog: angular.material.IDialogService, lodash: any, cheProfile: any, cheUser: any, resourcesService: che.service.IResourcesService) {
     this.$q = $q;

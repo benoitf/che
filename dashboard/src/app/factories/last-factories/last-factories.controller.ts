@@ -25,10 +25,10 @@ export class LastFactoriesController {
   private maxItems: number;
   private isLoading: boolean;
 
+  static $inject = ['$cheFactory'];
 
   /**
    * Default constructor
-   * @ngInject for Dependency injection
    */
   constructor(cheFactory: CheFactory) {
     this.cheFactory = cheFactory;

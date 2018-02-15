@@ -68,9 +68,10 @@ export class WorkspaceDetailsSshCtrl {
 
   private machineSshAgents : Array<{agentEnabled : boolean, name: string}>;
 
+  static $inject = ['$route', 'cheSsh', 'cheWorkspace', 'cheNotification', '$mdDialog', '$log', '$q'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($route: ng.route.IRouteService,
               cheSsh: CheSsh,

@@ -69,9 +69,10 @@ export class CheTogglePopover implements ng.IDirective {
   private $compile: ng.ICompileService;
   private $timeout: ng.ITimeoutService;
 
+  static $inject = ['$compile', '$timeout'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($compile: ng.ICompileService, $timeout: ng.ITimeoutService) {
     this.$compile = $compile;

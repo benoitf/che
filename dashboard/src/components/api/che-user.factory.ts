@@ -42,9 +42,10 @@ export class CheUser {
    */
   private user: che.IUser;
 
+  static $inject = ['$resource', '$q', '$cookies'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($resource: ng.resource.IResourceService, $q: ng.IQService, $cookies: ng.cookies.ICookiesService) {
     this.$q = $q;

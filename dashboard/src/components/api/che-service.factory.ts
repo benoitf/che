@@ -30,9 +30,10 @@ export class CheService {
    */
   private servicesInfo: any;
 
+  static $inject = ['$http'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor ($http: ng.IHttpService) {
     this.$http = $http;

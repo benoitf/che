@@ -26,9 +26,11 @@ export class CheStackLibraryFilterController {
   private stackTags: Array<string>;
   private selectedTags: Array<string>;
   private onTagsChanges: Function;
+
+  static $inject = ['$scope', '$mdConstant', '$timeout'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope, $mdConstant: any, $timeout: ng.ITimeoutService) {
     this.$scope = $scope;

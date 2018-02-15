@@ -45,11 +45,14 @@ export class WorkspaceDetailsOverviewController {
   private inputmodel: ng.INgModelController;
   private isLoading: boolean;
 
+  static $inject = ['$q', '$route', '$timeout', '$location', 'cheWorkspace', 'cheNotification', 'confirmDialogService', 'namespaceSelectorSvc', 'workspaceDetailsService'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
-  constructor($q: ng.IQService, $route: ng.route.IRouteService, $timeout: ng.ITimeoutService, $location: ng.ILocationService, cheWorkspace: CheWorkspace, cheNotification: CheNotification, confirmDialogService: ConfirmDialogService, namespaceSelectorSvc: NamespaceSelectorSvc, workspaceDetailsService: WorkspaceDetailsService) {
+  constructor($q: ng.IQService, $route: ng.route.IRouteService, $timeout: ng.ITimeoutService, $location: ng.ILocationService, 
+    cheWorkspace: CheWorkspace, cheNotification: CheNotification, confirmDialogService: ConfirmDialogService, 
+    namespaceSelectorSvc: NamespaceSelectorSvc, workspaceDetailsService: WorkspaceDetailsService) {
     this.$q = $q;
     this.$route = $route;
     this.$timeout = $timeout;

@@ -22,9 +22,10 @@ export class NavbarTeamsController {
    */
   private cheTeam: che.api.ICheTeam;
 
+  static $inject = ['cheTeam'];
+
   /**
    * Default constructor
-   * @ngInject for Dependency injection
    */
   constructor(cheTeam: che.api.ICheTeam) {
     this.cheTeam = cheTeam;

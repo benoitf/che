@@ -66,9 +66,10 @@ export class ListOrganizationInviteMembersController {
    */
   private organizationRoles: che.resource.ICheOrganizationRoles;
 
+  static $inject = ['$mdDialog', 'lodash', 'cheUser', 'resourcesService'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: angular.material.IDialogService, lodash: any, cheUser: any, resourcesService: che.service.IResourcesService) {
     this.$mdDialog = $mdDialog;

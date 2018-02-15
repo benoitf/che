@@ -31,9 +31,10 @@ export class ListCommandsController {
 
   private confirmDialogService: ConfirmDialogService;
 
+  static $inject = ['$mdDialog', 'confirmDialogService'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService, confirmDialogService: ConfirmDialogService) {
     this.$mdDialog = $mdDialog;

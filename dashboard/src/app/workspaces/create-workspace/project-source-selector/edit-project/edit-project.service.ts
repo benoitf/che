@@ -25,9 +25,10 @@ export class EditProjectService {
   private projectMetadataService: ProjectMetadataService;
   private observable: IObservable<any>;
 
+  static $inject = ['projectMetadataService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor(projectMetadataService: ProjectMetadataService) {
     this.projectMetadataService = projectMetadataService;

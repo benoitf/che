@@ -54,9 +54,10 @@ export class DemoComponentsController {
 
   overlayConfig: ICheEditModeOverlayConfig;
 
+  static $inject = ['$location', 'cheNotification'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($location: ng.ILocationService,
               cheNotification: CheNotification) {

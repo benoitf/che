@@ -22,9 +22,10 @@ export class FactoryCommandDialogEditController {
   private index: number;
   private selectedValue: any;
 
+  static $inject = ['$mdDialog'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService) {
     this.$mdDialog = $mdDialog;

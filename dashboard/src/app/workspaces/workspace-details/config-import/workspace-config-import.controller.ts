@@ -45,11 +45,13 @@ export class WorkspaceConfigImportController {
   newWorkspaceConfig: any;
   workspaceConfigOnChange: Function;
 
+  static $inject = ['$log', '$scope', '$timeout', 'cheErrorMessagesService', 'stackValidationService'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
-  constructor($log: ng.ILogService, $scope: ng.IScope, $timeout: ng.ITimeoutService, cheErrorMessagesService: CheErrorMessagesService, stackValidationService: StackValidationService) {
+  constructor($log: ng.ILogService, $scope: ng.IScope, $timeout: ng.ITimeoutService, cheErrorMessagesService: CheErrorMessagesService,
+     stackValidationService: StackValidationService) {
     this.$log = $log;
     this.$scope = $scope;
     this.$timeout = $timeout;

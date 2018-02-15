@@ -43,6 +43,8 @@ export class CheHttpBackend {
   private permissionsMap: Map<string, Array<che.IPermissions>>;
   private resourcesMap: Map<string, Map<string, any>>;
 
+  static $inject = ['$httpBackend', 'cheAPIBuilder'];
+
   /**
    * Constructor to use
    */

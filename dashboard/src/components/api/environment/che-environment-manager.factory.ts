@@ -21,9 +21,10 @@ export class CheEnvironmentManager {
 
   private $log: ng.ILogService;
 
+  static $inject = ['$log'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($log: ng.ILogService) {
     this.$log = $log;

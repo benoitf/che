@@ -28,9 +28,10 @@ export class DiagnosticsWebsocketWsMaster {
    */
   private $timeout: ng.ITimeoutService;
 
+  static $inject = ['cheWebsocket', '$timeout'];
+
   /**
    * Default constructor
-   * @ngInject for Dependency injection
    */
   constructor(cheWebsocket: CheWebsocket, $timeout: ng.ITimeoutService) {
     this.cheWebsocket = cheWebsocket;

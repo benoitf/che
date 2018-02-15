@@ -30,9 +30,10 @@ export class AdminsAddUserController {
   private chePermissions: che.api.IChePermissions;
   private organizationRoles: che.resource.ICheOrganizationRoles;
 
+  static $inject = ['$mdDialog', 'cheUser', 'cheNotification', 'lodash', 'cheOrganization', 'chePermissions', 'resourcesService'];
+
   /**
    * Default constructor.
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService,
               cheUser: any,

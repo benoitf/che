@@ -47,9 +47,10 @@ export class WorkspaceSelectStackController {
 
   tabs: string[];
 
+  static $inject = ['$log', '$timeout', '$scope', 'lodash', 'cheStack', 'cheEnvironmentRegistry'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($log: ng.ILogService, $timeout: ng.ITimeoutService, $scope: ng.IScope, lodash: any, cheStack: CheStack, cheEnvironmentRegistry: CheEnvironmentRegistry) {
     this.$log = $log;

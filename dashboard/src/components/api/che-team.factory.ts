@@ -68,9 +68,10 @@ export class CheTeam implements che.api.ICheTeam {
 
   private resourceLimits: che.resource.ICheResourceLimits;
 
+  static $inject = ['$resource', '$q', 'lodash', 'cheNamespaceRegistry', 'cheUser', 'cheOrganization', 'cheTeamEventsManager', 'cheResourcesDistribution', 'resourcesService'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($resource: ng.resource.IResourceService,
               $q: ng.IQService, lodash: any, cheNamespaceRegistry: any, cheUser: any,

@@ -25,9 +25,10 @@ export class CheNamespaceRegistry {
   private caption: string;
   private getAdditionalInfoFunction: Function;
 
+  static $inject = ['$q', '$interval', '$timeout'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService, $interval: ng.IIntervalService, $timeout: ng.ITimeoutService) {
     this.$q = $q;

@@ -25,9 +25,10 @@ export class CheHtmlSource {
     [propName: string]: string
   } = {};
 
+  static $inject = ['$sce'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor ($sce: ng.ISCEService) {
     this.$sce = $sce;

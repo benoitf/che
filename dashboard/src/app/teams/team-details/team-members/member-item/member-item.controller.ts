@@ -50,9 +50,10 @@ export class MemberItemController {
    */
   private confirmDialogService: any;
 
+  static $inject = ['$mdDialog', 'cheTeam', 'lodash', 'confirmDialogService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: angular.material.IDialogService, cheTeam: che.api.ICheTeam, lodash: any, confirmDialogService: any) {
     this.$mdDialog = $mdDialog;

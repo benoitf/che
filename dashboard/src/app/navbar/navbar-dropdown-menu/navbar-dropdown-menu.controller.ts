@@ -24,9 +24,10 @@ export class NavbarDropdownMenuController {
   offset: string;
   isDisabled: boolean;
 
+  static $inject = ['$window'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($window: ng.IWindowService) {
     this.$window = $window;

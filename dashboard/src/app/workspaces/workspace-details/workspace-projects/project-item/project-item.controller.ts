@@ -24,9 +24,10 @@ export class ProjectItemCtrl {
   private workspace: che.IWorkspace;
   private project: che.IProject;
 
+  static $inject = ['$location', 'cheWorkspace'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($location: ng.ILocationService,
               cheWorkspace: CheWorkspace) {

@@ -24,9 +24,10 @@ export class CheWebsocket {
   private $interval : ng.IIntervalService;
   private $websocket : any;
 
+  static $inject = ['$websocket', '$location', '$interval', 'proxySettings', 'userDashboardConfig', 'keycloakAuth'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor ($websocket: any,
                $location: ng.ILocationService,

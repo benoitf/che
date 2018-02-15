@@ -32,9 +32,10 @@ export class MachineVolumesController {
   private machineVolumesSelectedNumber: number = 0;
   private onChange: Function;
 
+  static $inject = ['$scope', '$mdDialog', 'confirmDialogService', 'cheListHelperFactory'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope, $mdDialog: ng.material.IDialogService, confirmDialogService: ConfirmDialogService, cheListHelperFactory: CheListHelperFactory) {
     this.$mdDialog = $mdDialog;

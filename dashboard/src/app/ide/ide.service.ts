@@ -40,9 +40,9 @@ class IdeSvc {
 
   ideAction: string;
 
+  static $inject = ['$location', '$log', '$mdDialog', '$q', '$rootScope', '$sce', '$timeout', 'cheAPI', 'cheWorkspace', 'lodash', 'proxySettings', 'routeHistory', 'userDashboardConfig', 'cheUIElementsInjectorService'];
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($location: ng.ILocationService, $log: ng.ILogService, $mdDialog: ng.material.IDialogService,
               $q: ng.IQService, $rootScope: ng.IRootScopeService, $sce: ng.ISCEService, $timeout: ng.ITimeoutService,

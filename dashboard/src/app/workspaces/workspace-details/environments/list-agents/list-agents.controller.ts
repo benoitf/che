@@ -33,9 +33,9 @@ export class ListAgentsController {
 
   agentsOnChange: Function;
 
+  static $inject = ['cheAPI'];
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(cheAPI: CheAPI) {
     this.cheAgent = cheAPI.getAgent();

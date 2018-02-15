@@ -25,9 +25,10 @@ export class FactoryFromTemplateController {
   private factoryContent: any;
   private templateName: string;
 
+  static $inject = ['$filter', 'cheFactoryTemplate', 'cheNotification'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($filter: ng.IFilterService, cheFactoryTemplate: CheFactoryTemplate, cheNotification: CheNotification) {
     this.$filter = $filter;

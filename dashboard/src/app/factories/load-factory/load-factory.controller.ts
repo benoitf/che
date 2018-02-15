@@ -41,10 +41,10 @@ export class LoadFactoryController {
   private factory: che.IFactory;
   private jsonRpcMasterApi: CheJsonRpcMasterApi;
 
+  static $inject = ['cheAPI', 'cheJsonRpcApi', '$route', '$timeout', '$mdDialog', 'loadFactoryService', 'lodash', 'cheNotification', '$location', 'routeHistory', '$window'];
 
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(cheAPI: CheAPI,
               cheJsonRpcApi: CheJsonRpcApi,

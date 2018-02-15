@@ -40,10 +40,10 @@ export class ExportWorkspaceDialogController {
   private workspaceDetails: any;
   private exportInCloudSteps: string;
 
+  static $inject = ['$q', '$filter', 'lodash', 'cheRemote', 'cheNotification', '$mdDialog', '$log', '$window', '$scope'];
 
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService,
               $filter: ng.IFilterService,

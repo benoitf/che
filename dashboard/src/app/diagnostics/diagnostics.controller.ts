@@ -116,9 +116,10 @@ export class DiagnosticsController {
    */
   private isLogDisplayed: boolean;
 
+  static $inject = ['$log', '$q', 'lodash', '$timeout', 'diagnosticsWebsocketWsMaster', 'cheWebsocket','cheBranding', 'diagnosticsRunningWorkspaceCheck', 'diagnosticsWorkspaceStartCheck'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($log: ng.ILogService, $q: ng.IQService, lodash: any,
               $timeout: ng.ITimeoutService,

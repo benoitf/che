@@ -81,9 +81,10 @@ export class ImportGithubProjectService implements IEditingProgress {
    */
   private repositoriesLoadedCallback: Function;
 
+  static $inject = ['cheAPI', '$http', '$q', '$filter', 'GitHub', 'gitHubTokenStore'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor (cheAPI: CheAPI, $http: ng.IHttpService, $q: ng.IQService, $filter: ng.IFilterService, GitHub: any, gitHubTokenStore: any) {
     this.cheAPI = cheAPI;

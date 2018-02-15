@@ -38,9 +38,10 @@ export class NavbarRecentWorkspacesController {
   workspaceCreationLink: string;
   workspacesService: WorkspacesService;
 
+  static $inject = ['ideSvc', 'cheWorkspace', 'cheBranding', '$window','$log', '$scope', '$rootScope', 'workspacesService'];
+
   /**
    * Default constructor
-   * @ngInject for Dependency injection
    */
   constructor(ideSvc: IdeSvc,
               cheWorkspace: CheWorkspace,

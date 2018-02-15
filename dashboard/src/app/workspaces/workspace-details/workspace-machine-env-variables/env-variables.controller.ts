@@ -39,9 +39,10 @@ export class EnvVariablesController {
   private envVariablesSelectedNumber: number = 0;
   private onChange: Function;
 
+  static $inject = ['$scope', '$mdDialog', 'confirmDialogService'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope, $mdDialog: ng.material.IDialogService, confirmDialogService: ConfirmDialogService) {
     this.$mdDialog = $mdDialog;

@@ -25,9 +25,10 @@ export class UserItemController {
   private $mdDialog: ng.material.IDialogService;
   private callback: ShareWorkspaceController;
 
+  static $inject = ['confirmDialogService', 'chePermissions', '$mdDialog'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor(confirmDialogService: any, chePermissions: che.api.IChePermissions, $mdDialog: ng.material.IDialogService) {
     this.confirmDialogService = confirmDialogService;

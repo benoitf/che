@@ -25,9 +25,10 @@ export class FactoryActionBoxController {
   private onChange: Function;
   private selectedParam: string;
 
+  static $inject = ['$mdDialog'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService) {
     this.$mdDialog = $mdDialog;

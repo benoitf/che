@@ -24,10 +24,10 @@ export class CheListHelperFactory implements che.widget.ICheListHelperFactory {
 
   private helpers: Map<string, CheListHelper>;
 
+  static $inject = ['$filter'];
 
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($filter: ng.IFilterService) {
     this.$filter = $filter;

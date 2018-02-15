@@ -32,8 +32,9 @@ export class OrganizationsPermissionService {
 
   private fetchingMap: Map<string, ng.IPromise<any>> = new Map();
 
+  static $inject = ['chePermissions', 'cheUser'];
+
   /**
-   * @ngInject for Dependency injection
    */
   constructor(chePermissions: che.api.IChePermissions, cheUser: any) {
     this.chePermissions = chePermissions;

@@ -24,9 +24,10 @@ export class CheJsonRpcApi {
   private $log: ng.ILogService;
   private jsonRpcApiConnection: Map<string, CheJsonRpcMasterApi>;
 
+  static $inject = ['$q', '$websocket', '$log'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService, $websocket: any, $log: ng.ILogService) {
     this.$q = $q;

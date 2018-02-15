@@ -33,9 +33,10 @@ export class CheSsh {
 
   private sshKeyPairs : Map<string, any>;
 
+  static $inject = ['$resource', '$q'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($resource : ng.resource.IResourceService, $q : ng.IQService) {
 

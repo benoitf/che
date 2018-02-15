@@ -17,9 +17,10 @@ export class AfterCreationDialogController {
    */
   private $mdDialog: ng.material.IDialogService;
 
+  static $inject = ['$mdDialog'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService) {
     this.$mdDialog = $mdDialog;

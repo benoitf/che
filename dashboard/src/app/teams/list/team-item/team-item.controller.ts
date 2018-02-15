@@ -41,9 +41,10 @@ export class TeamItemController {
    */
   private onUpdate: Function;
 
+  static $inject = ['$location', 'cheTeam', 'confirmDialogService', 'cheNotification'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($location: ng.ILocationService, cheTeam: che.api.ICheTeam, confirmDialogService: any, cheNotification: any) {
     this.$location = $location;

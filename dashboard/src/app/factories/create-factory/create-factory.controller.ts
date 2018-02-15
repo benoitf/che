@@ -38,10 +38,11 @@ export class CreateFactoryCtrl {
   private factoryBadgeUrl: string;
   private markdown: string;
 
+  static $inject = ['$location', 'cheAPI', '$log', 'cheNotification', '$scope', '$filter', 'lodash', '$document'];
+
 
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($location: ng.ILocationService,
               cheAPI: CheAPI,

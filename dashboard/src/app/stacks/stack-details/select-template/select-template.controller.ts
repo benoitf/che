@@ -27,10 +27,10 @@ export class SelectTemplateController {
   private templates: Array<che.IProject>;
   private callbackController: StackController;
 
+  static $inject = ['cheAPI', '$mdDialog'];
 
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(cheAPI: CheAPI, $mdDialog: ng.material.IDialogService) {
     this.$mdDialog = $mdDialog;

@@ -74,9 +74,11 @@ export class CreateTeamController {
    */
   private accountName: string;
 
+
+  static $inject = ['cheTeam', 'cheInvite', 'cheUser', 'chePermissions', 'cheNotification', '$location', '$q', 'lodash', '$log', '$rootScope'];
+
   /**
    * Default constructor
-   * @ngInject for Dependency injection
    */
   constructor(cheTeam: che.api.ICheTeam, cheInvite: che.api.ICheInvite, cheUser: any, chePermissions: che.api.IChePermissions, cheNotification: any,
               $location: ng.ILocationService, $q: ng.IQService, lodash: any, $log: ng.ILogService, $rootScope: che.IRootScopeService) {

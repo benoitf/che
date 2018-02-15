@@ -33,9 +33,10 @@ export class UniqueTeamNameValidator {
   private restrict: string;
   private require: string;
 
+  static $inject = ['cheTeam', '$q'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor (cheTeam: che.api.ICheTeam, $q: ng.IQService) {
     this.cheTeam = cheTeam;

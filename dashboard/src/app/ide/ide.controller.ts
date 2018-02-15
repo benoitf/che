@@ -32,9 +32,10 @@ class IdeCtrl {
   selectedWorkspaceExists: boolean = true;
   selectedWorkspaceName: string = null;
 
+  static $inject = ['$location', '$rootScope', '$routeParams', '$timeout', 'ideSvc', 'ideIframeSvc', 'cheWorkspace', 'routeHistory'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($location: ng.ILocationService, $rootScope: ng.IRootScopeService,
               $routeParams: ng.route.IRouteParamsService, $timeout: ng.ITimeoutService, ideSvc: IdeSvc,

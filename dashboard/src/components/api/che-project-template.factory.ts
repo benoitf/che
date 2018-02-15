@@ -24,9 +24,10 @@ export class CheProjectTemplate {
 
   remoteProjectTemplateAPI: ng.resource.IResourceClass<any>;
 
+  static $inject = ['$resource'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor ($resource: ng.resource.IResourceService) {
 

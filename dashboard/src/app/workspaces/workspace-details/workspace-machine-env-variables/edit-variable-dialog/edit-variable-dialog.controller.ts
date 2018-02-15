@@ -28,9 +28,10 @@ export class EditEnvVariableDialogController {
   private usedNames: Array<string>;
   private updateEnvVariable: (name: string, value: string, oldName?: string) => void;
 
+  static $inject = ['$mdDialog'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService) {
     this.$mdDialog = $mdDialog;

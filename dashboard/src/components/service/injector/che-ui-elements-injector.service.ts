@@ -21,9 +21,10 @@ export class CheUIElementsInjectorService {
   $document: ng.IDocumentService;
   elementsToInject: Object;
 
+  static $inject = ['$timeout', '$document', '$compile'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($timeout: ng.ITimeoutService, $document: ng.IDocumentService, $compile: ng.ICompileService) {
     this.$timeout = $timeout;

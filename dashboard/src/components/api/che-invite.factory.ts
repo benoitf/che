@@ -40,9 +40,10 @@ export class CheInvite implements che.api.ICheInvite {
    */
   private remoteInviteAPI: IInviteResource<any>;
 
+  static $inject = ['$q', '$resource'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService, $resource: ng.resource.IResourceService) {
     this.$q = $q;

@@ -74,9 +74,10 @@ export class AdminUserDetailsController {
    */
   private pageInfo: che.IPageInfo;
 
+  static $inject = ['cheProfile', '$location', '$timeout', '$scope', 'cheNotification', 'cheOrganization', 'initData'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor(cheProfile: CheProfile,
               $location: ng.ILocationService,

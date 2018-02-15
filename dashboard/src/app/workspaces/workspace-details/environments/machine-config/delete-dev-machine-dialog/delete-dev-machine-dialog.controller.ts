@@ -48,9 +48,10 @@ export class DeleteDevMachineDialogController {
    */
   private newDevMachine: string;
 
+  static $inject = ['$mdDialog'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService) {
     this.$mdDialog = $mdDialog;

@@ -55,11 +55,13 @@ export class OrganizationsItemController {
    */
   private organizationActions: che.resource.ICheOrganizationActions;
 
+  static $inject = ['$location', 'cheOrganization', 'confirmDialogService', 'cheNotification', 'organizationsPermissionService', 'chePermissions', 'resourcesService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
-  constructor($location: ng.ILocationService, cheOrganization: che.api.ICheOrganization, confirmDialogService: any, cheNotification: any,  organizationsPermissionService: OrganizationsPermissionService, chePermissions: che.api.IChePermissions, resourcesService: che.service.IResourcesService) {
+  constructor($location: ng.ILocationService, cheOrganization: che.api.ICheOrganization, confirmDialogService: any, cheNotification: any,
+      organizationsPermissionService: OrganizationsPermissionService, chePermissions: che.api.IChePermissions, resourcesService: che.service.IResourcesService) {
     this.$location = $location;
     this.confirmDialogService = confirmDialogService;
     this.cheOrganization = cheOrganization;

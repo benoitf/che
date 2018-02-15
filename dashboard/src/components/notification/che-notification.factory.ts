@@ -28,9 +28,10 @@ export class CheNotification {
   private currentNotificationNumber: number;
   private timeoutPromiseMap: Map<string, ng.IPromise<any>>;
 
+  static $inject = ['$timeout', '$document', 'cheUIElementsInjectorService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($timeout: ng.ITimeoutService, $document: ng.IDocumentService, cheUIElementsInjectorService: CheUIElementsInjectorService) {
     this.$timeout = $timeout;

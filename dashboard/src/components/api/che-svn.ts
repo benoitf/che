@@ -19,9 +19,10 @@ export class CheSvn {
   private remoteUrlMap: Map<string, any>;
   private remoteSvnAPI: any;
 
+  static $inject = ['$resource', 'wsagentPath'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($resource: ng.resource.IResourceService,
               wsagentPath: string) {

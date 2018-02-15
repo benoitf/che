@@ -20,9 +20,10 @@ export class NavbarNotificationController {
 
   private applicationNotifications: ApplicationNotifications;
 
+  static $inject = ['applicationNotifications', '$scope'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(applicationNotifications: ApplicationNotifications, $scope: ng.IScope) {
     this.applicationNotifications = applicationNotifications;

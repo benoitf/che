@@ -25,9 +25,10 @@ export class CheIdeFetcher {
   private cheBranding: CheBranding;
   private userAgent: string;
 
+  static $inject = ['$log', '$http', '$window', 'cheBranding'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($log: ng.ILogService, $http: ng.IHttpService, $window: ng.IWindowService, cheBranding: CheBranding) {
     this.$log = $log;

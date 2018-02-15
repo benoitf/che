@@ -38,9 +38,10 @@ export class CheOnLongTouch {
 
   $timeout: ng.ITimeoutService;
 
+  static $inject = ['$timeout'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($timeout: ng.ITimeoutService) {
     this.$timeout = $timeout;

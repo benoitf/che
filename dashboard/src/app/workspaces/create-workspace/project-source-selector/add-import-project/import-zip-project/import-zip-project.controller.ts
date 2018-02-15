@@ -41,9 +41,10 @@ export class ImportZipProjectController {
    */
   private form: ng.IFormController;
 
+  static $inject = ['$scope', 'importZipProjectService', 'addImportProjectService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope, importZipProjectService: ImportZipProjectService, addImportProjectService: AddImportProjectService) {
     this.importZipProjectService = importZipProjectService;

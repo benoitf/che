@@ -47,9 +47,10 @@ export class AddImportProjectController {
    */
   private projectOnAdd: (data: {templates: Array<che.IProjectTemplate>}) => void;
 
+  static $inject = ['$scope', 'addImportProjectService', 'projectSourceSelectorService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope, addImportProjectService: AddImportProjectService, projectSourceSelectorService: ProjectSourceSelectorService) {
     this.addImportProjectService = addImportProjectService;

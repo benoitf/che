@@ -74,9 +74,10 @@ export class CheBranding {
   private brandingData: IBranding;
   private callbacks: Map<string, Function> = new Map();
 
+  static $inject = ['$http', '$rootScope', 'cheService'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($http: ng.IHttpService, $rootScope: che.IRootScopeService, cheService: CheService) {
     this.$http = $http;

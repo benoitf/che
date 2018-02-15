@@ -29,9 +29,10 @@ export class FactoryFromWorkspaceCtrl {
   private isImporting: boolean;
   private factoryContent: any;
 
+  static $inject = ['$filter', 'cheAPI', 'cheNotification'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($filter: ng.IFilterService, cheAPI: CheAPI, cheNotification: CheNotification) {
     this.$filter = $filter;

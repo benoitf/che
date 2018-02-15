@@ -36,10 +36,10 @@ export class MachineAgentsController {
   private environmentManager: EnvironmentManager;
   private agents: Array<string>;
 
+  static $inject = ['$scope', 'cheAgent'];
 
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope, cheAgent: CheAgent) {
     this.cheAgent = cheAgent;

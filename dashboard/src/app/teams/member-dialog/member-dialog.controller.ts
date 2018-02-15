@@ -88,9 +88,10 @@ export class MemberDialogController {
    */
   private emailError: string;
 
+  static $inject = ['$mdDialog', 'cheTeam', 'cheUser', '$q', 'lodash'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: angular.material.IDialogService, cheTeam: che.api.ICheTeam, cheUser: any, $q: ng.IQService, lodash: any) {
     this.$mdDialog = $mdDialog;

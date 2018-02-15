@@ -39,9 +39,10 @@ export class EditProjectController {
    */
   private projectOnRemove: () => void;
 
+  static $inject = ['$scope', 'editProjectService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope, editProjectService: EditProjectService) {
     this.editProjectService = editProjectService;

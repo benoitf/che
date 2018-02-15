@@ -27,9 +27,11 @@ export class CheDropZoneCtrl {
   waitingDrop: boolean;
   progressUploadPercent: number;
 
+
+  static $inject = ['$scope', 'lodash'];
+  
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope, lodash: any) {
     this.$scope = $scope;

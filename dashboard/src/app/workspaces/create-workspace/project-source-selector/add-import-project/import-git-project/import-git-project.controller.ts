@@ -37,9 +37,10 @@ export class ImportGitProjectController {
    */
   private form: ng.IFormController;
 
+  static $inject = ['$scope', 'importGitProjectService', 'addImportProjectService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope, importGitProjectService: ImportGitProjectService, addImportProjectService: AddImportProjectService) {
     this.importGitProjectService = importGitProjectService;

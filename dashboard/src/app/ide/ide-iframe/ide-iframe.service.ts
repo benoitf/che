@@ -31,9 +31,9 @@ class IdeIFrameSvc {
   private $location: ng.ILocationService;
   private $mdSidenav: ng.material.ISidenavService;
 
+  static $inject = ['$window', '$timeout', '$compile', '$location', '$rootScope', '$mdSidenav', 'cheUIElementsInjectorService'];
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($window: ng.IWindowService,
               $timeout: ng.ITimeoutService,

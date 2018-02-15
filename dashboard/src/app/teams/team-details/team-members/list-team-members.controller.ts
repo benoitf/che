@@ -96,9 +96,11 @@ export class ListTeamMembersController {
    */
   private editable: any;
 
+  static $inject = ['cheTeam', 'chePermissions', 'cheInvite', 'cheUser', 'cheProfile', 'confirmDialogService', '$mdDialog',
+      '$q', 'cheNotification', 'lodash', '$location', 'teamDetailsService', '$scope', 'cheListHelperFactory'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(cheTeam: che.api.ICheTeam,
               chePermissions: che.api.IChePermissions,

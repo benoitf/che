@@ -27,9 +27,10 @@ export class EditCommandDialogController {
   usedCommandsName: Array<string>;
   callbackController: ListCommandsController;
 
+  static $inject = ['$mdDialog'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService) {
     this.$mdDialog = $mdDialog;

@@ -58,9 +58,10 @@ export class ProjectSourceSelectorController {
    */
   private scrollToBottom: boolean = true;
 
+  static $inject = ['$scope', 'projectSourceSelectorService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($scope: IProjectSourceSelectorScope, projectSourceSelectorService: ProjectSourceSelectorService) {
     this.$scope = $scope;

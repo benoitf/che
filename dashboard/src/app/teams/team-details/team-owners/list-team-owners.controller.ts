@@ -55,9 +55,10 @@ export class ListTeamOwnersController {
    */
   private owner: any;
 
+  static $inject = ['cheTeam', 'cheUser', 'chePermissions', 'cheProfile', 'cheNotification', 'lodash', 'teamDetailsService'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(cheTeam: che.api.ICheTeam, cheUser: any, chePermissions: che.api.IChePermissions, cheProfile: any, cheNotification: any,
               lodash: any, teamDetailsService: TeamDetailsService) {

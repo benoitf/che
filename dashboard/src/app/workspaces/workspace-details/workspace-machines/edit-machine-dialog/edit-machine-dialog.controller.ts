@@ -52,9 +52,10 @@ export class EditMachineDialogController {
    */
   private onChange: (environment: che.IWorkspaceEnvironment) => void;
 
+  static $inject = ['$mdDialog', 'cheEnvironmentRegistry', 'cheRecipeService'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService,
               cheEnvironmentRegistry: CheEnvironmentRegistry,

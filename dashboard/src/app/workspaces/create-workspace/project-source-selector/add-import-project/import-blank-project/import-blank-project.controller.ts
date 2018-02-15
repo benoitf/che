@@ -46,9 +46,10 @@ export class ImportBlankProjectController {
    */
   private isProjectNameUnique: (data: {name: string}) => boolean;
 
+  static $inject = ['$scope', 'addImportProjectService', 'importBlankProjectService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope, addImportProjectService: AddImportProjectService, importBlankProjectService: ImportBlankProjectService) {
     this.addImportProjectService = addImportProjectService;

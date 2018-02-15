@@ -54,9 +54,10 @@ export class AddImportProjectService {
    */
   private observable: IObservable<ProjectSource>;
 
+  static $inject = ['templateSelectorSvc', 'importBlankProjectService', 'importGitProjectService', 'importGithubProjectService', 'importZipProjectService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor(templateSelectorSvc: TemplateSelectorSvc, importBlankProjectService: ImportBlankProjectService, importGitProjectService: ImportGitProjectService, importGithubProjectService: ImportGithubProjectService, importZipProjectService: ImportZipProjectService) {
     this.templateSelectorSvc = templateSelectorSvc;

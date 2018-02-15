@@ -36,9 +36,10 @@ export class ListFactoriesController {
   private factories: any;
   private pagesInfo: any;
 
+  static $inject = ['$q', '$log', 'cheAPI', 'cheNotification', 'confirmDialogService', '$scope', 'cheListHelperFactory'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService, $log: ng.ILogService, cheAPI: CheAPI, cheNotification: CheNotification,
               confirmDialogService: ConfirmDialogService, $scope: ng.IScope, cheListHelperFactory: che.widget.ICheListHelperFactory) {

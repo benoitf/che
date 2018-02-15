@@ -40,8 +40,9 @@ export class OrganizationsConfigService {
    */
   private cheUser: any;
 
+  static $inject = ['$log', '$q', '$route', 'cheOrganization', 'chePermissions', 'cheResourcesDistribution', 'cheUser'];
+
   /** Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($log: ng.ILogService,
               $q: ng.IQService,

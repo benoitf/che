@@ -26,9 +26,10 @@ export class CheAgent {
   private agents: che.IAgent[];
   private remoteAgentAPI: IAgentsResource<any>;
 
+  static $inject = ['$resource', '$q'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($resource: ng.resource.IResourceService, $q: ng.IQService) {
     this.$resource = $resource;

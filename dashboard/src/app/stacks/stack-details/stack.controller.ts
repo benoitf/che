@@ -61,11 +61,16 @@ export class StackController {
 
   private confirmDialogService: ConfirmDialogService;
 
+  static $inject = ['$q', '$timeout', '$route', '$location', '$log', '$filter', 'cheStack', 'cheWorkspace', '$mdDialog', 'cheNotification',
+   '$document', 'cheUIElementsInjectorService', '$scope', '$window', 'importStackService', 'confirmDialogService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
-  constructor($q: ng.IQService, $timeout: ng.ITimeoutService, $route: ng.route.IRoute, $location: ng.ILocationService, $log: ng.ILogService, $filter: ng.IFilterService, cheStack: CheStack, cheWorkspace: CheWorkspace, $mdDialog: ng.material.IDialogService, cheNotification: CheNotification, $document: ng.IDocumentService, cheUIElementsInjectorService: CheUIElementsInjectorService, $scope: ng.IScope, $window: ng.IWindowService, importStackService: ImportStackService, confirmDialogService: ConfirmDialogService) {
+  constructor($q: ng.IQService, $timeout: ng.ITimeoutService, $route: ng.route.IRoute, $location: ng.ILocationService, 
+    $log: ng.ILogService, $filter: ng.IFilterService, cheStack: CheStack, cheWorkspace: CheWorkspace, $mdDialog: ng.material.IDialogService,
+     cheNotification: CheNotification, $document: ng.IDocumentService, cheUIElementsInjectorService: CheUIElementsInjectorService, 
+     $scope: ng.IScope, $window: ng.IWindowService, importStackService: ImportStackService, confirmDialogService: ConfirmDialogService) {
     this.$q = $q;
     this.$timeout = $timeout;
     this.$location = $location;

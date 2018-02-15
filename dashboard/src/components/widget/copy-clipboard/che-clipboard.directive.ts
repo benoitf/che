@@ -30,10 +30,10 @@ export class CheClipboard implements ng.IDirective {
   private $window: ng.IWindowService;
   private $log: ng.ILogService;
 
+  static $inject = ['$window', '$log'];
 
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($window: ng.IWindowService, $log: ng.ILogService) {
     this.$window = $window;

@@ -48,9 +48,10 @@ export class OrganizationsController {
    */
   private hasAdminUserService: boolean;
 
+  static $inject = ['cheOrganization', 'cheNotification', 'cheTeamEventsManager', '$scope', '$q', 'chePermissions', '$rootScope'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(cheOrganization: che.api.ICheOrganization, cheNotification: any,
               cheTeamEventsManager: che.api.ICheTeamEventsManager, $scope: ng.IScope,

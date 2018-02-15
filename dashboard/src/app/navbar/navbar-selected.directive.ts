@@ -34,9 +34,10 @@ export class NavBarSelected  implements ng.IDirective {
   private $rootScope: INavBarSelectedRootScopeService;
   private $location: ng.ILocationService;
 
+  static $inject = ['$rootScope', '$location'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor ($rootScope: ng.IRootScopeService, $location: ng.ILocationService) {
     this.$rootScope = <INavBarSelectedRootScopeService>$rootScope;

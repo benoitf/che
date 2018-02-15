@@ -23,9 +23,10 @@ export class StackItemController {
 
   stack: che.IStack;
 
+  static $inject = ['$location', 'lodash'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($location: ng.ILocationService,
               lodash: any) {

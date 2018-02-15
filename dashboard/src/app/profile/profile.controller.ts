@@ -24,9 +24,10 @@ export class ProfileController {
   private userName: string;
   private $window: ng.IWindowService;
 
+  static $inject = ['cheKeycloak', 'cheProfile', '$window'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(cheKeycloak: CheKeycloak, cheProfile: CheProfile, $window: ng.IWindowService) {
     this.$window = $window;

@@ -39,9 +39,9 @@ export class AdminsUserManagementCtrl {
   private userOrganizationCount: {[userId: string]: number} = {};
   private cheListHelper: che.widget.ICheListHelper;
 
+  static $inject = ['$q', '$rootScope', '$log', '$mdDialog', 'cheUser', '$location', 'cheNotification', 'confirmDialogService', 'cheOrganization', '$scope', 'cheListHelperFactory'];
   /**
    * Default constructor.
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService,
               $rootScope: che.IRootScopeService,

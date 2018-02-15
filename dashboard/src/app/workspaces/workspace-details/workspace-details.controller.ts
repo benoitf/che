@@ -64,9 +64,10 @@ export class WorkspaceDetailsController {
    */
   private unsavedChangesToApply: boolean;
 
+  static $inject = ['$location', '$log', '$scope', 'cheNotification', 'cheWorkspace', 'ideSvc', 'workspaceDetailsService', 'initData', '$timeout', 'workspacesService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($location: ng.ILocationService,
               $log: ng.ILogService,

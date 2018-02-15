@@ -45,9 +45,10 @@ export class FactoryInformationController {
   private origName: string;
   private isEditorContentChanged: boolean = false;
 
+  static $inject = ['$scope', 'cheAPI', 'cheNotification', '$location', '$log', '$timeout', 'lodash', '$filter', '$q', 'confirmDialogService'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope,
               cheAPI: CheAPI,

@@ -70,9 +70,10 @@ export class CreateOrganizationController {
    */
   private parentOrganizationMembers: Array<che.IUser>;
 
+  static $inject = ['cheOrganization', 'chePermissions', 'cheUser', 'cheNotification', '$location', '$q', '$log', '$rootScope', 'initData'];
+
   /**
    * Default constructor
-   * @ngInject for Dependency injection
    */
   constructor(cheOrganization: che.api.ICheOrganization, chePermissions: che.api.IChePermissions, cheUser: any, cheNotification: any,
               $location: ng.ILocationService, $q: ng.IQService, $log: ng.ILogService, $rootScope: che.IRootScopeService,

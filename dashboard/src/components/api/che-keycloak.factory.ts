@@ -28,9 +28,10 @@ export class CheKeycloak {
   keycloak: any;
   keycloakConfig: any;
 
+  static $inject = ['$q', 'keycloakAuth'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService, keycloakAuth: any) {
     this.$q = $q;

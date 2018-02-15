@@ -36,9 +36,10 @@ export class TemplateSelectorSvc implements IEditingProgress {
    */
   templates: Array<che.IProjectTemplate>;
 
+  static $inject = ['$filter', '$q', 'cheProjectTemplate'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($filter: ng.IFilterService, $q: ng.IQService, cheProjectTemplate: CheProjectTemplate) {
     this.$filter = $filter;

@@ -47,9 +47,10 @@ export class RamSettingsController {
    */
   private onRamChange: (data: {name: string, memoryLimitBytes: number}) => void;
 
+  static $inject = ['$filter', '$scope'];
+
   /**
    * Default constructor that is using resource injection
-   * @ngInject for Dependency injection
    */
   constructor($filter: ng.IFilterService, $scope: ng.IScope) {
     this.$filter = $filter;

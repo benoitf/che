@@ -45,9 +45,13 @@ export class CheAPI {
   private chePermissions: che.api.IChePermissions;
   private cheOrganization: che.api.ICheOrganization;
 
+  static $inject = ['cheWorkspace', 'cheFactory', 'cheFactoryTemplate',
+               'cheProfile', 'chePreferences', 'cheProjectTemplate',
+              'cheService', 'cheStack', 'cheOAuthProvider', 'cheAgent',
+            'cheSsh', 'cheUser', 'chePermissions', 'cheOrganization'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(cheWorkspace: CheWorkspace, cheFactory: CheFactory, cheFactoryTemplate: CheFactoryTemplate,
               cheProfile: CheProfile, chePreferences: ChePreferences, cheProjectTemplate: CheProjectTemplate,

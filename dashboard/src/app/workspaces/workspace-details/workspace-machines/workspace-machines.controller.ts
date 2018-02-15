@@ -104,11 +104,15 @@ export class WorkspaceMachinesController {
    */
   private cheRecipeService: CheRecipeService;
 
+  static $inject = ['$q', '$log', '$filter', '$scope', '$mdDialog', 'confirmDialogService', 'cheRecipeService', '$location', 'cheEnvironmentRegistry',
+'cheListHelperFactory', 'workspaceDetailsService'];
+
   /**
    * Default constructor that is using resource injection.
-   * @ngInject for Dependency injection
    */
-  constructor($q: ng.IQService, $log: ng.ILogService, $filter: ng.IFilterService, $scope: ng.IScope, $mdDialog: ng.material.IDialogService, confirmDialogService: ConfirmDialogService, cheRecipeService: CheRecipeService, $location: ng.ILocationService, cheEnvironmentRegistry: CheEnvironmentRegistry, cheListHelperFactory: che.widget.ICheListHelperFactory, workspaceDetailsService: WorkspaceDetailsService) {
+  constructor($q: ng.IQService, $log: ng.ILogService, $filter: ng.IFilterService, $scope: ng.IScope, $mdDialog: ng.material.IDialogService, 
+    confirmDialogService: ConfirmDialogService, cheRecipeService: CheRecipeService, $location: ng.ILocationService, cheEnvironmentRegistry: CheEnvironmentRegistry,
+     cheListHelperFactory: che.widget.ICheListHelperFactory, workspaceDetailsService: WorkspaceDetailsService) {
     this.$q = $q;
     this.$log = $log;
     this.$filter = $filter;

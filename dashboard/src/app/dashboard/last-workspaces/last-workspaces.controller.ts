@@ -24,9 +24,10 @@ export class DashboardLastWorkspacesController {
   workspaces: Array<che.IWorkspace>;
   isLoading: boolean;
 
+  static $inject = ['cheWorkspace', 'cheNotification'];
+
   /**
    * Default constructor
-   * @ngInject for Dependency injection
    */
   constructor(cheWorkspace: CheWorkspace, cheNotification: CheNotification) {
     this.cheWorkspace = cheWorkspace;

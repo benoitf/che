@@ -25,9 +25,10 @@ export class ChePanelCtrl {
   disabled: boolean;
   id: string;
 
+  static $inject = ['$scope'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope) {
     this.collapse = false;

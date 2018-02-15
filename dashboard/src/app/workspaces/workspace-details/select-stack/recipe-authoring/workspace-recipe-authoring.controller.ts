@@ -47,9 +47,10 @@ export class WorkspaceRecipeAuthoringController {
     onLoad: Function
   };
 
+  static $inject = ['$scope', '$timeout', 'cheBranding'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($scope: ng.IScope, $timeout: ng.ITimeoutService, cheBranding: CheBranding) {
     this.$timeout = $timeout;

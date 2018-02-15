@@ -24,9 +24,10 @@ export class NoGithubOauthDialogController {
   private name: string;
   private message: string;
 
+  static $inject = ['$mdDialog'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($mdDialog: ng.material.IDialogService, $rootScope: ng.IRootScopeService) {
     this.$mdDialog = $mdDialog;

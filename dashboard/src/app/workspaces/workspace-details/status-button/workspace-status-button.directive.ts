@@ -56,9 +56,10 @@ export class CheWorkspaceStatusButton {
 
   private cheWorkspace: CheWorkspace;
 
+  static $inject = ['cheWorkspace'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(cheWorkspace: CheWorkspace) {
     this.cheWorkspace = cheWorkspace;

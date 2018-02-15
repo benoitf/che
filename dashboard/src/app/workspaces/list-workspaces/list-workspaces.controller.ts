@@ -51,9 +51,11 @@ export class ListWorkspacesCtrl {
   private confirmDialogService: ConfirmDialogService;
   private ALL_NAMESPACES: string = 'All Teams';
 
+  static $inject = ['$log', '$mdDialog', '$q', 'lodash', 'cheAPI', 'cheNotification', 'cheBranding', 'cheWorkspace', 'cheNamespaceRegistry',
+   'confirmDialogService', '$scope', 'cheListHelperFactory'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($log: ng.ILogService, $mdDialog: ng.material.IDialogService, $q: ng.IQService, lodash: any,
               cheAPI: CheAPI, cheNotification: CheNotification, cheBranding: CheBranding,

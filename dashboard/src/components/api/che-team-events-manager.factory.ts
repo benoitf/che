@@ -35,9 +35,10 @@ export class CheTeamEventsManager implements che.api.ICheTeamEventsManager {
   newTeamHandlers: Array<Function>;
   deleteHandlers: Array<Function>;
 
+  static $inject = ['cheAPI', 'cheJsonRpcApi', 'applicationNotifications', '$log', 'cheUser'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor(cheAPI: CheAPI, cheJsonRpcApi: CheJsonRpcApi, applicationNotifications: any, $log: ng.ILogService, cheUser: any) {
     this.cheUser = cheUser;

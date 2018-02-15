@@ -58,9 +58,10 @@ export class CheResourcesDistribution implements che.api.ICheResourcesDistributi
    */
   private organizationAvailableResources: Map<string, any>;
 
+  static $inject = ['$q', '$resource', 'lodash'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($q: ng.IQService, $resource: ng.resource.IResourceService, lodash: any) {
     this.$q = $q;

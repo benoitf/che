@@ -19,7 +19,7 @@ export class CheListHelper implements che.widget.ICheListHelper {
   /**
    * Angular filter service
    */
-  private $filter: ng.IFilterService;
+  private $filter: any;
 
   /**
    * Name of unique key each item should have.

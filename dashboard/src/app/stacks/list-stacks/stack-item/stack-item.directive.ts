@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./stack-item.html');
+
 /**
  * Defines a directive for items in stack list.
  * Expects in parent scope:
@@ -33,7 +35,7 @@ export class StackItem implements ng.IDirective {
     onDuplicate: '&cheOnDuplicate'
   };
 
-  templateUrl = 'app/stacks/list-stacks/stack-item/stack-item.html';
+  templateUrl = htmlLink;
 
   controller = 'StackItemController';
   controllerAs = 'stackItemController';

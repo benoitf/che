@@ -10,6 +10,7 @@
  */
 'use strict';
 
+
 describe('List workspaces >', () => {
   let pageObject;
   let mock;
@@ -23,6 +24,7 @@ describe('List workspaces >', () => {
 
     browser.addMockModule('userDashboardMock', mock.listWorkspacesMock, workspacesList);
     browser.get('/');
+    browser.waitForAngular();
     browser.setLocation('/workspaces');
 
   });

@@ -10,6 +10,9 @@
  */
 'use strict';
 
+const htmlLink=require('./che-selecter.html');
+
+
 export interface ICheSelecterScope extends ng.IScope {
   valueModel: string;
   title: string;
@@ -28,7 +31,7 @@ export interface ICheSelecterScope extends ng.IScope {
 export class CheSelecter implements ng.IDirective {
 
   restrict = 'E';
-  templateUrl = 'components/widget/selecter/che-selecter.html';
+  templateUrl = htmlLink;
 
   // we require ngModel as we want to use it inside our directive
   require = ['ngModel'];

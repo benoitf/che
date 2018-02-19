@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./workspace-status.html');
+
 /**
  * Defines a directive for creating an indicator of workspace's status, which contains
  * both icon and text representation of current status
@@ -20,7 +22,7 @@ export class WorkspaceStatus implements ng.IDirective {
   restrict = 'E';
 
   replace = true;
-  templateUrl = 'app/workspaces/workspace-status/workspace-status.html';
+  templateUrl = htmlLink;
 
   // scope values
   scope = {

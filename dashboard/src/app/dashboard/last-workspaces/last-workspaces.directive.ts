@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./last-workspaces.html');
+
 /**
  * @ngdoc directive
  * @name dashboard.directive:DashboardLastWorkspaces
@@ -19,7 +21,7 @@
 export class DashboardLastWorkspaces implements ng.IDirective {
 
   restrict = 'E';
-  templateUrl = 'app/dashboard/last-workspaces/last-workspaces.html';
+  templateUrl = htmlLink;
 
   controller = 'DashboardLastWorkspacesController';
   controllerAs = 'dashboardLastWorkspacesController';

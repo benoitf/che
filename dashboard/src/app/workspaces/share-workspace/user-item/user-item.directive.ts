@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./user-item.html');
+
 /**
  * Defines a directive for user item in permissions list.
  *
@@ -18,7 +20,7 @@
 export class UserItem implements ng.IDirective {
   restrict = 'E';
 
-  templateUrl = 'app/workspaces/share-workspace/user-item/user-item.html';
+  templateUrl = htmlLink;
   replace = false;
 
   controller = 'UserItemController';

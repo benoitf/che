@@ -28,7 +28,7 @@ export class StackSelectorController {
   /**
    * Filter service.
    */
-  $filter: ng.IFilterService;
+  $filter: any;
   /**
    * Location service.
    */

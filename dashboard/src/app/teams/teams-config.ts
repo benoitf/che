@@ -35,6 +35,8 @@ import {ListTeams} from './list/list-teams.directive';
 import {ListTeamsController} from './list/list-teams.controller';
 import {TeamItem} from './list/team-item/team-item.directive';
 import {TeamItemController} from './list/team-item/team-item.controller';
+const createTemplateLink=require('./create-team/create-team.html');
+const editTemplateLink=require('./team-details/team-details.html');
 
 /**
  * The configuration of teams, defines controllers, directives and routing.
@@ -114,7 +116,7 @@ export class TeamsConfig {
         return params.teamName;
       },
       reloadOnSearch: false,
-      templateUrl: 'app/teams/team-details/team-details.html',
+      templateUrl: editTemplateLink,
       controller: 'TeamDetailsController',
       controllerAs: 'teamDetailsController',
       resolve: {
@@ -127,7 +129,7 @@ export class TeamsConfig {
     register.app.config(['$routeProvider', ($routeProvider: che.route.IRouteProvider) => {
       $routeProvider.accessWhen('/team/create', {
         title: 'New Team',
-        templateUrl: 'app/teams/create-team/create-team.html',
+        templateUrl: createTemplateLink,
         controller: 'CreateTeamController',
         controllerAs: 'createTeamController',
         resolve: {

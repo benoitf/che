@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./organization-not-found.html');
+
 /**
  * @ngdoc directive
  * @name organization.details:OrganizationNotFound
@@ -27,7 +29,7 @@
 export class OrganizationNotFound implements ng.IDirective {
   restrict: string = 'E';
   replace: boolean = true;
-  templateUrl: string = 'app/organizations/organization-details/organization-not-found/organization-not-found.html';
+  templateUrl: string = htmlLink;
 
   scope: any = {
     organizationName: '='

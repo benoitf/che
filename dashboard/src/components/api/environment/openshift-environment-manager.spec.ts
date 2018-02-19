@@ -10,6 +10,7 @@
  */
 'use strict';
 
+import * as jsyaml from 'js-yaml';
 import {OpenshiftEnvironmentManager} from './openshift-environment-manager';
 import {IEnvironmentManagerMachine, IEnvironmentManagerMachineServer} from './environment-manager-machine';
 import {IPodList} from './openshift-environment-recipe-parser';

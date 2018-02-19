@@ -11,6 +11,8 @@
 'use strict';
 import {ProfileController} from './profile.controller';
 
+const htmlLink=require('./profile.html');
+
 export class ProfileConfig {
 
   constructor(register: che.IRegisterService) {
@@ -18,7 +20,7 @@ export class ProfileConfig {
 
     let locationProvider = {
       title: 'Account',
-      templateUrl: 'app/profile/profile.html',
+      templateUrl: htmlLink,
       controller: 'ProfileController',
       controllerAs: 'profileController'
     };

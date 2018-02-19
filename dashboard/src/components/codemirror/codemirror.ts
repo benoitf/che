@@ -32,7 +32,14 @@ export class CodeMirrorConstant {
         }
       }
     }).config(() => {
-      uiCodemirrorDirective.$inject = ['$timeout', 'udCodemirrorConfig']; // jshint ignore:line
+     // register.app.constant('uiCodemirrorConfig', {})
+     // .directive('uiCodemirror', ['$timeout', 'udCodemirrorConfig', UICodemirrorLibrary.uiCodemirrorDirective]);
+
+
+
+
+  
+  //      uiCodemirrorDirective.$inject = ['$timeout', 'udCodemirrorConfig']; // jshint ignore:line
     });
   }
 }

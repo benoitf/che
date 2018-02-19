@@ -82,6 +82,9 @@ import {WorkspaceWarnings} from './workspace-details/warnings/workspace-warnings
 import {WorkspaceWarningsController} from './workspace-details/warnings/workspace-warnings.controller';
 import {WorkspacesService} from './workspaces.service';
 
+const createWorkspaceHtmlLink=require('./create-workspace/create-workspace.html');
+const listWorkspaceHtmlLink=require('./list-workspaces/list-workspaces.html');
+
 /**
  * @ngdoc controller
  * @name workspaces:WorkspacesConfig
@@ -171,13 +174,13 @@ export class WorkspacesConfig {
     register.app.config(['$routeProvider', ($routeProvider: che.route.IRouteProvider) => {
       $routeProvider.accessWhen('/workspaces', {
         title: 'Workspaces',
-        templateUrl: 'app/workspaces/list-workspaces/list-workspaces.html',
+        templateUrl: listWorkspaceHtmlLink,
         controller: 'ListWorkspacesCtrl',
         controllerAs: 'listWorkspacesCtrl'
       })
         .accessWhen('/create-workspace', {
           title: 'New Workspace',
-          templateUrl: 'app/workspaces/create-workspace/create-workspace.html',
+          templateUrl: createWorkspaceHtmlLink,
           controller: 'CreateWorkspaceController',
           controllerAs: 'createWorkspaceController',
           resolve: {

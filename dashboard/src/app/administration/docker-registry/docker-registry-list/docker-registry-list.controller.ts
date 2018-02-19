@@ -13,6 +13,7 @@
 import {ConfirmDialogService} from '../../../../components/service/confirm-dialog/confirm-dialog.service';
 import {ChePreferences} from '../../../../components/api/che-preferences.factory';
 import {CheNotification} from '../../../../components/notification/che-notification.factory';
+const htmlLink=require('./edit-registry/edit-registry.html');
 
 /**
  * @ngdoc controller
@@ -179,7 +180,7 @@ export class DockerRegistryListController {
         callbackController: this,
         registry: registry
       },
-      templateUrl: 'app/administration/docker-registry/docker-registry-list/edit-registry/edit-registry.html'
+      templateUrl: htmlLink
     }).finally(() => {
       this.getRegistries().then(() => {
         this.cheListHelper.updateBulkSelectionStatus();

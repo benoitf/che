@@ -11,6 +11,8 @@
 'use strict';
 import {CheStackLibraryFilterController} from './che-stack-library-filter.controller';
 
+const htmlLink=require('./che-stack-library-filter.html');
+
 /**
  * @ngdoc directive
  * @name workspace.create.directive:cheStackLibraryFilter
@@ -24,7 +26,7 @@ import {CheStackLibraryFilterController} from './che-stack-library-filter.contro
  */
 export class CheStackLibraryFilter implements ng.IDirective {
   restrict = 'E';
-  templateUrl = 'app/workspaces/create-workspace/stack-selector/stack-library-filter/che-stack-library-filter.html';
+  templateUrl = htmlLink;
   controller = 'CheStackLibraryFilterController';
   controllerAs = 'cheStackLibraryFilterCtrl';
   bindToController = true;

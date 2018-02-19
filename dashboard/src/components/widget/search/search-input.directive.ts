@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./search-input.html');
+
 /**
  * @ngdoc directive
  * @name components.directive:searchInput
@@ -34,7 +36,7 @@ export class SearchInput {
   restrict: string = 'E';
   replace: boolean = true;
   transclude: boolean = true;
-  templateUrl: string = 'components/widget/search/search-input.html';
+  templateUrl: string = htmlLink;
   required: string = 'ngModel';
   scope: {
     [propName: string]: string

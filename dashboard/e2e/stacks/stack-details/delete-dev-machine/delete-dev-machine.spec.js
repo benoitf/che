@@ -19,6 +19,9 @@ describe('Stack details >', () => {
     stackDetailsMock = require('./../stack-details.mock.js');
     stackDetailsPageObject = require('./../stack-details.po.js');
     utils = require('../../../utils');
+    browser.get('/');
+    browser.waitForAngular();
+
   });
 
   describe('one machine (dev) in stack >', () => {

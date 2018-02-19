@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./project-item.html');
+
 /**
  * Defines a directive for items in project list.
  * Expects in parent scope:
@@ -34,7 +36,7 @@ export class CheProjectItem implements ng.IDirective {
     hasAction: '=?cheHasAction'
   };
 
-  templateUrl = 'app/workspaces/workspace-details/workspace-projects/project-item/project-item.html';
+  templateUrl = htmlLink;
 
   controller = 'ProjectItemCtrl';
   controllerAs = 'projectItemCtrl';

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-label.html');
+
 /**
  * Defines a directive for creating label container.
  * @author Oleksii Orel
@@ -19,7 +21,7 @@ export class CheLabel implements ng.IDirective {
   restrict = 'E';
   replace = true;
   transclude = false;
-  templateUrl = 'components/widget/label/che-label.html';
+  templateUrl = htmlLink;
 
   // scope values
   scope = {

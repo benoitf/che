@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./create-factory-git.html');
+
 /**
  * Defines a directive for creating factory from git.
  * @author Florent Benoit
@@ -34,7 +36,7 @@ export class CreateFactoryGit implements ng.IDirective {
     this.bindToController = true;
 
     this.restrict = 'E';
-    this.templateUrl = 'app/factories/create-factory/git/create-factory-git.html';
+    this.templateUrl = htmlLink;
 
 
     // scope values

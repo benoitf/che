@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./list-agents.html');
+
 /**
  * @ngdoc directive
  * @name workspaces.details.directive:listAgents
@@ -26,7 +28,7 @@
  */
 export class ListAgents {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/environments/list-agents/list-agents.html';
+  templateUrl: string = htmlLink;
 
   controller: string = 'ListAgentsController';
   controllerAs: string = 'listAgentsController';

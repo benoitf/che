@@ -10,6 +10,7 @@
  */
 'use strict';
 import {ConfirmDialogService} from '../../../../components/service/confirm-dialog/confirm-dialog.service';
+const htmlLink=require('./edit-component-dialog/edit-component-dialog.html');
 
 interface IComponent {
   name: string;
@@ -163,7 +164,7 @@ export class ListComponentsController {
         components: this.components,
         callbackController: this
       },
-      templateUrl: 'app/stacks/stack-details/list-components/edit-component-dialog/edit-component-dialog.html'
+      templateUrl: htmlLink
     });
   }
 

@@ -11,6 +11,7 @@
 'use strict';
 
 import {IParser} from './parser';
+import * as jsyaml from 'js-yaml';
 
 export interface IComposeServiceRecipe {
   image: string;

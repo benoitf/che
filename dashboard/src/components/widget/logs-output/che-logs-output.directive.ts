@@ -17,6 +17,8 @@ interface ICheLogsOutputScope extends ng.IScope {
   text: string;
 }
 
+const htmlLink=require('./che-logs-output.html');
+
 /**
  * Defines a directive for Logs output
  * @author Oleksii Kurinnyi
@@ -24,7 +26,7 @@ interface ICheLogsOutputScope extends ng.IScope {
 export class CheLogsOutput implements ng.IDirective {
 
   restrict = 'E';
-  templateUrl = 'components/widget/logs-output/che-logs-output.html';
+  templateUrl = htmlLink;
 
   // scope values
   scope = {

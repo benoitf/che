@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./factory-command.html');
+
 /**
  * Defines a directive for displaying factory commands.
  * @author Florent Benoit
@@ -32,7 +34,7 @@ export class FactoryCommand implements ng.IDirective {
   constructor() {
     this.restrict = 'E';
 
-    this.templateUrl = 'app/factories/create-factory/command/factory-command.html';
+    this.templateUrl = htmlLink;
     this.replace = false;
 
     this.controller = 'FactoryCommandController';

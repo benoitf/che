@@ -29,7 +29,7 @@ export class RamSettingsController {
   /**
    * Filter service.
    */
-  private $filter: ng.IFilterService;
+  private $filter: any;
   /**
    * List of machines provided by parent controller.
    */

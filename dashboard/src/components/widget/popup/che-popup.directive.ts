@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-popup.html');
+
 /**
  * @ngdoc directive
  * @name components.directive:chePopup
@@ -39,7 +41,7 @@ export class ChePopup {
   constructor() {
     this.restrict = 'E';
     this.transclude = true;
-    this.templateUrl = 'components/widget/popup/che-popup.html';
+    this.templateUrl = htmlLink;
 
     // scope values
     this.scope = {

@@ -13,6 +13,7 @@ import {CheEnvironmentRegistry} from '../../../../components/api/environment/che
 import {EnvironmentManager} from '../../../../components/api/environment/environment-manager';
 import {CheNotification} from '../../../../components/notification/che-notification.factory';
 import {CheRecipeService} from '../che-recipe.service';
+const htmlLink=require('../workspace-machines/edit-machine-dialog/edit-machine-dialog.html');
 
 /**
  * @ngdoc controller
@@ -340,7 +341,7 @@ export class WorkspaceEnvironmentsController {
           this.setEnvironments(this.workspaceConfig.environments);
         }
       },
-      templateUrl: 'app/workspaces/workspace-details/workspace-machines/edit-machine-dialog/edit-machine-dialog.html'
+      templateUrl: htmlLink
     });
   }
 

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./list-organization-invite-members.html');
+
 /**
  * @ngdoc directive
  * @name organization.details.invite-members:ListOrganizationInviteMembers
@@ -27,7 +29,7 @@
 export class ListOrganizationInviteMembers implements ng.IDirective {
 
   restrict: string = 'E';
-  templateUrl: string = 'app/organizations/organization-details/organization-invite-members/list-organization-invite-members.html';
+  templateUrl: string = htmlLink;
 
   controller: string = 'ListOrganizationInviteMembersController';
   controllerAs: string = 'listOrganizationInviteMembersController';

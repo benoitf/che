@@ -82,8 +82,8 @@ import {NoGithubOauthDialogController} from '../create-workspace/project-source-
 import {EditMachineVolumeDialogController} from './workspace-machine-volumes/edit-volume-dialog/edit-volume-dialog.controller';
 import {MachineVolumes} from './workspace-machine-volumes/machine-volumes.directive';
 import {MachineVolumesController} from './workspace-machine-volumes/machine-volumes.controller';
-
-
+const projectDetailsTemplateLink=require('./workspace-projects/project-details/project-details.html');
+const workspaceDetailsTemplateLink=require('./workspace-details.html');
 
 /**
  * @ngdoc controller
@@ -179,7 +179,7 @@ export class WorkspaceDetailsConfig {
           title: (params: any) => {
             return params.workspaceName + ' | ' + params.projectName;
           },
-          templateUrl: 'app/workspaces/workspace-details/workspace-projects/project-details/project-details.html',
+          templateUrl: projectDetailsTemplateLink,
           controller: 'ProjectDetailsController',
           controllerAs: 'projectDetailsController'
         })
@@ -188,7 +188,7 @@ export class WorkspaceDetailsConfig {
             return params.workspaceName;
           },
           reloadOnSearch: false,
-          templateUrl: 'app/workspaces/workspace-details/workspace-details.html',
+          templateUrl: workspaceDetailsTemplateLink,
           controller: 'WorkspaceDetailsController',
           controllerAs: 'workspaceDetailsController',
           resolve: {

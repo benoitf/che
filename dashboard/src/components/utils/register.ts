@@ -16,7 +16,7 @@
  * Florent: Add userDashboard module and transform it to a class
  */
 export class Register implements che.IRegisterService {
-  app: ng.IModule;
+  app: any;
 
   constructor(moduleApp: ng.IModule) {
     this.app = moduleApp;

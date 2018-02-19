@@ -13,6 +13,7 @@ import {MachineSelectorController} from './machine-selector.controller';
 import {IEnvironmentManagerMachine} from '../../../../components/api/environment/environment-manager-machine';
 import {EnvironmentManager} from '../../../../components/api/environment/environment-manager';
 
+const htmlLink=require('./machine-selector.html');
 
 interface IMachineSelectorScope extends ng.IScope {
   setMachine?: (machine: IEnvironmentManagerMachine) => void;
@@ -47,7 +48,7 @@ interface IMachineSelectorTranscludeScope extends ng.IScope {
  */
 export class MachineSelector implements ng.IDirective {
   restrict = 'E';
-  templateUrl = 'app/workspaces/workspace-details/machine-selector/machine-selector.html';
+  templateUrl = htmlLink;
   controller = 'MachineSelectorController';
   controllerAs = 'machineSelectorController';
   bindToController = true;

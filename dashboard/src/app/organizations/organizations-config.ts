@@ -26,6 +26,9 @@ import {OrganizationsConfigService} from './organizations-config.service';
 import {OrganizationNotFound} from './organization-details/organization-not-found/organization-not-found.directive';
 import {OrganizationSelectMembersDialogController} from './organization-details/organization-select-members-dialog/organization-select-members-dialog.controller';
 import {OrganizationMemberItem} from './organization-details/organization-select-members-dialog/organization-member-item/organization-member-item.directive';
+const createTemplateLink=require('./create-organizations/create-organizations.html');
+const listTemplateLink=require('./organizations.html');
+const detailsTemplateLink=require('./organization-details/organization-details.html');
 
 /**
  * The configuration of teams, defines controllers, directives and routing.
@@ -68,7 +71,7 @@ export class OrganizationsConfig {
         return params.organizationName;
       },
       reloadOnSearch: false,
-      templateUrl: 'app/organizations/organization-details/organization-details.html',
+      templateUrl: detailsTemplateLink,
       controller: 'OrganizationDetailsController',
       controllerAs: 'organizationDetailsController',
       resolve: {
@@ -80,7 +83,7 @@ export class OrganizationsConfig {
 
     const createOrganizationLocationProvider = {
       title: 'New Organization',
-      templateUrl: 'app/organizations/create-organizations/create-organizations.html',
+      templateUrl: createTemplateLink,
       controller: 'CreateOrganizationController',
       controllerAs: 'createOrganizationController',
       resolve: {
@@ -94,7 +97,7 @@ export class OrganizationsConfig {
     register.app.config(['$routeProvider', ($routeProvider: che.route.IRouteProvider) => {
       $routeProvider.accessWhen('/organizations', {
         title: 'organizations',
-        templateUrl: 'app/organizations/organizations.html',
+        templateUrl: listTemplateLink,
         controller: 'OrganizationsController',
         controllerAs: 'organizationsController'
       })

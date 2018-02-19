@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./workspace-item.html');
+
 /**
  * Defines a directive for items in workspace list.
  * Expects in parent scope:
@@ -20,7 +22,7 @@ export class CheWorkspaceItem implements ng.IDirective {
   // we require ngModel as we want to use it inside our directive
   require = ['ngModel'];
 
-  templateUrl = 'app/workspaces/list-workspaces/workspace-item/workspace-item.html';
+  templateUrl = htmlLink;
 
   controller = 'WorkspaceItemCtrl';
   controllerAs = 'workspaceItemCtrl';

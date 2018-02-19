@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./environments.html');
+
 /**
  * @ngdoc directive
  * @name workspaces.details.directive:workspaceEnvironments
@@ -26,7 +28,7 @@
  */
 export class WorkspaceEnvironments {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/environments/environments.html';
+  templateUrl: string = htmlLink;
 
   controller: string = 'WorkspaceEnvironmentsController';
   controllerAs: string = 'workspaceEnvironmentsController';

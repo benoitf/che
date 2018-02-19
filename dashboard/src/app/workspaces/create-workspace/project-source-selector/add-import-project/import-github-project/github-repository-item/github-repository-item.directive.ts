@@ -10,9 +10,11 @@
  */
 'use strict';
 
+const htmlLink=require('./github-repository-item.html');
+
 export class GithubRepositoryItem implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/create-workspace/project-source-selector/add-import-project/import-github-project/github-repository-item/github-repository-item.html';
+  templateUrl: string = htmlLink;
   replace: boolean = true;
 
   scope: {

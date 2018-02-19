@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./machine-agents.html');
+
 /**
  * @ngdoc directive
  * @name machine.agents.directive:MachineAgents
@@ -26,7 +28,7 @@
  */
 export class MachineAgents implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/workspace-machine-agents/machine-agents.html';
+  templateUrl: string = htmlLink;
   controller: string = 'MachineAgentsController';
   controllerAs: string = 'machineAgentsController';
   bindToController: boolean = true;

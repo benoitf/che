@@ -13,6 +13,7 @@ import {CheStack} from '../../../components/api/che-stack.factory';
 import {CheNotification} from '../../../components/notification/che-notification.factory';
 import {CheProfile} from '../../../components/api/che-profile.factory';
 import {ConfirmDialogService} from '../../../components/service/confirm-dialog/confirm-dialog.service';
+const htmlLink=require('./build-stack/build-stack.html');
 
 /**
  * @ngdoc controller
@@ -132,7 +133,7 @@ export class ListStacksController {
       locals: {
         callbackController: this
       },
-      templateUrl: 'app/stacks/list-stacks/build-stack/build-stack.html'
+      templateUrl: htmlLink
     });
   }
 

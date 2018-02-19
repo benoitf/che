@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./ram-settings-machine-item.html');
+
 /**
  * Defines a directive for displaying machine's RAM settings item.
  *
@@ -17,7 +19,7 @@
  */
 export class RamSettingsMachineItem implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/create-workspace/ram-settings/ram-settings-machine-item/ram-settings-machine-item.html';
+  templateUrl: string = htmlLink;
   replace: boolean = true;
 
   controller: string = 'RamSettingsMachineItemController';

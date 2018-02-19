@@ -27,8 +27,8 @@ interface ICheLearmMoreTemplateScope extends ng.IScope {
  *
  * @author Florent Benoit
  */
-export class CheLearnMoreTemplate implements ng.IDirective {
-  $compile: ng.ICompileService;
+export class CheLearnMoreTemplate  {
+  $compile: any;
   $mdUtil: any;
 
   restrict = 'A';

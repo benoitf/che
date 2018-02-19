@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-toggle-button.html');
+
 /**
  * Defines a directive for a toggle button.
  * @author Florent Benoit
@@ -26,7 +28,7 @@ export class CheToggleButton {
    */
   constructor() {
     this.restrict = 'E';
-    this.templateUrl = 'components/widget/toggle-button/che-toggle-button.html';
+    this.templateUrl = htmlLink;
 
     // scope values
     this.scope = {

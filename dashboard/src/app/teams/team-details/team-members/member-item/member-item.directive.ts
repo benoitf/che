@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./member-item.html');
+
 /**
  * Defines a directive for user item in permissions list.
  *
@@ -18,7 +20,7 @@
 export class MemberItem implements ng.IDirective {
 
   restrict: string = 'E';
-  templateUrl: string = 'app/teams/team-details/team-members/member-item/member-item.html';
+  templateUrl: string = htmlLink;
   replace: boolean = false;
 
   controller: string = 'MemberItemController';

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-list-item-checked.html');
+
 /**
  * Defines a directive for creating List Items that can be checked.
  * @author Ann Shumilova
@@ -19,7 +21,7 @@ export class CheListItemChecked implements ng.IDirective {
   restrict = 'E';
   replace = true;
   transclude = true;
-  templateUrl = 'components/widget/list/che-list-item-checked.html';
+  templateUrl = htmlLink;
 
   // we require ngModel as we want to use it inside our directive
   require = ['ngModel'];

@@ -1,0 +1,50 @@
+<!--
+
+    Copyright (c) 2015-2018 Red Hat, Inc.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+
+    Contributors:
+      Red Hat, Inc. - initial API and implementation
+
+-->
+<!doctype html>
+<html class="no-js" ng-app="userDashboard" ng-strict-di>
+  <head>
+    <meta charset="utf-8">
+    <title ng-bind="branding.title + ' | ' + currentPage">Loading Dashboard...</title>
+    <meta name="description" content="">
+    <base href="/">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" ng-href="{{branding.favicon}}">
+  </head>
+  <body layout="row">
+
+  <div ng-hide="hideLoader" class="main-page-loader">
+    <div class="ide-page-loader-content">
+      <img ng-src="{{branding.loaderURL}}">
+    </div>
+  </div>
+  <md-sidenav id="chenavmenu" class="ide-show not-visible" ng-class="waitingLoaded ? 'md-sidenav-left md-whiteframe-z2 dark-menu-bg sidebar-entry' : 'not-visible'" md-component-id="left" md-is-locked-open="!hideNavbar" layout="row">
+    <che-nav-bar id="chenavbar" layout="row" flex></che-nav-bar>
+  </md-sidenav>
+  <div class="main-page ide-show" layout="column" flex>
+    <div id="main-content" role="main" ng-view layout="column" flex ng-show="waitingLoaded && !showIDE"></div>
+    <ide-iframe id="ide-iframe-window" ng-show="showIDE && ideIframeLink" flex style="height: 100%"></ide-iframe>
+    <che-footer che-support-help-path="{{branding.helpPath}}"
+                che-support-help-title="{{branding.helpTitle}}"
+                che-support-email="{{branding.supportEmail}}"
+                che-logo="{{branding.logoURL}}"
+                che-version="{{productVersion}}"
+                che-product-name="Eclipse Che"
+                che-links="branding.footer.links"
+                che-email="branding.footer.email"
+                ng-show="waitingLoaded && !showIDE">
+      {{branding.footer.content}}
+    </che-footer>
+  </div>
+     <script src="bundle.js" charset="utf-8"></script>
+  </body>
+</html>

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./workspace-status.html');
+
 /**
  * @ngdoc directive
  * @name workspace.status.directive:cheWorkspaceStatus
@@ -26,7 +28,7 @@
  */
 export class CheWorkspaceStatus implements ng.IDirective {
   restrict = 'E';
-  templateUrl = 'app/workspaces/list-workspaces/workspace-status-action/workspace-status.html';
+  templateUrl = htmlLink;
   bindToController = true;
   controller = 'WorkspaceStatusController';
   controllerAs = 'workspaceStatusController';

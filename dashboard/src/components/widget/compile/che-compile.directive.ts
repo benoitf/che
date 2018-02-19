@@ -15,11 +15,11 @@
  *
  * @author Ann Shumilova
  */
-export class CheCompile implements ng.IDirective {
+export class CheCompile {
 
   restrict = 'A';
 
-  $compile: ng.ICompileService;
+  $compile: any;
 
   static $inject = ['$compile'];
   

@@ -11,6 +11,8 @@
 'use strict';
 import {CheWorkspace, WorkspaceStatus} from '../../../../components/api/workspace/che-workspace.factory';
 
+const htmlLink=require('./workspace-status-button.html');
+
 interface IWorkspaceStatusButtonScope extends ng.IScope {
   buttonDisabled: boolean;
   isDisabled: boolean;
@@ -44,7 +46,7 @@ const STOPPING = WorkspaceStatus[WorkspaceStatus.STOPPING];
 
 export class CheWorkspaceStatusButton {
   restrict = 'E';
-  templateUrl = 'app/workspaces/workspace-details/status-button/workspace-status-button.html';
+  templateUrl = htmlLink;
 
   // scope values
   scope = {

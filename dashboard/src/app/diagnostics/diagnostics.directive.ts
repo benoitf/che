@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./diagnostics-widget.html');
+
 /**
  * @ngdoc directive
  * @name diagnostics.directive:diagnostics
@@ -28,7 +30,7 @@ export class Diagnostics implements ng.IDirective {
 
   replace: boolean = false;
   restrict: string = 'E';
-  templateUrl: string = 'app/diagnostics/diagnostics-widget.html';
+  templateUrl: string = htmlLink;
   controller: string = 'DiagnosticsController';
   controllerAs: string = 'diagnosticsController';
   bindToController: boolean = true;

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./list-env-variables.html');
+
 /**
  * @ngdoc directive
  * @name workspaces.details.directive:listEnvVariables
@@ -26,7 +28,7 @@
  */
 export class ListEnvVariables {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/environments/list-env-variables/list-env-variables.html';
+  templateUrl: string = htmlLink;
 
   controller: string = 'ListEnvVariablesController';
   controllerAs: string = 'listEnvVariablesController';

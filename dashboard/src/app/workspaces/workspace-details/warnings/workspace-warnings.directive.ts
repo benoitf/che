@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./workspace-warnings.html');
+
 /**
  * @ngDoc directive
  * @name workspace.warnings.directive:WorkspaceWarnings
@@ -29,12 +31,11 @@ export class WorkspaceWarnings implements ng.IDirective {
 
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor() {
     this.restrict = 'E';
     this.bindToController = true;
-    this.templateUrl = 'app/workspaces/workspace-details/warnings/workspace-warnings.html';
+    this.templateUrl = htmlLink;
     this.controller = 'WorkspaceWarningsController';
     this.controllerAs = 'workspaceWarningsController';
 

@@ -15,6 +15,7 @@ import {
   IEnvironmentManagerMachine,
   IEnvironmentManagerMachineServer
 } from '../../../../components/api/environment/environment-manager-machine';
+const htmlLink=require('./edit-machine-server-dialog/edit-server-dialog.html');
 
 interface IServerListItem extends IEnvironmentManagerMachineServer {
   reference: string;
@@ -171,7 +172,7 @@ export class MachineServersController {
         servers: this.servers,
         updateServer: this.updateServer.bind(this)
       },
-      templateUrl: 'app/workspaces/workspace-details/workspace-machine-servers/edit-machine-server-dialog/edit-server-dialog.html'
+      templateUrl: htmlLink
     });
   }
 

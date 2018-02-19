@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-modal-popup.html');
+
 /**
  * @ngdoc directive
  * @name components.directive:cheModalPopup
@@ -39,7 +41,7 @@ export class CheModalPopup {
   constructor() {
     this.restrict = 'E';
     this.transclude = true;
-    this.templateUrl = 'components/widget/popup/che-modal-popup.html';
+    this.templateUrl = htmlLink;
 
     // scope values
     this.scope = {

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./machine-config.html');
+
 /**
  * @ngdoc directive
  * @name workspaces.details.directive:workspaceMachineConfig
@@ -26,7 +28,7 @@
  */
 export class WorkspaceMachineConfig implements ng.IDirective {
   restrict = 'E';
-  templateUrl = 'app/workspaces/workspace-details/environments/machine-config/machine-config.html';
+  templateUrl = htmlLink;
 
   controller = 'WorkspaceMachineConfigController';
   controllerAs = 'workspaceMachineConfigController';

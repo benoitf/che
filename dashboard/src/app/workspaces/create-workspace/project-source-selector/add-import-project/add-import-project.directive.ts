@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./add-import-project.html');
+
 /**
  * Defines the directive for project adding and importing.
  *
@@ -17,7 +19,7 @@
  */
 export class AddImportProject implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/create-workspace/project-source-selector/add-import-project/add-import-project.html';
+  templateUrl: string = htmlLink;
 
   bindToController: boolean = true;
   controller: string = 'AddImportProjectController';

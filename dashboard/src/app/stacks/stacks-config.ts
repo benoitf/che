@@ -24,6 +24,8 @@ import {ImportStackService} from './stack-details/import-stack.service';
 import {StackValidationService} from './stack-details/stack-validation.service';
 import {RecipeEditorController} from './list-stacks/build-stack/recipe-editor/recipe-editor.controller';
 import {RecipeEditorDirective} from './list-stacks/build-stack/recipe-editor/recipe-editor.directive';
+const listTemplateLink=require('./list-stacks/list-stacks.html');
+const detailsTemplateLink=require('./stack-details/stack.html');
 
 /**
  * @ngdoc controller
@@ -57,7 +59,7 @@ export class StacksConfig {
     register.app.config(['$routeProvider', ($routeProvider: any) => {
       $routeProvider.accessWhen('/stacks', {
         title: 'Stacks',
-        templateUrl: 'app/stacks/list-stacks/list-stacks.html',
+        templateUrl: listTemplateLink,
         controller: 'ListStacksController',
         controllerAs: 'listStacksController'
       })
@@ -65,7 +67,7 @@ export class StacksConfig {
           title: (params: any) => {
             return params.stackId;
           },
-          templateUrl: 'app/stacks/stack-details/stack.html',
+          templateUrl: detailsTemplateLink,
           controller: 'StackController',
           controllerAs: 'stackController'
         });

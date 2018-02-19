@@ -9,6 +9,7 @@
  *   Red Hat, Inc. - initial API and implementation
  */
 'use strict';
+const htmlLink=require('./navbar.html');
 
 /**
  * Defines a directive for creating navbar.
@@ -27,7 +28,7 @@ export class CheNavBar implements ng.IDirective {
   constructor () {
     this.restrict = 'E';
     this.replace = false;
-    this.templateUrl = 'app/navbar/navbar.html';
+    this.templateUrl = htmlLink;
     this.controller = 'CheNavBarController';
     this.controllerAs = 'navbarController';
   }

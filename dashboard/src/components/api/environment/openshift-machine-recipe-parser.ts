@@ -10,6 +10,7 @@
  */
 'use strict';
 
+import * as jsyaml from 'js-yaml';
 import {IParser} from './parser';
 
 export interface IPodItem {

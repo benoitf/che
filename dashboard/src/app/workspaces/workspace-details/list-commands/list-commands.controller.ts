@@ -10,6 +10,7 @@
  */
 'use strict';
 import {ConfirmDialogService} from '../../../../components/service/confirm-dialog/confirm-dialog.service';
+const htmlLink=require('./edit-command-dialog/edit-command-dialog.html');
 
 /**
  * @ngdoc controller
@@ -169,7 +170,7 @@ export class ListCommandsController {
         commands: this.commands,
         callbackController: this
       },
-      templateUrl: 'app/workspaces/workspace-details/list-commands/edit-command-dialog/edit-command-dialog.html'
+      templateUrl: htmlLink
     });
   }
 

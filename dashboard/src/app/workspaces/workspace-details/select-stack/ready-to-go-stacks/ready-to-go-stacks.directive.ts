@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./ready-to-go-stacks.html');
+
 /**
  * @ngdoc directive
  * @name projects.create.directive:ReadyToGoStacks
@@ -27,7 +29,7 @@
 export class ReadyToGoStacks implements ng.IDirective {
 
   restrict = 'E';
-  templateUrl = 'app/workspaces/workspace-details/select-stack/ready-to-go-stacks/ready-to-go-stacks.html';
+  templateUrl = htmlLink;
 
   controller = 'ReadyToGoStacksController';
   controllerAs = 'readyToGoStacksCtrl';

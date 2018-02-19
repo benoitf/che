@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./workspace-edit-mode-toolbar-button.html');
+
 /**
  * @ngdoc directive
  * @name workspaces.details.directive:workspaceEditModeToolbarButton
@@ -36,7 +38,7 @@ export class WorkspaceEditModeToolbarButton {
   restrict = 'E';
 
   replace = true;
-  templateUrl = 'app/workspaces/workspace-edit-mode/workspace-edit-mode-toolbar-button.html';
+  templateUrl = htmlLink;
 
   scope: {
     [propName: string]: string;

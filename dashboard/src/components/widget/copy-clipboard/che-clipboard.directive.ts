@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-clipboard.html');
+
 interface ICheClipboardScope extends ng.IScope {
   value: string;
   isCopied: boolean;
@@ -23,7 +25,7 @@ interface ICheClipboardScope extends ng.IScope {
 export class CheClipboard implements ng.IDirective {
   restrict = 'E';
   replace = true;
-  templateUrl = 'components/widget/copy-clipboard/che-clipboard.html';
+  templateUrl = htmlLink;
   scope = {
     value: '=cheValue'
   };

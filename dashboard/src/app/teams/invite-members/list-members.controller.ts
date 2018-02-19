@@ -10,6 +10,7 @@
  */
 'use strict';
 import {CheTeamRoles} from '../../../components/api/che-team-roles';
+const htmlLink=require('../member-dialog/member-dialog.html');
 
 /**
  * @ngdoc controller
@@ -190,7 +191,7 @@ export class ListMembersController {
         member: null,
         callbackController: this
       },
-      templateUrl: 'app/teams/member-dialog/member-dialog.html'
+      templateUrl: htmlLink
     });
   }
 

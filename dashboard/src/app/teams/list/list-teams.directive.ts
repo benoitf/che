@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./list-teams.html');
+
 /**
  * @ngdoc directive
  * @name list.teams:ListTeams
@@ -27,7 +29,7 @@
 export class ListTeams implements ng.IDirective {
 
   restrict: string = 'E';
-  templateUrl: string = 'app/teams/list/list-teams.html';
+  templateUrl: string = htmlLink;
 
   controller: string = 'ListTeamsController';
   controllerAs: string = 'listTeamsController';

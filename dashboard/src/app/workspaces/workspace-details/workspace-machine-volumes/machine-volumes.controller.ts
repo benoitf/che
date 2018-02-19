@@ -13,6 +13,7 @@ import {ConfirmDialogService} from '../../../../components/service/confirm-dialo
 import {IEnvironmentManagerMachine} from '../../../../components/api/environment/environment-manager-machine';
 import {EnvironmentManager} from '../../../../components/api/environment/environment-manager';
 import {CheListHelperFactory} from '../../../../components/widget/list/che-list-helper.factory';
+const htmlLink=require('./edit-volume-dialog/edit-volume-dialog.html');
 
 /**
  * @ngdoc controller
@@ -108,7 +109,7 @@ export class MachineVolumesController {
         machineVolumes: this.machineVolumes,
         updateMachineVolume: this.updateMachineVolume.bind(this)
       },
-      templateUrl: 'app/workspaces/workspace-details/workspace-machine-volumes/edit-volume-dialog/edit-volume-dialog.html'
+      templateUrl: htmlLink
     });
   }
 

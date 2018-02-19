@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./factory-action-edit.html');
+
 /**
  * Defines controller of directive for displaying action box.
  * @ngdoc controller
@@ -58,7 +60,7 @@ export class FactoryActionBoxController {
         // selectedAction: action
         selectedValue: action.properties
       },
-      templateUrl: 'app/factories/create-factory/action/factory-action-edit.html'
+      templateUrl: htmlLink
     });
   }
 

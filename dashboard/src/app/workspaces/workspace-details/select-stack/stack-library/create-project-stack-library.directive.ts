@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./create-project-stack-library.html');
+
 /**
  * @ngdoc directive
  * @name projects.create.directive:createProjectStackLibrary
@@ -24,7 +26,7 @@
 export class CreateProjectStackLibrary implements ng.IDirective {
 
   restrict = 'E';
-  templateUrl = 'app/workspaces/workspace-details/select-stack/stack-library/create-project-stack-library.html';
+  templateUrl = htmlLink;
 
   controller = 'CreateProjectStackLibraryController';
   controllerAs = 'createProjectStackLibraryCtrl';

@@ -29,6 +29,14 @@ describe('WorkspaceRecipeImport', () => {
    */
   beforeEach(angular.mock.module('userDashboard'));
 
+  /**
+   * Disable trust source for test urls.
+   */
+  beforeEach(angular.mock.module(($sceProvider) => {
+    $sceProvider.enabled(false);
+  }));
+  
+
   beforeEach(inject((_$compile_: ng.ICompileService,
                      _$rootScope_: ng.IRootScopeService,
                      cheHttpBackend: CheHttpBackend) => {
@@ -86,6 +94,7 @@ describe('WorkspaceRecipeImport', () => {
 
   describe('should fail', () => {
 
+    
     beforeEach(() => {
       compiledDirective = getCompiledElement();
     });

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-list-header.html');
+
 /**
  * Defines a directive for creating header for list.
  * @author Oleksii Orel
@@ -30,7 +32,7 @@ export class CheListHeader {
     this.restrict = 'E';
     this.replace = true;
     this.transclude = true;
-    this.templateUrl = 'components/widget/list/che-list-header.html';
+    this.templateUrl = htmlLink;
 
     // scope values
     this.scope = {

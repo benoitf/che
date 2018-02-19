@@ -15,6 +15,7 @@ import {ImportGithubProjectService, LoadingState} from './import-github-project.
 import {ProjectSource} from '../../project-source.enum';
 import {IGithubRepository} from './github-repository-interface';
 import {AddImportProjectService} from '../add-import-project.service';
+const htmlLink=require('./oauth-dialog/no-github-oauth-dialog.html');
 
 /**
  * This class is handling the controller for the GitHub part
@@ -38,7 +39,7 @@ export class ImportGithubProjectController {
   /**
    * Browser service.
    */
-  private $browser: ng.IBrowserService;
+  private $browser: any;
   /**
    * GitHub authentication popup window.
    */
@@ -213,7 +214,7 @@ export class ImportGithubProjectController {
         controllerAs: 'noGithubOauthDialogController',
         bindToController: true,
         clickOutsideToClose: true,
-        templateUrl: 'app/workspaces/create-workspace/project-source-selector/add-import-project/import-github-project/oauth-dialog/no-github-oauth-dialog.html'
+        templateUrl: htmlLink
       });
 
       return;

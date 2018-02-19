@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-html-source.html');
+
 /**
  * Defines a directive for displaying the block with source code as well (for demos).
  * @author Florent Benoit
@@ -19,7 +21,7 @@ export class CheHtmlSource {
 
   restrict: string = 'E';
   transclude: boolean = true;
-  templateUrl: string = 'components/widget/html-source/che-html-source.html';
+  templateUrl: string = htmlLink;
 
   scope: {
     [propName: string]: string

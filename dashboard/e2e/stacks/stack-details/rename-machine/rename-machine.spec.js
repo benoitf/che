@@ -17,6 +17,8 @@ describe('Stack details >', () => {
   beforeEach(() => {
     stackDetailsMock = require('./../stack-details.mock.js');
     stackDetailsPageObject = require('./../stack-details.po.js');
+    browser.get('/');
+    browser.waitForAngular();
   });
 
   // todo

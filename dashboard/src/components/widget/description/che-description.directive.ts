@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-description.html');
+
 /**
  * Defines a directive for creating description widget, which can have "Learn more" link as well.
  *
@@ -21,7 +23,7 @@ export class CheDescription implements ng.IDirective {
 
   replace = true;
   transclude = true;
-  templateUrl = 'components/widget/description/che-description.html';
+  templateUrl = htmlLink;
 
   // scope values
   scope = {

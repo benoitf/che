@@ -22,6 +22,8 @@ interface IInputBoxScope extends ng.IScope {
   isReadonly?: boolean;
 }
 
+const htmlLink=require('./che-input-box.html');
+
 /**
  * Defines a directive for creating input that are working either on desktop or on mobile devices.
  * It will change upon width of the screen
@@ -32,7 +34,7 @@ export class CheInputBox {
   restrict = 'E';
   replace = true;
   transclude = true;
-  templateUrl: string = 'components/widget/input/che-input-box.html';
+  templateUrl: string = htmlLink;
 
   // we require ngModel as we want to use it inside our directive
   require = ['ngModel'];

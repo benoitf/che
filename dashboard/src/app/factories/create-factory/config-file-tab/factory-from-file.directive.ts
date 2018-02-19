@@ -10,6 +10,9 @@
  */
 'use strict';
 
+const htmlLink=require('./factory-from-file.html');
+
+
 interface IFactoryFromFileScope extends ng.IScope {
   clickUpload: () => void;
 }
@@ -36,7 +39,7 @@ export class FactoryFromFile implements ng.IDirective {
   constructor() {
     this.restrict = 'E';
 
-    this.templateUrl = 'app/factories/create-factory/config-file-tab/factory-from-file.html';
+    this.templateUrl = htmlLink;
     this.replace = false;
 
     this.controller = 'FactoryFromFileCtrl';

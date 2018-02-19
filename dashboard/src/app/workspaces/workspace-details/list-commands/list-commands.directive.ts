@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./list-commands.html');
+
 /**
  * @ngdoc directive
  * @name workspaces.details.directive:listCommands
@@ -40,7 +42,7 @@ export class ListCommands {
    */
   constructor () {
     this.restrict = 'E';
-    this.templateUrl = 'app/workspaces/workspace-details/list-commands/list-commands.html';
+    this.templateUrl = htmlLink;
 
     this.controller = 'ListCommandsController';
     this.controllerAs = 'listCommandsController';

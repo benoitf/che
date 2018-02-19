@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-list-item.html');
+
 /**
  * Defines a directive for creating List Items.
  * @author Ann Shumilova
@@ -19,6 +21,6 @@ export class CheListItem implements ng.IDirective {
   restrict = 'E';
   replace = true;
   transclude = true;
-  templateUrl = 'components/widget/list/che-list-item.html';
+  templateUrl = htmlLink;
 
 }

@@ -16,6 +16,7 @@ import IdeCtrl from './ide.controller';
 import IdeSvc from './ide.service';
 import IdeIFrame from './ide-iframe/ide-iframe.directive';
 import IdeIFrameSvc from './ide-iframe/ide-iframe.service';
+const htmlLink=require('./ide.html');
 
 export class IdeConfig {
 
@@ -30,7 +31,7 @@ export class IdeConfig {
       title: (params: any) => {
         return params.workspaceName;
       },
-      templateUrl: 'app/ide/ide.html',
+      templateUrl: htmlLink,
       controller: 'IdeCtrl',
       controllerAs: 'ideCtrl'
     };

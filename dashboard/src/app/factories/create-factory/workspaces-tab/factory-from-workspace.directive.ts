@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./factory-from-workspace.html');
+
 /**
  * Defines a directive for configuring factory form workspace.
  * @author Oleksii Orel
@@ -18,7 +20,7 @@ export class FactoryFromWorkspace implements ng.IDirective {
 
   restrict = 'E';
 
-  templateUrl = 'app/factories/create-factory/workspaces-tab/factory-from-workspace.html';
+  templateUrl = htmlLink;
   replace = false;
 
   controller = 'FactoryFromWorkspaceCtrl';

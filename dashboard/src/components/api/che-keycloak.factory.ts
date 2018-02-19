@@ -40,7 +40,7 @@ export class CheKeycloak {
   }
 
   fetchUserInfo(): ng.IPromise<keycloakUserInfo> {
-    const defer = this.$q.defer();
+    const defer = this.$q.defer<keycloakUserInfo>();
 
     if (this.keycloak === null) {
       defer.reject('Keycloak is not found on the page.');

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-workspace-ram-allocation-slider.html');
+
 /**
  * Defines a directive for creating RAM allocation slider that are working either on desktop or on mobile devices.
  * It will change upon width of the screen
@@ -20,7 +22,7 @@ export class CheWorkspaceRamAllocationSlider implements ng.IDirective {
   restrict = 'E';
 
   replace = true;
-  templateUrl = 'app/workspaces/workspace-ram-slider/che-workspace-ram-allocation-slider.html';
+  templateUrl = htmlLink;
 
   // we require ngModel as we want to use it inside our directive
   require = 'ngModel';

@@ -279,7 +279,7 @@ export class CheWorkspace {
    * @param namespace namespace
    */
   fetchWorkspacesByNamespace(namespace: string): ng.IPromise<any> {
-    let promise = this.$http.get('/api/workspace/namespace/' + namespace);
+    let promise: any = this.$http.get('/api/workspace/namespace/' + namespace);
     let resultPromise = promise.then((response: { data: che.IWorkspace[] }) => {
       const workspaces = this.getWorkspacesByNamespace(namespace);
 

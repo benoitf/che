@@ -11,6 +11,7 @@
 'use strict';
 import {RemotePageLabels} from '../../api/paging-resource/remote-page-labels';
 
+const htmlLink=require('./paging-button.html');
 
 interface IPagingButtonsScope extends ng.IScope {
   pagesInfo: che.IPageInfo;
@@ -41,7 +42,7 @@ interface IPagingButtonsScope extends ng.IScope {
  */
 export class PagingButtons implements ng.IDirective {
   restrict = 'E';
-  templateUrl = 'components/widget/paging-button/paging-button.html';
+  templateUrl = htmlLink;
   replace = false;
   scope = {
     pagesInfo: '=',

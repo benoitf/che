@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./list-team-owners.html');
+
 /**
  * @ngdoc directive
  * @name teams.owners:ListTeamMembers
@@ -27,7 +29,7 @@
 export class ListTeamOwners implements ng.IDirective {
 
   restrict: string = 'E';
-  templateUrl: string = 'app/teams/team-details/team-owners/list-team-owners.html';
+  templateUrl: string = htmlLink;
 
   controller: string = 'ListTeamOwnersController';
   controllerAs: string = 'listTeamOwnersController';

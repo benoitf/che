@@ -14,6 +14,8 @@ import {AdminsAddUserController} from './add-user/add-user.controller';
 import {AdminsUserManagementCtrl} from './user-management.controller';
 import {AdminUserDetailsController} from './user-details/user-details.controller';
 import {AccountProfile} from './account-profile/account-profile.directive';
+const userDetailsTemplateLink=require('./user-details/user-details.html');
+const userManagementTemplateLink=require('./user-management.html');
 
 export class AdminsUserManagementConfig {
 
@@ -26,7 +28,7 @@ export class AdminsUserManagementConfig {
     const userDetailLocationProvider = {
       title: 'User Details',
       reloadOnSearch: false,
-      templateUrl: 'app/admin/user-management/user-details/user-details.html',
+      templateUrl: userDetailsTemplateLink,
       controller: 'AdminUserDetailsController',
       controllerAs: 'adminUserDetailsController',
       resolve: {
@@ -52,7 +54,7 @@ export class AdminsUserManagementConfig {
     register.app.config(['$routeProvider', ($routeProvider: che.route.IRouteProvider) => {
       $routeProvider.accessWhen('/admin/usermanagement', {
         title: 'Users',
-        templateUrl: 'app/admin/user-management/user-management.html',
+        templateUrl: userManagementTemplateLink,
         controller: 'AdminsUserManagementCtrl',
         controllerAs: 'adminsUserManagementCtrl',
         resolve: {

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-footer.html');
+
 /**
  * @ngdoc directive
  * @name components.directive:cheFooter
@@ -66,7 +68,7 @@ export class CheFooter {
   };
 
   constructor() {
-    this.templateUrl = 'components/widget/footer/che-footer.html';
+    this.templateUrl = htmlLink;
 
     this.restrict = 'E';
     this.replace = true;

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./project-metadata.html');
+
 /**
  * Defines a directive for the project's metadata.
  *
@@ -17,7 +19,7 @@
  */
 export class ProjectMetadata implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/create-workspace/project-source-selector/edit-project/project-metadata/project-metadata.html';
+  templateUrl: string = htmlLink;
   replace: boolean = true;
 
   controller: string = 'ProjectMetadataController';

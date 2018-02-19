@@ -22,7 +22,7 @@ export class CheLearnMoreCtrl {
   $scope: ng.IScope;
   $element: ng.IAugmentedJQuery;
   $attrs: ICheLearmMoreAttributes;
-  $compile: ng.ICompileService;
+  $compile: any;
   chePreferences: ChePreferences;
 
   items: any[];

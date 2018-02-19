@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./last-factories.html');
+
 /**
  * @ngdoc directive
  * @name factories.directive:LastFactories
@@ -29,7 +31,7 @@ export class LastFactories implements ng.IDirective {
    */
   constructor() {
     this.restrict = 'E';
-    this.templateUrl = 'app/factories/last-factories/last-factories.html';
+    this.templateUrl = htmlLink;
     this.replace = false;
     this.controller = 'LastFactoriesController';
     this.controllerAs = 'lastFactoriesController';

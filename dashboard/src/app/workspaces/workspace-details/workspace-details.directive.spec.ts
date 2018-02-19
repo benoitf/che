@@ -13,6 +13,7 @@
 import {CheHttpBackend} from '../../../components/api/test/che-http-backend';
 import {WorkspaceDetailsController} from './workspace-details.controller';
 import {CheWorkspace, WorkspaceStatus} from '../../../components/api/workspace/che-workspace.factory';
+const htmlLink=require('./workspace-details.html');
 
 /**
  * Test of the WorkspaceDetailsController
@@ -95,7 +96,7 @@ describe(`WorkspaceDetailsController >`, () => {
           scope: {},
           controller: 'WorkspaceDetailsController',
           controllerAs: 'workspaceDetailsController',
-          templateUrl: 'app/workspaces/workspace-details/workspace-details.html'
+          templateUrl: htmlLink
         };
       })
       .service('initData', function() {

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./workspace-machine-item.html');
+
 /**
  * @ngdoc directive
  * @name workspace.machines.item.directive:workspaceMachineItem
@@ -43,7 +45,7 @@
 export class WorkspaceMachineItem implements ng.IDirective {
   restrict: string = 'E';
   replace: boolean = true;
-  templateUrl: string = 'app/workspaces/workspace-details/workspace-machines/machine-item/workspace-machine-item.html';
+  templateUrl: string = htmlLink;
 
   scope: {
     [propName: string]: string

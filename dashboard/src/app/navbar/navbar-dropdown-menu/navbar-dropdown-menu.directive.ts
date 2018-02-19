@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./navbar-dropdown-menu.html');
+
 interface IDropdonwMenuAttributes extends ng.IAttributes {
   navbarDropdownRightClick: any;
 }
@@ -40,7 +42,7 @@ export class NavbarDropdownMenu implements ng.IDirective {
 
   restrict: string = 'E';
   bindToController: boolean = true;
-  templateUrl: string = 'app/navbar/navbar-dropdown-menu/navbar-dropdown-menu.html';
+  templateUrl: string = htmlLink;
   controller: string = 'NavbarDropdownMenuController';
   controllerAs: string = 'navbarDropdownMenuController';
 
@@ -56,9 +58,10 @@ export class NavbarDropdownMenu implements ng.IDirective {
     offset: '@?navbarDropdownOffset'
   };
 
+  static $inject = ['$timeout', '$document', '$rootScope'];
+
   /**
    * Default constructor that is using resource
-   * @ngInject for Dependency injection
    */
   constructor($timeout: ng.ITimeoutService,
               $document: ng.IDocumentService,
@@ -154,18 +157,12 @@ export class NavbarDropdownMenu implements ng.IDirective {
             delete this.$rootScope.navbarDropdownActiveMenu;
           } else {
             // open new menu by triggering mouse event
-            angular.element(nextTargetEl).trigger({
-              type: eventType,
-              which: eventWhich
-            } as JQueryEventObject);
+            angular.element(nextTargetEl).trigger(eventType,eventWhich);
           }
         } else {
           // if menu isn't found
           // just trigger same mouse event on first found element
-          angular.element(nextTargetEl).trigger({
-            type: eventType,
-            which: eventWhich
-          } as JQueryEventObject);
+          angular.element(nextTargetEl).trigger(eventType,eventWhich);
         }
 
         // clean pointer events

@@ -9,7 +9,7 @@
  *   Red Hat, Inc. - initial API and implementation
  */
 'use strict';
-
+require('./index.styl');
 import {Register} from '../components/utils/register';
 import {FactoryConfig} from './factories/factories-config';
 import {ComponentsConfig} from '../components/components-config';
@@ -38,15 +38,186 @@ import {CheUIElementsInjectorService} from '../components/service/injector/che-u
 import {OrganizationsConfig} from './organizations/organizations-config';
 import {TeamsConfig} from './teams/teams-config';
 import {ProfileConfig} from './profile/profile-config';
+import { RoutingConfig } from '../components/routing/routing-config';
+import { ServiceConfig } from '../components/service/service-config';
+import { CheIdeFetcherConfig } from '../components/ide-fetcher/che-ide-fetcher-config';
 
 // init module
 const initModule = angular.module('userDashboard', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute',
-  'angular-websocket', 'ui.bootstrap', 'ui.codemirror', 'ngMaterial', 'ngMessages', 'angularMoment', 'angular.filter',
-  'ngDropdowns', 'ngLodash', 'angularCharts', 'uuid4', 'angularFileUpload', 'ui.gravatar']);
+  /*'angular-websocket'*/, 'ui.bootstrap', /*'ui.codemirror',*/ 'ngMaterial', 'ngMessages', 'angularMoment', 'angular.filter',
+  'ngDropdowns', 'ngLodash', 'uuid4', 'angularFileUpload', 'ui.gravatar']);
+
+  //FIXME : angular-websocket is not compliant with webpack
+
+  new Register(initModule).app.service('$websocket', () => {});
+
+  initModule.constant('udCustomCodemirrorConfig', {
+    codemirror: {
+      lineWrapping: true,
+      lineNumbers: true,
+      mode: 'application/json',
+      gutters: ['CodeMirror-lint-markers', 'CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+      lint: true,
+      matchBrackets: true,
+      autoCloseBrackets: true,
+      foldGutter: true,
+      styleActiveLine: true,
+      theme: 'che',
+      onLoad: (editor: any) => {
+        editor.refresh();
+      }
+    }
+  });
+
+  initModule.directive('uiCodemirror', ['$timeout', 'udCustomCodemirrorConfig', uiCodemirrorDirective]);
+
+
+
+/**
+ * @ngInject
+ */
+function uiCodemirrorDirective($timeout, uiCodemirrorConfig) {
+
+  return {
+    restrict: 'EA',
+    require: '?ngModel',
+    compile: function compile() {
+
+      // Require CodeMirror
+      if (angular.isUndefined(window.CodeMirror)) {
+        throw new Error('ui-codemirror needs CodeMirror to work... (o rly?)');
+      }
+
+      return postLink;
+    }
+  };
+
+  function postLink(scope, iElement, iAttrs, ngModel) {
+
+    var codemirrorOptions = angular.extend(
+      { value: iElement.text() },
+      uiCodemirrorConfig.codemirror || {},
+      scope.$eval(iAttrs.uiCodemirror),
+      scope.$eval(iAttrs.uiCodemirrorOpts)
+    );
+
+    var codemirror = newCodemirrorEditor(iElement, codemirrorOptions);
+
+    configOptionsWatcher(
+      codemirror,
+      iAttrs.uiCodemirror || iAttrs.uiCodemirrorOpts,
+      scope
+    );
+
+    configNgModelLink(codemirror, ngModel, scope);
+
+    configUiRefreshAttribute(codemirror, iAttrs.uiRefresh, scope);
+
+    // Allow access to the CodeMirror instance through a broadcasted event
+    // eg: $broadcast('CodeMirror', function(cm){...});
+    scope.$on('CodeMirror', function(event, callback) {
+      if (angular.isFunction(callback)) {
+        callback(codemirror);
+      } else {
+        throw new Error('the CodeMirror event requires a callback function');
+      }
+    });
+
+    // onLoad callback
+    if (angular.isFunction(codemirrorOptions.onLoad)) {
+      codemirrorOptions.onLoad(codemirror);
+    }
+  }
+
+  function newCodemirrorEditor(iElement, codemirrorOptions) {
+    var codemirrot;
+
+    if (iElement[0].tagName === 'TEXTAREA') {
+      // Might bug but still ...
+      codemirrot = window.CodeMirror.fromTextArea(iElement[0], codemirrorOptions);
+    } else {
+      iElement.html('');
+      codemirrot = new window.CodeMirror(function(cm_el) {
+        iElement.append(cm_el);
+      }, codemirrorOptions);
+    }
+
+    return codemirrot;
+  }
+
+  function configOptionsWatcher(codemirrot, uiCodemirrorAttr, scope) {
+    if (!uiCodemirrorAttr) { return; }
+
+    var codemirrorDefaultsKeys = Object.keys(window.CodeMirror.defaults);
+    scope.$watch(uiCodemirrorAttr, updateOptions, true);
+    function updateOptions(newValues, oldValue) {
+      if (!angular.isObject(newValues)) { return; }
+      codemirrorDefaultsKeys.forEach(function(key) {
+        if (newValues.hasOwnProperty(key)) {
+
+          if (oldValue && newValues[key] === oldValue[key]) {
+            return;
+          }
+
+          codemirrot.setOption(key, newValues[key]);
+        }
+      });
+    }
+  }
+
+  function configNgModelLink(codemirror, ngModel, scope) {
+    if (!ngModel) { return; }
+    // CodeMirror expects a string, so make sure it gets one.
+    // This does not change the model.
+    ngModel.$formatters.push(function(value) {
+      if (angular.isUndefined(value) || value === null) {
+        return '';
+      } else if (angular.isObject(value) || angular.isArray(value)) {
+        throw new Error('ui-codemirror cannot use an object or an array as a model');
+      }
+      return value;
+    });
+
+
+    // Override the ngModelController $render method, which is what gets called when the model is updated.
+    // This takes care of the synchronizing the codeMirror element with the underlying model, in the case that it is changed by something else.
+    ngModel.$render = function() {
+      //Code mirror expects a string so make sure it gets one
+      //Although the formatter have already done this, it can be possible that another formatter returns undefined (for example the required directive)
+      var safeViewValue = ngModel.$viewValue || '';
+      codemirror.setValue(safeViewValue);
+    };
+
+
+    // Keep the ngModel in sync with changes from CodeMirror
+    codemirror.on('change', function(instance) {
+      var newValue = instance.getValue();
+      if (newValue !== ngModel.$viewValue) {
+        scope.$evalAsync(function() {
+          ngModel.$setViewValue(newValue);
+        });
+      }
+    });
+  }
+
+  function configUiRefreshAttribute(codeMirror, uiRefreshAttr, scope) {
+    if (!uiRefreshAttr) { return; }
+
+    scope.$watch(uiRefreshAttr, function(newVal, oldVal) {
+      // Skip the initial watch firing
+      if (newVal !== oldVal) {
+        $timeout(function() {
+          codeMirror.refresh();
+        });
+      }
+    });
+  }
+
+}
 
 window.name = 'NG_DEFER_BOOTSTRAP!';
 
-declare const Keycloak: Function;
+ declare const Keycloak: Function;
 function buildKeycloakConfig(keycloakSettings: any) {
   return {
     url: keycloakSettings['che.keycloak.auth_server_url'],
@@ -55,12 +226,13 @@ function buildKeycloakConfig(keycloakSettings: any) {
   };
 }
 interface IResolveFn<T> {
-  (value: T | PromiseLike<T>): Promise<T>;
+  (value: T | PromiseLike<T>): void;
 }
 interface IRejectFn<T> {
-  (reason: any): Promise<T>;
+  (reason: any): void;
 }
-function keycloakLoad(keycloakSettings: any) {
+
+ function keycloakLoad(keycloakSettings: any) {
   return new Promise((resolve: IResolveFn<any>, reject: IRejectFn<any>) => {
     const script = document.createElement('script');
     script.async = true;
@@ -116,6 +288,7 @@ angular.element(document).ready(() => {
   });
 });
 
+
 // add a global resolve flag on all routes (user needs to be resolved first)
 initModule.config(['$routeProvider', ($routeProvider: che.route.IRouteProvider) => {
   $routeProvider.accessWhen = (path: string, route: che.route.IRoute) => {
@@ -162,15 +335,16 @@ initModule.config(['$routeProvider', ($routeProvider: che.route.IRouteProvider) 
 
 }]);
 
-const DEV = false;
+const DEV = true;
 
+const demoHtmlLink=require('./demo-components/demo-components.html');
 // configs
 initModule.config(['$routeProvider', ($routeProvider: che.route.IRouteProvider) => {
   // config routes (add demo page)
   if (DEV) {
     $routeProvider.accessWhen('/demo-components', {
       title: 'Demo Components',
-      templateUrl: 'app/demo-components/demo-components.html',
+      templateUrl: demoHtmlLink,
       controller: 'DemoComponentsController',
       controllerAs: 'demoComponentsController',
       reloadOnSearch: false
@@ -243,7 +417,7 @@ initModule.run(['$rootScope', '$location', '$routeParams', 'routingRedirect', '$
   }
 ]);
 
-initModule.config(($mdThemingProvider: ng.material.IThemingProvider, jsonColors: any) => {
+initModule.config(['$mdThemingProvider', 'jsonColors', ($mdThemingProvider: ng.material.IThemingProvider, jsonColors: any) => {
 
   const cheColors = angular.fromJson(jsonColors);
   const getColor = (key: string) => {
@@ -383,7 +557,8 @@ initModule.config(($mdThemingProvider: ng.material.IThemingProvider, jsonColors:
   $mdThemingProvider.theme('maincontent-theme')
     .primaryPalette('che')
     .accentPalette('cheAccent');
-});
+}
+]);
 
 initModule.constant('userDashboardConfig', {
   developmentMode: DEV
@@ -415,4 +590,5 @@ new FactoryConfig(instanceRegister);
 new OrganizationsConfig(instanceRegister);
 new TeamsConfig(instanceRegister);
 new ProfileConfig(instanceRegister);
+
 /* tslint:enable */

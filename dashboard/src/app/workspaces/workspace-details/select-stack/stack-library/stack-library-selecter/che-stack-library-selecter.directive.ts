@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-stack-library-selecter.html');
+
 interface ISelecterScope extends ng.IScope {
   stackId: string;
   select: Function;
@@ -21,7 +23,7 @@ interface ISelecterScope extends ng.IScope {
  */
 export class CheStackLibrarySelecter implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/select-stack/stack-library/stack-library-selecter/che-stack-library-selecter.html';
+  templateUrl: string = htmlLink;
 
   scope: {
     [propName: string]: string;

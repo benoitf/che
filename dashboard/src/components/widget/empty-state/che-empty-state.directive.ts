@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-empty-state.html');
+
 /**
  * Defines a directive for creating empty state widget that are working either on desktop or on mobile devices.
  * It will change upon width of the screen
@@ -21,7 +23,7 @@ export class CheEmptyState implements ng.IDirective {
 
   replace = true;
   transclude = false;
-  templateUrl = 'components/widget/empty-state/che-empty-state.html';
+  templateUrl = htmlLink;
 
   // scope values
   scope = {

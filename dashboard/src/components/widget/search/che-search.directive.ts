@@ -15,6 +15,8 @@ interface ICheSearchScope extends ng.IScope {
   valueModel: any;
 }
 
+const htmlLink=require('./che-search.html');
+
 /**
  * @ngdoc directive
  * @name components.directive:cheSearch
@@ -37,7 +39,7 @@ interface ICheSearchScope extends ng.IScope {
 export class CheSearch implements ng.IDirective {
   restrict = 'E';
   transclude = true;
-  templateUrl = 'components/widget/search/che-search.html';
+  templateUrl = htmlLink;
 
   require = ['ngModel'];
 

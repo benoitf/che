@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./template-selector-item.html');
+
 /**
  * Defines a directive for displaying template item.
  *
@@ -17,7 +19,7 @@
  */
 export class TemplateSelectorItem implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/create-workspace/project-source-selector/add-import-project/template-selector/template-selector-item/template-selector-item.html';
+  templateUrl: string = htmlLink;
 
   scope: {
     [propName: string]: string;

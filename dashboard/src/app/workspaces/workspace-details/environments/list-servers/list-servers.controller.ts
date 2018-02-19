@@ -11,6 +11,7 @@
 'use strict';
 import {IEnvironmentManagerMachineServer} from '../../../../../components/api/environment/environment-manager-machine';
 import {ConfirmDialogService} from '../../../../../components/service/confirm-dialog/confirm-dialog.service';
+const htmlLink=require('./edit-server-dialog/edit-server-dialog.html');
 
 interface IServerListItem extends IEnvironmentManagerMachineServer {
   reference: string;
@@ -177,7 +178,7 @@ export class ListServersController {
         servers: this.servers,
         callbackController: this
       },
-      templateUrl: 'app/workspaces/workspace-details/environments/list-servers/edit-server-dialog/edit-server-dialog.html'
+      templateUrl: htmlLink
     });
   }
 

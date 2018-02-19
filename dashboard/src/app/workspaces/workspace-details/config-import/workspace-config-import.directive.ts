@@ -10,13 +10,15 @@
  */
 'use strict';
 
+const htmlLink=require('./workspace-config-import.html');
+
 /**
  * Defines a directive for displaying config import widget.
  * @author Oleksii Kurinnyi
  */
 export class WorkspaceConfigImport {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/config-import/workspace-config-import.html';
+  templateUrl: string = htmlLink;
   replace: boolean = false;
 
   controller: string = 'WorkspaceConfigImportController';

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./add-project-popover.html');
+
 /**
  * Defines the directive for popover which includes add/import project widget.
  *
@@ -17,7 +19,7 @@
  */
 export class AddProjectPopover {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/workspace-projects/add-project-popover/add-project-popover.html';
+  templateUrl: string = htmlLink;
 
   bindToController: boolean = true;
   controller: string = 'AddProjectPopoverController';

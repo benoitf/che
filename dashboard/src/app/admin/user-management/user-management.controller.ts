@@ -13,6 +13,7 @@
 import {CheUser} from '../../../components/api/che-user.factory';
 import {CheNotification} from '../../../components/notification/che-notification.factory';
 import {ConfirmDialogService} from '../../../components/service/confirm-dialog/confirm-dialog.service';
+const htmlLink=require('./add-user/add-user.html');
 
 const MAX_ITEMS = 12;
 
@@ -296,7 +297,7 @@ export class AdminsUserManagementCtrl {
       controller: 'AdminsAddUserController',
       controllerAs: 'adminsAddUserController',
       locals: {callbackController: this},
-      templateUrl: 'app/admin/user-management/add-user/add-user.html'
+      templateUrl: htmlLink
     });
   }
 }

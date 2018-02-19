@@ -9,6 +9,7 @@
  *   Red Hat, Inc. - initial API and implementation
  */
 'use strict';
+const htmlLink=require('./dashboard.html');
 
 import {DashboardLastWorkspacesController} from './last-workspaces/last-workspaces.controller';
 import {DashboardLastWorkspaces} from './last-workspaces/last-workspaces.directive';
@@ -30,7 +31,7 @@ export class DashboardConfig {
     register.app.config(['$routeProvider', ($routeProvider: che.route.IRouteProvider) => {
       $routeProvider.accessWhen('/', {
         title: 'Dashboard',
-        templateUrl: 'app/dashboard/dashboard.html',
+        templateUrl: htmlLink,
         resolve: {
           check: ['$q', '$location', 'cheWorkspace', ($q: ng.IQService, $location: ng.ILocationService, cheWorkspace: CheWorkspace) => {
             cheWorkspace.fetchWorkspaces().then(() => {

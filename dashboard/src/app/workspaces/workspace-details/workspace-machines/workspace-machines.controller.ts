@@ -16,7 +16,8 @@ import {CheEnvironmentRegistry} from '../../../../components/api/environment/che
 import {IEnvironmentManagerMachine} from '../../../../components/api/environment/environment-manager-machine';
 import {WorkspaceDetailsService} from '../workspace-details.service';
 import {CheRecipeService} from '../che-recipe.service';
-
+const editMachineTemplateLink=require('./edit-machine-dialog/edit-machine-dialog.html');
+const changeDevMachineTemplateLink=require('./change-dev-machine-dialog/change-dev-machine-dialog.html');
 
 type machine = {
   name: string;
@@ -46,7 +47,7 @@ export class WorkspaceMachinesController {
   /**
    * Filter service.
    */
-  private $filter: ng.IFilterService;
+  private $filter: any;
   /**
    * Material Design Dialog Service
    */
@@ -308,7 +309,7 @@ export class WorkspaceMachinesController {
           }
         }
       },
-      templateUrl: 'app/workspaces/workspace-details/workspace-machines/edit-machine-dialog/edit-machine-dialog.html'
+      templateUrl: editMachineTemplateLink
     });
   }
 
@@ -342,7 +343,7 @@ export class WorkspaceMachinesController {
         machinesList: this.machines,
         changeDevMachine: this.onDevChange
       },
-      templateUrl: 'app/workspaces/workspace-details/workspace-machines/change-dev-machine-dialog/change-dev-machine-dialog.html'
+      templateUrl: changeDevMachineTemplateLink
     });
   }
 

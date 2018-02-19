@@ -21,6 +21,7 @@ import {DockerFileEnvironmentManager} from '../../../../components/api/environme
 import {ComposeEnvironmentManager} from '../../../../components/api/environment/compose-environment-manager';
 import {OpenshiftEnvironmentManager} from '../../../../components/api/environment/openshift-environment-manager';
 import {RecipeEditor} from './recipe-editor/recipe-editor';
+const htmlLink=require('./build-stack.html');
 
 interface ITestScope extends ng.IScope {
   model: any;
@@ -173,7 +174,7 @@ describe(`BuildStack dialog >`, () => {
       locals: {
         callbackController: this
       },
-      templateUrl: 'app/stacks/list-stacks/build-stack/build-stack.html'
+      templateUrl: htmlLink
     });
 
     $scope.$digest();

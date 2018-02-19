@@ -9,6 +9,8 @@
  *   Red Hat, Inc. - initial API and implementation
  */
 'use strict';
+
+import * as jsyaml from 'js-yaml';
 import {IPodItem, OpenshiftMachineRecipeParser} from './openshift-machine-recipe-parser';
 import {IParser} from './parser';
 

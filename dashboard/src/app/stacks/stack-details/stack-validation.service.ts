@@ -71,7 +71,7 @@ export class StackValidationService {
     let errors: Array<string> = [];
     let isValid: boolean = true;
     // workspace validation
-    if (!workspaceConfig || workspaceConfig === {}) {
+    if (!workspaceConfig) {
       isValid = false;
       errors.push('Error. The workspace is empty.');
       return {isValid: isValid, errors: errors};
@@ -119,7 +119,7 @@ export class StackValidationService {
     let errors: Array<string> = [];
     let isValid: boolean = true;
     // environment validation
-    if (!environment || environment === {}) {
+    if (!environment) {
       isValid = false;
       errors.push('The environment is empty.');
       return {isValid: isValid, errors: errors};

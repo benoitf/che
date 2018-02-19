@@ -16,6 +16,7 @@ import {DiagnosticsController} from './diagnostics.controller';
 import {DiagnosticsWebsocketWsMaster} from './test/diagnostics-websocket-wsmaster.factory';
 import {DiagnosticsWorkspaceStartCheck} from './test/diagnostics-workspace-start-check.factory';
 import {DiagnosticsRunningWorkspaceCheck} from './test/diagnostics-workspace-check-workspace.factory';
+const htmlLink=require('./diagnostics.html');
 
 /**
  * Diagnostics configuration
@@ -36,7 +37,7 @@ export class DiagnosticsConfig {
     register.app.config(['$routeProvider', ($routeProvider: che.route.IRouteProvider) => {
       $routeProvider.accessWhen('/diagnostic', {
         title: 'Diagnostic',
-        templateUrl: 'app/diagnostics/diagnostics.html'
+        templateUrl: htmlLink
       });
     }]);
 

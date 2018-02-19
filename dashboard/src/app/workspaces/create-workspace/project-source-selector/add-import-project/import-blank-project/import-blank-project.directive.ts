@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./import-blank-project.html');
+
 /**
  * Defines a directive for the blank project import.
  *
@@ -17,7 +19,7 @@
  */
 export class ImportBlankProject implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/create-workspace/project-source-selector/add-import-project/import-blank-project/import-blank-project.html';
+  templateUrl: string = htmlLink;
   replace: boolean = true;
 
   controller: string = 'ImportBlankProjectController';

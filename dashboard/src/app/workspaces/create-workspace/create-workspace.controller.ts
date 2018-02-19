@@ -22,6 +22,7 @@ import {
   ICheButtonDropdownMainAction,
   ICheButtonDropdownOtherAction
 } from '../../../components/widget/button-dropdown/che-button-dropdown.directive';
+const htmlLink=require('./after-creation-dialog/after-creation-dialog.html');
 
 /**
  * This class is handling the controller for workspace creation.
@@ -370,7 +371,7 @@ export class CreateWorkspaceController {
         controllerAs: 'afterCreationDialogController',
         bindToController: true,
         clickOutsideToClose: true,
-        templateUrl: 'app/workspaces/create-workspace/after-creation-dialog/after-creation-dialog.html'
+        templateUrl: htmlLink
       }).then(() => {
         // when promise is resolved then open workspace in IDE
         this.createWorkspaceSvc.redirectToIDE(workspace);

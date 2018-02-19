@@ -9,6 +9,7 @@
  *   Red Hat, Inc. - initial API and implementation
  */
 'use strict';
+const htmlLink=require('./factory-command-edit.html');
 
 /**
  * Defines controller of directive for displaying factory command.
@@ -88,7 +89,7 @@ export class FactoryCommandController {
         index: index,
         selectedValue: this.factoryObject.workspace.commands[index].commandLine
       },
-      templateUrl: 'app/factories/create-factory/command/factory-command-edit.html'
+      templateUrl: htmlLink
     });
   }
 

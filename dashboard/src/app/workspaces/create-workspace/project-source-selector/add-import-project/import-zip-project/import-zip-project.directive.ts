@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./import-zip-project.html');
+
 /**
  * Defines a directive for the Zip project import.
  *
@@ -17,7 +19,7 @@
  */
 export class ImportZipProject implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/create-workspace/project-source-selector/add-import-project/import-zip-project/import-zip-project.html';
+  templateUrl: string = htmlLink;
   replace: boolean = true;
 
   controller: string = 'ImportZipProjectController';

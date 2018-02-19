@@ -30,7 +30,7 @@ interface ICheInputAttrs extends ng.IAttributes {
  * It will change upon width of the screen
  * @author Florent Benoit
  */
-export class CheInput implements ng.IDirective {
+export class CheInput  {
   restrict = 'E';
   replace = true;
   transclude = true;

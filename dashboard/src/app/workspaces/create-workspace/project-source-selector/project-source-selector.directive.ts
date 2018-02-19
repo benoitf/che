@@ -10,6 +10,9 @@
  */
 'use strict';
 
+const htmlLink=require('./project-source-selector.html');
+
+
 export interface IProjectSourceSelectorScope extends ng.IScope {
   updateWidget: (activeButtonId: string, scrollWidgetInView: boolean) => void;
 }
@@ -22,7 +25,7 @@ export interface IProjectSourceSelectorScope extends ng.IScope {
  */
 export class ProjectSourceSelector implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/create-workspace/project-source-selector/project-source-selector.html';
+  templateUrl: string = htmlLink;
   replace: boolean = true;
 
   controller: string = 'ProjectSourceSelectorController';

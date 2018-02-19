@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./organization-member-item.html');
+
 /**
  * Defines a directive for member in list.
  *
@@ -18,7 +20,7 @@
 export class OrganizationMemberItem {
   restrict: string = 'E';
 
-  templateUrl: string = 'app/organizations/organization-details/organization-select-members-dialog/organization-member-item/organization-member-item.html';
+  templateUrl: string = htmlLink;
   replace: boolean = false;
 
   scope: {[prop: string]: string} = {

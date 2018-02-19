@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./machine-volumes.html');
+
 /**
  * @ngdoc directive
  * @name environment.machine.volumes.directive:MachineVolumes
@@ -26,7 +28,7 @@
  */
 export class MachineVolumes implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/workspace-machine-volumes/machine-volumes.html';
+  templateUrl: string = htmlLink;
   controller: string = 'MachineVolumesController';
   controllerAs: string = 'machineVolumesController';
   bindToController: boolean = true;

@@ -14,6 +14,8 @@ import {CheUser} from '../../../../components/api/che-user.factory';
 import {CheNotification} from '../../../../components/notification/che-notification.factory';
 import {ConfirmDialogService} from '../../../../components/service/confirm-dialog/confirm-dialog.service';
 import {CheProfile} from '../../../../components/api/che-profile.factory';
+const memberTemplateLink=require('../organization-member-dialog/organization-member-dialog.html');
+const selectMembersTemplateLink=require('../organization-select-members-dialog/organization-select-members-dialog.html');
 
 interface IOrganizationMember extends che.IUser {
   permissions: che.IPermissions;
@@ -246,7 +248,7 @@ export class ListOrganizationMembersController {
         parentOrganizationId: this.organization.parent,
         parentOrganizationMembers: this.parentOrganizationMembers
       },
-      templateUrl: 'app/organizations/organization-details/organization-member-dialog/organization-member-dialog.html'
+      templateUrl: memberTemplateLink
     });
   }
 
@@ -265,7 +267,7 @@ export class ListOrganizationMembersController {
         parentOrganizationMembers: this.parentOrganizationMembers,
         members: this.members
       },
-      templateUrl: 'app/organizations/organization-details/organization-select-members-dialog/organization-select-members-dialog.html'
+      templateUrl: selectMembersTemplateLink
     });
   }
 

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-row-toolbar.html');
+
 /**
  * @ngdoc directive
  * @name components.directive:cheRowToolbar
@@ -31,7 +33,7 @@
 export class CheRowToolbar {
   restrict = 'E';
   transclude = true;
-  templateUrl = 'components/widget/toolbar/che-row-toolbar.html';
+  templateUrl = htmlLink;
 
   // scope values
   scope = {

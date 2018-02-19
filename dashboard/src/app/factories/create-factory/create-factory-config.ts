@@ -27,6 +27,7 @@ import {FactoryCommand} from './command/factory-command.directive';
 import {FactoryCommandDialogEditController} from './command/factory-command-edit.controller';
 import {CreateFactoryGitController} from './git/create-factory-git.controller';
 import {CreateFactoryGit} from './git/create-factory-git.directive';
+const htmlLink=require('./create-factory.html');
 
 export class CreateFactoryConfig {
 
@@ -61,7 +62,7 @@ export class CreateFactoryConfig {
     register.app.config(['$routeProvider', ($routeProvider: che.route.IRouteProvider) => {
       $routeProvider.accessWhen('/factories/create-factory', {
         title: 'New Factory',
-        templateUrl: 'app/factories/create-factory/create-factory.html',
+        templateUrl: htmlLink,
         controller: 'CreateFactoryCtrl',
         controllerAs: 'createFactoryCtrl'
       });

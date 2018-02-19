@@ -17,6 +17,8 @@ interface ICheListHeaderColumnScope extends ng.IScope {
   onSortChange: (data: {sortValue: string}) => void;
 }
 
+const htmlLink=require('./che-list-header-column.html');
+
 /**
  * Defines a directive for creating header column.
  * @author Oleksii Orel
@@ -24,7 +26,7 @@ interface ICheListHeaderColumnScope extends ng.IScope {
 export class CheListHeaderColumn implements ng.IDirective {
   restrict = 'E';
   replace = true;
-  templateUrl = 'components/widget/list/che-list-header-column.html';
+  templateUrl = htmlLink;
 
   // scope values
   scope = {

@@ -163,7 +163,7 @@ export class DiagnosticsWorkspaceStartCheck {
    * @returns {ng.IPromise<che.IWorkspace>}
    */
   recreateDiagnosticWorkspace(diagnosticCallback: DiagnosticCallback): ng.IPromise<che.IWorkspace> {
-    let defered = this.$q.defer();
+    let defered = this.$q.defer<che.IWorkspace>();
 
     // delete if present
     this.deleteDiagnosticWorkspaceIfPresent(diagnosticCallback).then(() => {

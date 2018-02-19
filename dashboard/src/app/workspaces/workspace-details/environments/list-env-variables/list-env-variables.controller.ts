@@ -10,6 +10,7 @@
  */
 'use strict';
 import {ConfirmDialogService} from '../../../../../components/service/confirm-dialog/confirm-dialog.service';
+const htmlLink=require('./edit-variable-dialog/edit-variable-dialog.html');
 
 interface IEnvironmentVariable {
   name: string;
@@ -156,7 +157,7 @@ export class ListEnvVariablesController {
         envVariables: this.envVariables,
         callbackController: this
       },
-      templateUrl: 'app/workspaces/workspace-details/environments/list-env-variables/edit-variable-dialog/edit-variable-dialog.html'
+      templateUrl: htmlLink
     });
   }
 

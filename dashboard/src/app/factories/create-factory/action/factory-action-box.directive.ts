@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./factory-action-box.html');
+
 /**
  * Defines a directive for displaying action box.
  * @author Florent Benoit
@@ -32,7 +34,7 @@ export class FactoryActionBox implements ng.IDirective {
   constructor() {
     this.restrict = 'E';
 
-    this.templateUrl = 'app/factories/create-factory/action/factory-action-box.html';
+    this.templateUrl = htmlLink;
     this.replace = false;
 
     this.controller = 'FactoryActionBoxController';

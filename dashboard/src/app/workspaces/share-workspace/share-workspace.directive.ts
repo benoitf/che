@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./share-workspace.html');
+
 /**
  * @ngdoc directive
  * @name workspaces.details.directive:shareWorkspace
@@ -26,7 +28,7 @@
  */
 export class ShareWorkspace implements ng.IDirective {
   restrict = 'E';
-  templateUrl = 'app/workspaces/share-workspace/share-workspace.html';
+  templateUrl = htmlLink;
 
   controller = 'ShareWorkspaceController';
   controllerAs = 'shareWorkspaceController';

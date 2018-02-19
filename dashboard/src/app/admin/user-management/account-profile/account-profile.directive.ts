@@ -9,6 +9,7 @@
  *   Red Hat, Inc. - initial API and implementation
  */
 'use strict';
+const htmlLink=require('./account-profile.html');
 
 interface IAccountProfileScope extends ng.IScope {
   profileAttributes: {
@@ -40,7 +41,7 @@ interface IAccountProfileScope extends ng.IScope {
  */
 export class AccountProfile implements ng.IDirective {
   restrict = 'E';
-  templateUrl = 'app/account/account-profile/account-profile.html';
+  templateUrl = htmlLink;
   replace = true;
   scope = {
     profileAttributes: '=profileAttributes',

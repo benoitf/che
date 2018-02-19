@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./import-git-project.html');
+
 /**
  * Defines a directive for the Git project import.
  *
@@ -17,7 +19,7 @@
  */
 export class ImportGitProject implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/create-workspace/project-source-selector/add-import-project/import-git-project/import-git-project.html';
+  templateUrl: string = htmlLink;
   replace: boolean = true;
 
   controller: string = 'ImportGitProjectController';

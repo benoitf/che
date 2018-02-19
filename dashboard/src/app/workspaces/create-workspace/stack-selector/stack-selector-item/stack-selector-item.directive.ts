@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./stack-selector-item.html');
+
 /**
  * Defines a directive for displaying stack selector's item.
  *
@@ -17,7 +19,7 @@
  */
 export class StackSelectorItem implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/create-workspace/stack-selector/stack-selector-item/stack-selector-item.html';
+  templateUrl: string = htmlLink;
   replace: boolean = true;
 
   scope: {

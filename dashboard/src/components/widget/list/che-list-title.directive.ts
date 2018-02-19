@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-list-title.html');
+
 /**
  * Defines a directive for the title of list.
  * @author Florent Benoit
@@ -19,7 +21,7 @@ export class CheListTitle implements ng.IDirective {
   restrict = 'E';
   replace = true;
   transclude = true;
-  templateUrl = 'components/widget/list/che-list-title.html';
+  templateUrl = htmlLink;
 
   // scope values
   scope = {

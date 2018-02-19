@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-show-area.html');
+
 /**
  * @ngdoc directive
  * @name components.directive:cheShowArea
@@ -34,7 +36,7 @@ export class CheShowArea {
   constructor() {
     this.restrict = 'E';
     this.transclude = true;
-    this.templateUrl = 'components/widget/show-area/che-show-area.html';
+    this.templateUrl = htmlLink;
 
     // scope values
     this.scope = {};

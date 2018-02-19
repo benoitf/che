@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-list-header-additional-parts.html');
+
 /**
  * Defines a directive for creating additional parts for list's header.
  *
@@ -17,7 +19,7 @@
  */
 export class CheListHeaderAdditionalParts implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'components/widget/list/list-header/additional-parts/che-list-header-additional-parts.html';
+  templateUrl: string = htmlLink;
   transclude: boolean = true;
 }
 

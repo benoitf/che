@@ -26,7 +26,7 @@ export interface ICheLearmMoreAttributes extends ng.IAttributes {
  *
  * @author Florent Benoit
  */
-export class CheLearnMore implements ng.IDirective {
+export class CheLearnMore {
 
   restrict = 'E';
   bindToController = true;

@@ -17,6 +17,7 @@ import {ImportStackService} from './import-stack.service';
 import {ConfirmDialogService} from '../../../components/service/confirm-dialog/confirm-dialog.service';
 
 const STACK_TEST_POPUP_ID: string = 'stackTestPopup';
+const htmlLink=require('./select-template/select-template.html');
 
 /**
  * Controller for stack management - creation or edit.
@@ -352,7 +353,7 @@ export class StackController {
         callbackController: this,
         stack: this.stack
       },
-      templateUrl: 'app/stacks/stack-details/select-template/select-template.html'
+      templateUrl: htmlLink
     });
   }
 

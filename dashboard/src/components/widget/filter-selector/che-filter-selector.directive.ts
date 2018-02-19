@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-filter-selector.html');
+
 /**
  * Defines the class for filter selector widget.
  * @author Ann Shumilova
@@ -18,7 +20,7 @@ export class CheFilterSelector implements ng.IDirective {
 
   restrict: string = 'E';
   bindToController: boolean = true;
-  templateUrl: string = 'components/widget/filter-selector/che-filter-selector.html';
+  templateUrl: string = htmlLink;
   controller: string = 'CheFilterSelectorController';
   controllerAs: string = 'cheFilterSelectorController';
   require: Array<string> = ['ngModel'];

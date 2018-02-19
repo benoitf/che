@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./list-servers.html');
+
 /**
  * @ngdoc directive
  * @name workspaces.details.directive:listServers
@@ -26,7 +28,7 @@
  */
 export class ListServers {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/environments/list-servers/list-servers.html';
+  templateUrl: string = htmlLink;
 
   controller: string = 'ListServersController';
   controllerAs: string = 'listServersController';

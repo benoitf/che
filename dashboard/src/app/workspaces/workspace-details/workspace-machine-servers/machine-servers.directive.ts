@@ -10,6 +10,9 @@
  */
 'use strict';
 
+const htmlLink=require('./machine-servers.html');
+
+
 /**
  * @ngdoc directive
  * @name machine.servers.directive:MachineServers
@@ -26,7 +29,7 @@
  */
 export class MachineServers implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/workspace-machine-servers/machine-servers.html';
+  templateUrl: string = htmlLink;
   controller: string = 'MachineServersController';
   controllerAs: string = 'machineServersController';
   bindToController: boolean = true;

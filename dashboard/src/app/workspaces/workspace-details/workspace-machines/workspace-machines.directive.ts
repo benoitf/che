@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./workspace-machines.html');
+
 /**
  * @ngdoc directive
  * @name workspace.machines.directive:workspaceMachines
@@ -30,7 +32,7 @@
  */
 export class WorkspaceMachines implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/workspace-machines/workspace-machines.html';
+  templateUrl: string = htmlLink;
   bindToController: boolean = true;
   controller: string = 'WorkspaceMachinesController';
   controllerAs: string = 'workspaceMachinesController';

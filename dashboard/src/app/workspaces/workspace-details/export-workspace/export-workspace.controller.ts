@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./dialog/export-tab-dialog.html');
+
 /**
  * @ngdoc controller
  * @name workspace.export.controller:ExportWorkspaceController
@@ -44,7 +46,7 @@ export class ExportWorkspaceController {
         callbackController: this,
         destination: destination
       },
-      templateUrl: 'app/workspaces/workspace-details/export-workspace/dialog/export-tab-dialog.html'
+      templateUrl: htmlLink
     });
   }
 

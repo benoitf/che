@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./workspace-details-ssh.html');
+
 /**
  * @ngdoc directive
  * @name workspaces.details.directive:workspaceDetailsSSH
@@ -27,7 +29,7 @@
 export class WorkspaceDetailsSsh implements ng.IDirective {
 
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/workspace-ssh/workspace-details-ssh.html';
+  templateUrl: string = htmlLink;
 
   controller: string = 'WorkspaceDetailsSshCtrl';
   controllerAs: string = 'workspaceDetailsSshCtrl';

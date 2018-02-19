@@ -11,6 +11,8 @@
 'use strict';
 import {CheToggleController} from './che-toggle.controller';
 
+const htmlLink=require('./che-toggle.html');
+
 /**
  * Defines a directive for the toggle button.
  * @author Florent Benoit
@@ -29,7 +31,7 @@ export class CheToggle {
    */
   constructor() {
     this.restrict = 'E';
-    this.templateUrl = 'components/widget/toggle-button/che-toggle.html';
+    this.templateUrl = htmlLink;
 
     this.transclude = true;
     this.controller = 'CheToggleController';

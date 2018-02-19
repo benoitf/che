@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./docker-registry-list.html');
+
 /**
  * @ngdoc directive
  * @name administration.docker-registry.docker-registry-list.directive:dockerRegistryList
@@ -27,7 +29,7 @@
 export class DockerRegistryList implements ng.IDirective {
 
   restrict = 'E';
-  templateUrl = 'app/administration/docker-registry/docker-registry-list/docker-registry-list.html';
+  templateUrl = htmlLink;
   replace = false;
 
   controller = 'DockerRegistryListController';

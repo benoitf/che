@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-slider.html');
+
 /**
  * Defines a directive for creating slider that are working either on desktop or on mobile devices.
  * It will change upon width of the screen
@@ -21,7 +23,7 @@ export class CheSlider {
 
   replace = true;
   transclude = true;
-  templateUrl = 'components/widget/slider/che-slider.html';
+  templateUrl = htmlLink;
 
   // scope values
   scope = {

@@ -10,13 +10,15 @@
  */
 'use strict';
 
+const htmlLink=require('./workspace-select-stack.html');
+
 /**
  * Defines a directive for displaying select stack widget.
  * @author Oleksii Orel
  */
 export class WorkspaceSelectStack {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/select-stack/workspace-select-stack.html';
+  templateUrl: string = htmlLink;
   replace: boolean = true;
   bindToController: boolean = true;
   controller: string = 'WorkspaceSelectStackController';

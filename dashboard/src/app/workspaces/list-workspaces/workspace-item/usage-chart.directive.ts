@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./usage-chart.html');
+
 interface IUsageChartScope extends ng.IScope {
   usedColor: string;
   loaded: boolean;
@@ -38,7 +40,7 @@ export class UsageChart implements ng.IDirective {
    */
     constructor () {
     this.restrict = 'E';
-    this.templateUrl = 'app/workspaces/list-workspaces/workspace-item/usage-chart.html';
+    this.templateUrl = htmlLink;
     this.replace = true;
 
     this.scope = {

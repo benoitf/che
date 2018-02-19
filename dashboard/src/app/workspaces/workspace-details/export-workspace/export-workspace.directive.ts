@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./export-workspace.html');
+
 /**
  * @ngdoc directive
  * @name workspaces.details.directive:workspaceDetailsProjects
@@ -27,7 +29,7 @@
 export class ExportWorkspace implements ng.IDirective {
 
   restrict = 'E';
-  templateUrl = 'app/workspaces/workspace-details/export-workspace/export-workspace.html';
+  templateUrl = htmlLink;
 
   controller = 'ExportWorkspaceController';
   controllerAs = 'exportWorkspaceCtrl';

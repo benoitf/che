@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./edit-project.html');
+
 /**
  * Defines the directive for project editing.
  *
@@ -17,7 +19,7 @@
  */
 export class EditProject implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/create-workspace/project-source-selector/edit-project/edit-project.html';
+  templateUrl: string = htmlLink;
 
   bindToController: boolean = true;
   controller: string = 'EditProjectController';

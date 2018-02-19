@@ -10,6 +10,9 @@
  */
 'use strict';
 
+const memberTemplateLink=require('../organization-member-dialog/organization-member-dialog.html');
+const selectMembersTemplateLink=require('../organization-select-members-dialog/organization-select-members-dialog.html');
+
 /**
  * @ngdoc controller
  * @name organization.details.invite-members:ListOrganizationInviteMembersController
@@ -222,7 +225,7 @@ export class ListOrganizationInviteMembersController {
         parentOrganizationMembers: this.parentOrganizationMembers,
         callbackController: this
       },
-      templateUrl: 'app/organizations/organization-details/organization-member-dialog/organization-member-dialog.html'
+      templateUrl: memberTemplateLink
     });
   }
 
@@ -243,7 +246,7 @@ export class ListOrganizationInviteMembersController {
         parentOrganizationMembers: this.parentOrganizationMembers,
         members: this.members
       },
-      templateUrl: 'app/organizations/organization-details/organization-select-members-dialog/organization-select-members-dialog.html'
+      templateUrl: selectMembersTemplateLink
     });
   }
 

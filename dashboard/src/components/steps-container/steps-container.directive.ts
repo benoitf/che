@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./steps-container.html');
+
 /**
  * Defines a directive for displaying steps of creating project or loading workspace
  * @author Oleksii Kurinnyi
@@ -17,7 +19,7 @@
 export class CheStepsContainer implements ng.IDirective {
 
   restrict = 'E';
-  templateUrl = 'components/steps-container/steps-container.html';
+  templateUrl = htmlLink;
 
   scope = {
     allSteps: '=cheAllSteps',

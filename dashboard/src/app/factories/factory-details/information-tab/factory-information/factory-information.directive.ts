@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./factory-information.html');
+
 /**
  * Defines a directive for displaying factory-information widget.
  * @author Oleksii Orel
@@ -32,7 +34,7 @@ export class FactoryInformation {
   constructor() {
     this.restrict = 'E';
 
-    this.templateUrl = 'app/factories/factory-details/information-tab/factory-information/factory-information.html';
+    this.templateUrl = htmlLink;
     this.replace = false;
 
     this.controller = 'FactoryInformationController';

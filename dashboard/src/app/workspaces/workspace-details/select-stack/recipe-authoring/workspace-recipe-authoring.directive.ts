@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./workspace-recipe-authoring.html');
+
 /**
  * Defines a directive for displaying recipe authoring widget.
  * @author Oleksii Orel
@@ -17,7 +19,7 @@
  */
 export class WorkspaceRecipeAuthoring {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/select-stack/recipe-authoring/workspace-recipe-authoring.html';
+  templateUrl: string = htmlLink;
   replace: boolean = false;
 
   controller: string = 'WorkspaceRecipeAuthoringController';

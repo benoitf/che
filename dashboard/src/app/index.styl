@@ -18,9 +18,30 @@ che-developers-face()
   width 14px
   padding 0
 
-@import '../../bower_components/bootstrap-stylus/bootstrap/index'
-@import '../components/widget'
+$icon-font-path = "~bootstrap-styl/fonts/"
+@import '../../src/assets/styles/che-font.css'
+@import '../../src/assets/styles/font.css'
+@import '../../src/assets/styles/material-design.css'
+@import 'bootstrap';
+@import 'admin/**/*.styl'
+@import 'administration/**/*.styl'
+@import 'colors/**/*.styl'
+@import 'dashboard/**/*.styl'
+@import 'demo-components/**/*.styl'
+@import 'diagnostics/**/*.styl'
+@import 'factories/**/*.styl'
+@import 'ide/**/*.styl'
+@import 'navbar/**/*.styl'
+@import 'organizations/**/*.styl'
+@import 'profile/**/*.styl'
+@import 'stacks/**/*.styl'
+@import 'teams/**/*.styl'
+@import 'workspaces/**/*.styl'
+
+@import '~angular-material/angular-material.css'
+@import '~font-awesome/css/font-awesome.css'
 @import '../components/codemirror/codemirror'
+@import '../components/**/*.styl'
 
 $che-logs-output-font = "Droid Sans Mono", monospace
 

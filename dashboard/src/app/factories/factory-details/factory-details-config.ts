@@ -13,6 +13,7 @@
 import {FactoryDetailsController} from '../factory-details/factory-details.controller';
 import {InformationTabConfig} from './information-tab/information-tab-config';
 
+const htmlLink=require('./factory-details.html');
 
 export class FactoryDetailsConfig {
 
@@ -23,7 +24,7 @@ export class FactoryDetailsConfig {
     register.app.config(['$routeProvider', ($routeProvider: che.route.IRouteProvider) => {
       let locationProvider = {
         title: 'Factory',
-        templateUrl: 'app/factories/factory-details/factory-details.html',
+        templateUrl: htmlLink,
         controller: 'FactoryDetailsController',
         controllerAs: 'factoryDetailsController'
       };

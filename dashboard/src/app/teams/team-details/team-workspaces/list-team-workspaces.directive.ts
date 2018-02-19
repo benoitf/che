@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./list-team-workspaces.html');
+
 /**
  * @ngdoc directive
  * @name teams.workspaces:ListTeamWorkspaces
@@ -27,7 +29,7 @@
 export class ListTeamWorkspaces implements ng.IDirective {
 
   restrict: string = 'E';
-  templateUrl: string = 'app/teams/team-details/team-workspaces/list-team-workspaces.html';
+  templateUrl: string = htmlLink;
 
   controller: string = 'ListTeamWorkspacesController';
   controllerAs: string = 'listTeamWorkspacesController';

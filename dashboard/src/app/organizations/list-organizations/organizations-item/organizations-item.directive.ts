@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./organizations-item.html');
+
 /**
  * @ngdoc directive
  * @name  organizations.list.Item.controller:WorkspaceItem
@@ -28,7 +30,7 @@ export class OrganizationsItem implements ng.IDirective {
 
   restrict = 'E';
   require = ['ngModel'];
-  templateUrl = 'app/organizations/list-organizations/organizations-item/organizations-item.html';
+  templateUrl = htmlLink;
   controller = 'OrganizationsItemController';
   controllerAs = 'organizationsItemController';
   bindToController = true;

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./list-members.html');
+
 /**
  * @ngdoc directive
  * @name teams.invite.members:ListMembers
@@ -27,7 +29,7 @@
 export class ListMembers implements ng.IDirective {
 
   restrict: string = 'E';
-  templateUrl: string = 'app/teams/invite-members/list-members.html';
+  templateUrl: string = htmlLink;
 
   controller: string = 'ListMembersController';
   controllerAs: string = 'listMembersController';

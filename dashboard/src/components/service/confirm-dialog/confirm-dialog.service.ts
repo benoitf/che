@@ -10,6 +10,7 @@
  */
 'use strict';
 
+const htmlLink=require('./che-confirm-dialog.html');
 /**
  * This class is handling the data for custom confirm dialog
  *
@@ -52,7 +53,7 @@ export class ConfirmDialogService {
         resolveButtonTitle: resolveButtonTitle,
         rejectButtonTitle: rejectButtonTitle ? rejectButtonTitle : 'Close'
       },
-      templateUrl: 'components/service/confirm-dialog/che-confirm-dialog.html'
+      templateUrl: htmlLink
     });
   }
 

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./ide-iframe.html');
+
 /**
  * Defines a directive for displaying iframe for displaying the IDE.
  * @author Florent Benoit
@@ -23,7 +25,7 @@ class IdeIframe  implements ng.IDirective {
    */
   constructor () {
     this.restrict = 'E';
-    this.templateUrl = 'app/ide/ide-iframe/ide-iframe.html';
+    this.templateUrl = htmlLink;
   }
 
 }

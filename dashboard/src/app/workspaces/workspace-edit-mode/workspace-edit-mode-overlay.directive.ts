@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./workspace-edit-mode-overlay.html');
+
 /**
  * @ngdoc directive
  * @name workspaces.details.directive:workspaceEditModeOverlay
@@ -38,7 +40,7 @@ export class WorkspaceEditModeOverlay implements ng.IDirective {
   replace: boolean = true;
   transclude: boolean = true;
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-edit-mode/workspace-edit-mode-overlay.html';
+  templateUrl: string = htmlLink;
 
   scope: {
     [propName: string]: string

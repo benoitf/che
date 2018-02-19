@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./env-variables.html');
+
 /**
  * @ngdoc directive
  * @name environment.variables.directive:EnvVariables
@@ -26,7 +28,7 @@
  */
 export class EnvVariables implements ng.IDirective {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/workspace-machine-env-variables/env-variables.html';
+  templateUrl: string = htmlLink;
   controller: string = 'EnvVariablesController';
   controllerAs: string = 'envVariablesController';
   bindToController: boolean = true;

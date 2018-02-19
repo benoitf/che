@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./recipe-editor.html');
+
 export interface IRecipeEditorControllerScope {
   allowInvalidRecipe: boolean;
   editorMode: string;
@@ -24,7 +26,7 @@ export interface IRecipeEditorControllerScope {
 export class RecipeEditorDirective implements ng.IDirective {
 
   restrict = 'E';
-  templateUrl = 'app/stacks/list-stacks/build-stack/recipe-editor/recipe-editor.html';
+  templateUrl = htmlLink;
 
   controller = 'RecipeEditorController';
   controllerAs = 'recipeEditorController';

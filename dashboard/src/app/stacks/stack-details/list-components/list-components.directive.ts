@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./list-components.html');
+
 /**
  * @ngdoc directive
  * @name stacks.details.directive:listComponents
@@ -38,7 +40,7 @@ export class ListComponents {
    */
   constructor() {
     this.restrict = 'E';
-    this.templateUrl = 'app/stacks/stack-details/list-components/list-components.html';
+    this.templateUrl = htmlLink;
 
     this.controller = 'ListComponentsController';
     this.controllerAs = 'listComponentsController';

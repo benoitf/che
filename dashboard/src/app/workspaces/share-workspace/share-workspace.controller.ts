@@ -13,6 +13,8 @@ import {CheUser} from '../../../components/api/che-user.factory';
 import {CheWorkspace} from '../../../components/api/workspace/che-workspace.factory';
 import {CheNotification} from '../../../components/notification/che-notification.factory';
 import {ConfirmDialogService} from '../../../components/service/confirm-dialog/confirm-dialog.service';
+const addMembersTemplateLink=require('./add-members/add-members.html');
+const addDevelopersTemplateLink=require('./add-developers/add-developers.html');
 
 interface ISharedWorkspaceUser extends che.IUser {
   permissions: any;
@@ -396,7 +398,7 @@ export class ShareWorkspaceController {
         existingUsers: this.existingUsers
       },
       parent: parentEl,
-      templateUrl: 'app/workspaces/share-workspace/add-developers/add-developers.html'
+      templateUrl: addDevelopersTemplateLink
     });
   }
 
@@ -419,7 +421,7 @@ export class ShareWorkspaceController {
         users: this.users
       },
       parent: parentEl,
-      templateUrl: 'app/workspaces/share-workspace/add-members/add-members.html'
+      templateUrl: addMembersTemplateLink
     });
   }
 

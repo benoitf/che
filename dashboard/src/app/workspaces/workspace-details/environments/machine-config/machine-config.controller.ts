@@ -12,6 +12,8 @@
 import {ConfirmDialogService} from '../../../../../components/service/confirm-dialog/confirm-dialog.service';
 import {EnvironmentManager} from '../../../../../components/api/environment/environment-manager';
 import {IEnvironmentManagerMachine} from '../../../../../components/api/environment/environment-manager-machine';
+const editTemplateLink=require('./edit-machine-name-dialog/edit-machine-name-dialog.html');
+const deleteTemplateLink=require('./delete-dev-machine-dialog/delete-dev-machine-dialog.html');
 
 export interface IMachinesListItem extends che.IWorkspaceRuntimeMachine {
   name: string;
@@ -193,7 +195,7 @@ export class WorkspaceMachineConfigController {
         machineNames: machineNames,
         callbackController: this
       },
-      templateUrl: 'app/workspaces/workspace-details/environments/machine-config/edit-machine-name-dialog/edit-machine-name-dialog.html'
+      templateUrl: editTemplateLink
     });
   }
 
@@ -251,7 +253,7 @@ export class WorkspaceMachineConfigController {
         machine: this.machine,
         callbackController: this
       },
-      templateUrl: 'app/workspaces/workspace-details/environments/machine-config/delete-dev-machine-dialog/delete-dev-machine-dialog.html'
+      templateUrl: deleteTemplateLink
     });
   }
 

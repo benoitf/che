@@ -12,6 +12,7 @@
 import {ConfirmDialogService} from '../../../../components/service/confirm-dialog/confirm-dialog.service';
 import {IEnvironmentManagerMachine} from '../../../../components/api/environment/environment-manager-machine';
 import {EnvironmentManager} from '../../../../components/api/environment/environment-manager';
+const htmlLink=require('./edit-variable-dialog/edit-variable-dialog.html');
 
 interface IEnvironmentVariable {
   name: string;
@@ -156,7 +157,7 @@ export class EnvVariablesController {
         envVariables: this.envVariables,
         updateEnvVariable: this.updateEnvVariable.bind(this)
       },
-      templateUrl: 'app/workspaces/workspace-details/workspace-machine-env-variables/edit-variable-dialog/edit-variable-dialog.html'
+      templateUrl: htmlLink
     });
   }
 

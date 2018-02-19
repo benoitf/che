@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./recent-workspaces.html');
+
 /**
  * @ngdoc directive
  * @name navbar.directive:NavbarRecentWorkspaces
@@ -28,7 +30,7 @@ export class NavbarRecentWorkspaces implements ng.IDirective {
    */
   constructor() {
     this.restrict = 'E';
-    this.templateUrl = 'app/navbar/recent-workspaces/recent-workspaces.html';
+    this.templateUrl = htmlLink;
 
     this.controller = 'NavbarRecentWorkspacesController';
     this.controllerAs = 'navbarRecentWorkspacesController';

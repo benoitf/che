@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./factory-item.html');
+
 /**
  * Defines a directive for factory item in list.
  * @author Oleksii Orel
@@ -17,7 +19,7 @@
 export class CheFactoryItem implements ng.IDirective {
   restrict: string = 'E';
 
-  templateUrl: string = 'app/factories/list-factories/factory-item/factory-item.html';
+  templateUrl: string = htmlLink;
   replace = false;
 
   controller: string = 'FactoryItemController';

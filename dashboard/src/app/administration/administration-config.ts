@@ -14,6 +14,7 @@
 import {DockerRegistryList} from './docker-registry/docker-registry-list/docker-registry-list.directive';
 import {DockerRegistryListController} from './docker-registry/docker-registry-list/docker-registry-list.controller';
 import {EditRegistryController} from './docker-registry/docker-registry-list/edit-registry/edit-registry.controller';
+const htmlLink=require('./administration.html');
 
 
 export class AdministrationConfig {
@@ -28,7 +29,7 @@ export class AdministrationConfig {
     register.app.config(['$routeProvider', ($routeProvider: che.route.IRouteProvider) => {
       $routeProvider.accessWhen('/administration', {
         title: 'Administration',
-        templateUrl: 'app/administration/administration.html'
+        templateUrl: htmlLink
       });
     }]);
 

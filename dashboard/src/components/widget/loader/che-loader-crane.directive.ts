@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./che-loader-crane.html');
+
 interface ICheLoaderCraneScope extends ng.IScope {
   step: string;
   allSteps: string[];
@@ -27,7 +29,7 @@ export class CheLoaderCrane implements ng.IDirective {
 
   restrict = 'E';
   replace = true;
-  templateUrl = 'components/widget/loader/che-loader-crane.html';
+  templateUrl = htmlLink;
 
   // scope values
   scope = {

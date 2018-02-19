@@ -10,6 +10,9 @@
  */
 'use strict';
 
+const htmlLink=require('./che-text-info.html');
+
+
 /**
  * Defines a directive for creating text info container.
  * @author Oleksii Orel
@@ -19,7 +22,7 @@ export class CheTextInfo implements ng.IDirective {
   restrict = 'E';
   replace = true;
   transclude = false;
-  templateUrl = 'components/widget/text-info/che-text-info.html';
+  templateUrl = htmlLink;
 
   // scope values
   scope = {

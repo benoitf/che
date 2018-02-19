@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./team-item.html');
+
 /**
  * Defines a directive for team item in list.
  *
@@ -17,7 +19,7 @@
  */
 export class TeamItem {
   restrict: string = 'E';
-  templateUrl: string = 'app/teams/list/team-item/team-item.html';
+  templateUrl: string = htmlLink;
   replace: boolean = false;
 
   controller: string = 'TeamItemController';

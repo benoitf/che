@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./workspace-recipe-import.html');
+
 /**
  * Defines a directive for displaying recipe import widget.
  * @author Oleksii Orel
@@ -17,7 +19,7 @@
  */
 export class WorkspaceRecipeImport {
   restrict: string = 'E';
-  templateUrl: string = 'app/workspaces/workspace-details/select-stack/recipe-import/workspace-recipe-import.html';
+  templateUrl: string = htmlLink;
   replace: boolean = false;
 
   controller: string = 'WorkspaceRecipeImportController';

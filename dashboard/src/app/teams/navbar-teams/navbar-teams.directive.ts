@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./navbar-teams.html');
+
 /**
  * @ngdoc directive
  * @name teams.directive:NavbarTeams
@@ -19,7 +21,7 @@
 export class NavbarTeams implements ng.IDirective {
 
   restrict: string = 'E';
-  templateUrl: string = 'app/teams/navbar-teams/navbar-teams.html';
+  templateUrl: string = htmlLink;;
 
   controller: string = 'NavbarTeamsController';
   controllerAs: string = 'navbarTeamsController';

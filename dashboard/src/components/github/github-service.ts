@@ -229,7 +229,7 @@ export class GitHubService {
           if (!nextUrl) {
             return response;
           }
-          const $http = $injector.get('$http') as ng.IHttpService;
+          const $http: any = $injector.get('$http');
           return $http({
             url: nextUrl,
             method: 'GET',

@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./project-repository.html');
+
 /**
  * Defines a directive for displaying project repository widget.
  * @author Oleksii Orel
@@ -17,7 +19,7 @@
 export class ProjectRepository implements ng.IDirective {
   restrict = 'E';
 
-  templateUrl = 'app/workspaces/workspace-details/workspace-projects/project-details/repository/project-repository.html';
+  templateUrl = htmlLink;
 
   controller = 'ProjectRepositoryController';
   controllerAs = 'projectRepositoryController';

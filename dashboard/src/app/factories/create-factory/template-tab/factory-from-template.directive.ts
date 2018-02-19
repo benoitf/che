@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./factory-from-template.html');
+
 /**
  * Defines a directive for displaying factory from template widget.
  * @author Oleksii Orel
@@ -33,7 +35,7 @@ export class FactoryFromTemplate implements ng.IDirective {
   constructor() {
     this.restrict = 'E';
 
-    this.templateUrl = 'app/factories/create-factory/template-tab/factory-from-template.html';
+    this.templateUrl = htmlLink;
     this.replace = false;
 
     this.controller = 'FactoryFromTemplateController';

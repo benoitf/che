@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./navbar-notification.html');
+
 /**
  * @ngDoc directive
  * @name navbar.directive:NavbarDropdownMenu
@@ -20,7 +22,7 @@ export class NavbarNotification implements ng.IDirective {
 
   restrict = 'E';
   bindToController = true;
-  templateUrl = 'app/navbar/notification/navbar-notification.html';
+  templateUrl = htmlLink;
   controller = 'NavbarNotificationController';
   controllerAs = 'navbarNotificationController';
 

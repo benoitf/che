@@ -10,6 +10,8 @@
  */
 'use strict';
 
+const htmlLink=require('./toggle-single-button.html');
+
 /**
  * @ngdoc directive
  * @name components.directive:toggleSingleButton
@@ -51,7 +53,7 @@ interface IToggleSingleButtonScope extends ng.IScope {
 export class ToggleSingleButton {
   restrict: string = 'E';
   transclude: boolean = true;
-  templateUrl: string = 'components/widget/toggle-button/toggle-single-button.html';
+  templateUrl: string = htmlLink;
 
   scope: {
     [propName: string]: string

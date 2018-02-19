@@ -17,9 +17,9 @@ describe('List stacks >', () => {
   beforeEach(() => {
     listStacksMock = require('./list-stack.mock');
     listStacksPageObject = require('./list-stack.po');
-
     browser.addMockModule('userDashboardMock', listStacksMock.listStacksTheeEntries);
     browser.get('/');
+    browser.waitForAngular();
     browser.setLocation('/stacks');
 
   });

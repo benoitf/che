@@ -14,6 +14,7 @@ import {ConfirmDialogService} from '../../../../components/service/confirm-dialo
 import {CheNotification} from '../../../../components/notification/che-notification.factory';
 import {CheProfile} from '../../../../components/api/che-profile.factory';
 import {CheUser} from '../../../../components/api/che-user.factory';
+const htmlLink=require('../../member-dialog/member-dialog.html');
 
 /**
  * @ngdoc controller
@@ -321,7 +322,7 @@ export class ListTeamMembersController {
         callbackController: this,
         member: member
       },
-      templateUrl: 'app/teams/member-dialog/member-dialog.html'
+      templateUrl: htmlLink
     });
   }
 

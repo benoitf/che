@@ -252,7 +252,7 @@ export class PageObjectResource {
    * @returns {ng.IPromise<Array<any>>} the promise
    */
   fetchPageObjects(pageKey: string): ng.IPromise<Array<any>> {
-    let deferred = this.$q.defer();
+    let deferred = this.$q.defer<Array<any>>();
     let pageNumber;
     switch (pageKey) {
       case RemotePageLabels.FIRST:
